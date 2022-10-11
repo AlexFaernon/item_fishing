@@ -7,8 +7,8 @@ public class Hook : MonoBehaviour
 {
     private float baseX;
 
-    private bool isLaunched;
-    private bool isRectracting;
+    public static bool isLaunched;
+    public static bool isRectracting;
 
     private RectTransform _rectTransform;
     // Update is called once per frame
