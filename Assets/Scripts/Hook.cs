@@ -14,12 +14,15 @@ public class Hook : MonoBehaviour
 
     private BoxCollider2D boxCollider2D;
 
+    private AudioSource audioSource;
+
     // Update is called once per frame
     private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
         spring = GetComponent<SpringJoint2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -57,7 +60,7 @@ public class Hook : MonoBehaviour
         }
 
         if (!Input.GetMouseButtonDown(0)) return;
-        Debug.Log("succ");
+        audioSource.Play();
         isLaunched = true;
     }
 
