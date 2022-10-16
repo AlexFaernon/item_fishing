@@ -1,15 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
-    private bool isLaunched;
-    private bool isRectracting;
-
-    private RectTransform _rectTransform;
-
+    private const float Length = 3;
+    
+    public bool isLaunched;
+    public bool isRetracting;
+    
+    private Vector2 initialPosition;
+    
     private SpringJoint2D spring;
 
     private BoxCollider2D boxCollider2D;
@@ -19,23 +19,25 @@ public class Hook : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        _rectTransform = GetComponent<RectTransform>();
         spring = GetComponent<SpringJoint2D>();
+        spring.attachedRigidbody.simulated = false;
         boxCollider2D = GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if (isRectracting)
+        if (isRetracting)
         {
-            if (_rectTransform.anchoredPosition.x > 110)
+            var distance = ((Vector2)transform.position - initialPosition).magnitude;
+            if (Math.Abs(distance) > 0.1)
             {
                 transform.Translate(Vector3.up * (Time.deltaTime * 3));
             }
             else
             {
-                isRectracting = false;
+                isRetracting = false;
+                spring.attachedRigidbody.simulated = false;
                 if (spring.connectedBody == null) return;
 
                 Destroy(spring.connectedBody.gameObject);
@@ -47,14 +49,15 @@ public class Hook : MonoBehaviour
         
         if (isLaunched)
         {
-            if (_rectTransform.anchoredPosition.x < 300)
+            var distance = ((Vector2)transform.position - initialPosition).magnitude;
+            if (distance < Length)
             {
                 transform.Translate(Vector3.down * (Time.deltaTime * 3));
             }
             else
             {
                 isLaunched = false;
-                isRectracting = true;
+                isRetracting = true;
             }
             return;
         }
@@ -62,13 +65,15 @@ public class Hook : MonoBehaviour
         if (!Input.GetMouseButtonDown(0)) return;
         audioSource.Play();
         isLaunched = true;
+        spring.attachedRigidbody.simulated = true;
+        initialPosition = transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D item)
     {
         spring.connectedBody = item.attachedRigidbody;
         isLaunched = false;
-        isRectracting = true;
+        isRetracting = true;
         boxCollider2D.enabled = false;
     }
 }

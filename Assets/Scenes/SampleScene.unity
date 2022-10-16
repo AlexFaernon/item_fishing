@@ -799,6 +799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c4c2ad986c34c4286b5e686f41c8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLaunched: 0
+  isRetracting: 0
 --- !u!231 &1311109122
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1190,6 +1192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  hook: {fileID: 1311109117}
 --- !u!1 &2126971196
 GameObject:
   m_ObjectHideFlags: 0
