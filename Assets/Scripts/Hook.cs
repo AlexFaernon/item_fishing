@@ -27,12 +27,23 @@ public class Hook : MonoBehaviour
 
     void Update()
     {
+        if (isLaunched || isRetracting) return;
+        
+        if (!Input.GetMouseButtonDown(0)) return;
+        audioSource.Play();
+        isLaunched = true;
+        spring.attachedRigidbody.simulated = true;
+        initialPosition = transform.position;
+    }
+
+    private void FixedUpdate()
+    {
         if (isRetracting)
         {
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
-            if (Math.Abs(distance) > 0.1)
+            if (Math.Abs(distance) > 0.01)
             {
-                transform.Translate(Vector3.up * (Time.deltaTime * 3));
+                transform.Translate(Vector3.down * (Time.deltaTime * 3));
             }
             else
             {
@@ -52,21 +63,14 @@ public class Hook : MonoBehaviour
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
             if (distance < Length)
             {
-                transform.Translate(Vector3.down * (Time.deltaTime * 3));
+                transform.Translate(Vector3.up * (Time.deltaTime * 3));
             }
             else
             {
                 isLaunched = false;
                 isRetracting = true;
             }
-            return;
         }
-
-        if (!Input.GetMouseButtonDown(0)) return;
-        audioSource.Play();
-        isLaunched = true;
-        spring.attachedRigidbody.simulated = true;
-        initialPosition = transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D item)
