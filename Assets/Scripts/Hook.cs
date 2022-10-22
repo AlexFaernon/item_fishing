@@ -75,6 +75,8 @@ public class Hook : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D item)
     {
+        if (!item.gameObject.CompareTag("Item")) return;
+
         spring.connectedBody = item.attachedRigidbody;
         isLaunched = false;
         isRetracting = true;
