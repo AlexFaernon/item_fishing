@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
-    private const float Length = 3;
+    private const float Length = 6;
     
     public bool isLaunched;
     public bool isRetracting;
@@ -43,7 +43,7 @@ public class Hook : MonoBehaviour
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
             if (Math.Abs(distance) > 0.01)
             {
-                transform.Translate(Vector3.down * (Time.deltaTime * 3));
+                transform.Translate(Vector3.down * (Time.deltaTime * 10));
             }
             else
             {
@@ -63,7 +63,7 @@ public class Hook : MonoBehaviour
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
             if (distance < Length)
             {
-                transform.Translate(Vector3.up * (Time.deltaTime * 3));
+                transform.Translate(Vector3.up * (Time.deltaTime * 10));
             }
             else
             {

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -12,6 +10,7 @@ public class Gun : MonoBehaviour
     {
         line = GetComponent<LineRenderer>();
         hookScript = hook.GetComponent<Hook>();
+        EventAggregator.ModeSwitched.Subscribe(SetActiveOnMod);
     }
 
     void Update()
@@ -28,5 +27,25 @@ public class Gun : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //положение мыши из экранных в мировые координаты
         var angle = Vector2.Angle(Vector2.right, mousePosition - transform.position);//угол между вектором от объекта к мыше и осью х
         transform.eulerAngles = new Vector3(0f, 0f, transform.position.y < mousePosition.y ? angle : -angle);//немного магии на последок
+    }
+
+    private void SetActiveOnMod(Mode mode)
+    {
+        switch (mode)
+        {
+            case Mode.Ship:
+                gameObject.SetActive(true);
+                break;
+            case Mode.Player:
+                gameObject.SetActive(false);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        EventAggregator.ModeSwitched.Unsubscribe(SetActiveOnMod);
     }
 }

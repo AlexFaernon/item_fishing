@@ -25,7 +25,7 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hookScript.isLaunched || hookScript.isRetracting)
+        if (hookScript.isLaunched || hookScript.isRetracting || SwitchMode.Mode == Mode.Player)
         {
             rb.velocity = Vector2.zero;
             return;
