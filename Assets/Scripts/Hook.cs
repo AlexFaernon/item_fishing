@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Hook : MonoBehaviour
@@ -72,7 +73,7 @@ public class Hook : MonoBehaviour
             }
         }
     }
-
+    
     private void OnTriggerEnter2D(Collider2D item)
     {
         if (!item.gameObject.CompareTag("Item")) return;

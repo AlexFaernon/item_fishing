@@ -4,11 +4,11 @@ using System.Linq;
 
 public static class EventAggregator
 {
-    public static Event<Mode> ModeSwitched = new Event<Mode>();
+    public static readonly Event<Mode> ModeSwitched = new();
     
     public class Event<T>
     {
-        private readonly List<Action<T>> callbacks = new List<Action<T>>();
+        private readonly List<Action<T>> callbacks = new();
 
         public void Subscribe(Action<T> action)
         {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Move : MonoBehaviour
@@ -15,6 +16,22 @@ public class Move : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         hookScript = hook.GetComponent<Hook>();
+        EventAggregator.ModeSwitched.Subscribe(OnModeSwitch);
+    }
+
+    private void OnModeSwitch(Mode mode)
+    {
+        switch (mode)
+        {
+            case Mode.Ship:
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                break;
+            case Mode.Player:
+                rb.bodyType = RigidbodyType2D.Static;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+        }
     }
 
     private void Update()
