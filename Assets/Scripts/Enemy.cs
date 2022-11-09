@@ -1,5 +1,4 @@
 using System;
-using System.Numerics;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -8,24 +7,20 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject ship;
 
-    public int Health { get; private set; } = 5;
-    public Sector CurrentSector
+    public int Health { get; private set; } = 30;
+    public Side CurrentSide
     {
         get
         {
             var fromTarget = (Vector2)(transform.position - ship.transform.position).normalized;
             var sign = fromTarget.y <= 0? -1.0f : 1.0f;
-            var angle = Vector2.Angle(Vector2.right, fromTarget) * sign;
+            var angle = Vector2.Angle(Vector2.right, fromTarget)     * sign;
             return angle switch
             {
-                >= 0 and < 45 => Sector.Sector0,
-                >= 45 and < 90 => Sector.Sector45,
-                >= 90 and < 135 => Sector.Sector90,
-                >= 135 and < 180 => Sector.Sector135,
-                >= -180 and < -135 => Sector.Sector180,
-                >= -135 and < -90 => Sector.SectorMinus135,
-                >= -90 and < -45 => Sector.SectorMinus90,
-                >= -45 and < 0 => Sector.SectorMinus45,
+                >= -45 and < 45 => Side.Right,
+                >= 45 and < 135 => Side.Up,
+                >= 135 or < -135 => Side.Left,
+                >= -135 and < -45 => Side.Down,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
@@ -36,11 +31,11 @@ public class Enemy : MonoBehaviour
     private Vector2 attackVector;
     private Vector2 startPoint;
 
-    public void Attack()
+    public void Attack(GameObject target)
     {
         isAttacking = true;
         var position = transform.position;
-        attackVector = (ship.transform.position - position).normalized;
+        attackVector = (target.transform.position - position).normalized;
         startPoint = position;
     }
 
@@ -85,12 +80,17 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Wall") && !isReturning)
+        if ((col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Turret")) && !isReturning)
         {
             isAttacking = false;
             isReturning = true;
             attackVector = -attackVector;
         }
+    }
+
+    private void OnDestroy()
+    {
+        EnemyAI.RemoveEnemy(this);
     }
 }
 

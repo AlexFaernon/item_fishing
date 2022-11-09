@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField] private GameObject turret;
-    private Enemy currentTarget;
+    private Enemy _currentTarget;
     private LineRenderer _lineRenderer;
     private bool _canShoot = true;
 
@@ -16,9 +16,9 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (currentTarget == null) return;
+        if (_currentTarget == null) return;
         
-        var enemyPosition = currentTarget.gameObject.transform.position;
+        var enemyPosition = _currentTarget.gameObject.transform.position;
         var position = turret.transform.position;
         var angle = Vector2.Angle(Vector2.right, enemyPosition - position);
         turret.transform.eulerAngles = new Vector3(0f, 0f, position.y < enemyPosition.y ? angle : -angle);
@@ -26,8 +26,8 @@ public class Turret : MonoBehaviour
         if (!_canShoot) return;
         
         _lineRenderer.SetPosition(0, transform.position);
-        _lineRenderer.SetPosition(1, currentTarget.transform.position);
-        currentTarget.TakeDamage(1);
+        _lineRenderer.SetPosition(1, _currentTarget.transform.position);
+        _currentTarget.TakeDamage(1);
         _canShoot = false;
         StartCoroutine(DestroyLineAfterTime());
         StartCoroutine(WaitToShoot());
@@ -38,7 +38,7 @@ public class Turret : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         _canShoot = true;
-        Debug.Log("shoot now");
+        //Debug.Log("shoot now");
     }
 
     private IEnumerator DestroyLineAfterTime()
@@ -53,23 +53,23 @@ public class Turret : MonoBehaviour
         if (!other.gameObject.CompareTag("Enemy")) return;
 
         var enemy = EnemyAI.GetEnemy(other.gameObject);
-        if (currentTarget == null)
+        if (_currentTarget == null)
         {
-            currentTarget = enemy;
-            Debug.Log("First enemy");
+            _currentTarget = enemy;
+            //Debug.Log("First enemy");
         }
-        else if (currentTarget.Health > enemy.Health)
+        else if (_currentTarget.Health > enemy.Health)
         {
-            currentTarget = enemy;
-            Debug.Log("New enemy");
+            _currentTarget = enemy;
+            //Debug.Log("New enemy");
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == currentTarget.gameObject)
+        if (other.gameObject == _currentTarget.gameObject)
         {
-            currentTarget = null;
+            _currentTarget = null;
         }
     }
 }

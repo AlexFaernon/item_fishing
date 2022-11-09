@@ -7,6 +7,7 @@ TagManager:
   - Item
   - Wall
   - Enemy
+  - Turret
   layers:
   - Default
   - TransparentFX

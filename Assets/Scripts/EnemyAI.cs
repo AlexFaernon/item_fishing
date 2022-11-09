@@ -8,7 +8,7 @@ using Random = System.Random;
 public class EnemyAI : MonoBehaviour
 {
     private static readonly Dictionary<GameObject, Enemy> Enemies = new();
-    private static readonly Random _random = new();
+    private static readonly Random Random = new();
     private static bool _canAttack = true;
 
     public static Enemy GetEnemy(GameObject gameObject) => Enemies[gameObject];
@@ -23,20 +23,24 @@ public class EnemyAI : MonoBehaviour
             throw new ArgumentException("Enemy already presenting in dictionary");
         }
     }
+
+    public static void RemoveEnemy(Enemy enemy)
+    {
+        Enemies.Remove(enemy.gameObject);
+    }
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && _canAttack)
-        {
-            Attack();
-            _canAttack = false;
-            StartCoroutine(WaitToAttack());
-        }
+        if (!_canAttack) return;
+        
+        Attack();
+        _canAttack = false;
+        StartCoroutine(WaitToAttack());
     }
 
     private static IEnumerator WaitToAttack()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
         _canAttack = true;
         Debug.Log("attack now");
@@ -44,11 +48,16 @@ public class EnemyAI : MonoBehaviour
 
     private static void Attack()
     {
-        var groupBySector = Enemies.Values.GroupBy(enemy => enemy.CurrentSector).ToList();
-        var skipTo = _random.Next(groupBySector.Count);
-        var sector = groupBySector.Skip(skipTo).First();
-        Debug.Log(sector.Key.ToString());
-        var enemyList = sector.ToList();
-        enemyList[_random.Next(enemyList.Count)].Attack();
+        // var groupBySide = Enemies.Values.GroupBy(enemy => enemy.CurrentSide).ToList();
+        // var skipTo = _random.Next(groupBySide.Count);
+        // var side = groupBySide.Skip(skipTo).First();
+        //
+        // Debug.Log(side.Key.ToString());
+        //
+        // var enemyList = side.ToList();
+        var enemy = Enemies.Values.ToList()[Random.Next(Enemies.Count)];
+        var target = Ship.GetTarget(enemy.CurrentSide);
+        enemy.Attack(target);
+
     }
 }
