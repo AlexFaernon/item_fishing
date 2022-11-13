@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class SwitchMode : MonoBehaviour
 {
-    private const float FarCamera = 15;
-    private const float CloseCamera = 10;
+    private const float FarCamera = 20;
+    private const float CloseCamera = 15;
 
     private static Mode _mode;
 

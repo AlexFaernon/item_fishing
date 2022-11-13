@@ -25,7 +25,7 @@ public class Timer: MonoBehaviour
     {
         _timeLeft = time;
         StartCoroutine(StartTimer());
-        Time.timeScale = 3f; // перемотка
+        //Time.timeScale = 3f;
     }
  
     private void UpdateTimeText()

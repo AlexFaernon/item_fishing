@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
-    private const float Length = 6;
+    private const float Length = 15;
     
     public bool isLaunched;
     public bool isRetracting;

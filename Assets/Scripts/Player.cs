@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    [SerializeField] float speed = 0.5f;
+    [SerializeField] float speed = 0.9f;
 
     float mx;
     float my;
