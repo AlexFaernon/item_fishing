@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if ((col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Turret")) && !isReturning)
+        if ((col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Turret") || col.gameObject.CompareTag("Barrier")) && !isReturning)
         {
             isAttacking = false;
             isReturning = true;

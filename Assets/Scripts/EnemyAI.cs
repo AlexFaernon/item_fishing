@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
     
     private void Update()
     {
-        if (!_canAttack) return;
+        if (!_canAttack || !Enemies.Any()) return;
         
         Attack();
         _canAttack = false;

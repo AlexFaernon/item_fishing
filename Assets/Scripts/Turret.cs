@@ -67,7 +67,7 @@ public class Turret : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == _currentTarget.gameObject)
+        if (_currentTarget != null && other.gameObject == _currentTarget.gameObject)
         {
             _currentTarget = null;
         }

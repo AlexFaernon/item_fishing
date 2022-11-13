@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class TurretBody : MonoBehaviour
+public class TurretBody : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private Side side;
     public Side Side => side;
@@ -26,5 +27,10 @@ public class TurretBody : MonoBehaviour
         
         isBroken = true;
         transform.parent.GetComponent<Turret>().enabled = false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("turret");
     }
 }

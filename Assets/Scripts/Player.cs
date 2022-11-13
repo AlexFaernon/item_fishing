@@ -11,12 +11,16 @@ public class Player : MonoBehaviour
 
     float mx;
     float my;
-    
-    void Start()
+
+    private void Awake()
+    {
+        EventAggregator.ModeSwitched.Subscribe(SetActiveOnMod);
+        //gameObject.SetActive(false);
+    }
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        EventAggregator.ModeSwitched.Subscribe(SetActiveOnMod);
-        gameObject.SetActive(false);
     }
 
     private void Update()

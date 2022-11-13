@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    [SerializeField] float speed = 5f;
+    [SerializeField] private float speed = 5f;
     [SerializeField] private GameObject hook;
     private Hook hookScript;
 
-    float mx;
-    float my;
+    private float mx;
+    private float my;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         hookScript = hook.GetComponent<Hook>();
@@ -44,7 +44,7 @@ public class Move : MonoBehaviour
     {
         if (hookScript.isLaunched || hookScript.isRetracting || SwitchMode.Mode == Mode.Player)
         {
-            rb.velocity = Vector2.zero;
+            //rb.velocity = Vector2.zero;
             return;
         }
         

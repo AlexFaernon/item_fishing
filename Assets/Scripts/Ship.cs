@@ -9,11 +9,17 @@ using Random = System.Random;
 public static class Ship
 {
     private static readonly List<TurretBody> Turrets = new();
+    private static readonly List<Wall> Walls = new();
     private static readonly Random Random = new (); 
 
     public static void AddTurret(TurretBody turret)
     {
         Turrets.Add(turret);
+    }
+
+    public static void AddWall(Wall wall)
+    {
+        Walls.Add(wall);
     }
 
     public static GameObject GetTarget(Side side)
@@ -24,7 +30,7 @@ public static class Ship
             return turretsOnSide[Random.Next(turretsOnSide.Count)].gameObject;
         }
 
-        throw new NotImplementedException();
+        return Walls.First(wall => wall.Side == side).gameObject;
     }
 }
 

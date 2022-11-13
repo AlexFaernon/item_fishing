@@ -4,18 +4,23 @@ using UnityEngine;
 public class SwitchMode : MonoBehaviour
 {
     private const float FarCamera = 15;
-    private const float CloseCamera = 5;
+    private const float CloseCamera = 10;
 
     private static Mode _mode;
 
     public static Mode Mode
     {
         get => _mode;
-        set
+        private set
         {
             _mode = value;
             EventAggregator.ModeSwitched.Publish(value);
         }
+    }
+
+    private void Start()
+    {
+        TurnPlayerMode();
     }
 
     private void Update()
@@ -25,16 +30,26 @@ public class SwitchMode : MonoBehaviour
         switch (Mode)
         {
             case Mode.Ship:
-                Mode = Mode.Player;
-                Camera.main.orthographicSize = CloseCamera;
+                TurnPlayerMode();
                 break;
             case Mode.Player:
-                Mode = Mode.Ship;
-                Camera.main.orthographicSize = FarCamera;
+                TurnShipMode();
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    private static void TurnPlayerMode()
+    {
+        Mode = Mode.Player;
+        Camera.main.orthographicSize = CloseCamera;
+    }
+
+    private static void TurnShipMode()
+    {
+        Mode = Mode.Ship;
+        Camera.main.orthographicSize = FarCamera;
     }
 }
 

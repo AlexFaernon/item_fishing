@@ -6,11 +6,16 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject hook;
     private LineRenderer line;
     private Hook hookScript;
+
+    private void Awake()
+    {
+        EventAggregator.ModeSwitched.Subscribe(SetActiveOnMod);
+    }
+
     private void Start()
     {
         line = GetComponent<LineRenderer>();
         hookScript = hook.GetComponent<Hook>();
-        EventAggregator.ModeSwitched.Subscribe(SetActiveOnMod);
     }
 
     void Update()
