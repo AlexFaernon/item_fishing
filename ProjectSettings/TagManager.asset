@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Item
   - Wall
   - Enemy
   - Turret
   - Barrier
+  - Metal
+  - Electronics
   layers:
   - Default
   - TransparentFX

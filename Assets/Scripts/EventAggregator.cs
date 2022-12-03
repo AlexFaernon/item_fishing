@@ -5,6 +5,7 @@ using System.Linq;
 public static class EventAggregator
 {
     public static readonly Event<Mode> ModeSwitched = new();
+    public static readonly Event<int> MetalUpdate = new();
     
     public class Event<T>
     {

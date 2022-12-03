@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hook : MonoBehaviour
 {
     private const float Length = 15;
+    private float velocity = 10;
     
     public bool isLaunched;
     public bool isRetracting;
@@ -44,12 +45,13 @@ public class Hook : MonoBehaviour
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
             if (Math.Abs(distance) > 0.01)
             {
-                transform.Translate(Vector3.down * (Time.deltaTime * 10));
+                transform.Translate(Vector3.down * (Time.deltaTime * velocity));
             }
             else
             {
                 isRetracting = false;
                 spring.attachedRigidbody.simulated = false;
+                velocity = 10;
                 if (spring.connectedBody == null) return;
 
                 Destroy(spring.connectedBody.gameObject);
@@ -76,9 +78,16 @@ public class Hook : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D item)
     {
-        if (!item.gameObject.CompareTag("Item")) return;
+        if (!item.gameObject.CompareTag("Metal") && !item.gameObject.CompareTag("Electronics")) return;
 
+        velocity = item.tag switch
+        {
+            "Metal" => Length / Resources.Metal.MaxTimeToCatch,
+            "Electronics" => Length / Resources.Electronics.MaxTimeToCatch,
+            _ => throw new ArgumentException()
+        };
         spring.connectedBody = item.attachedRigidbody;
+        item.isTrigger = true;
         isLaunched = false;
         isRetracting = true;
         boxCollider2D.enabled = false;

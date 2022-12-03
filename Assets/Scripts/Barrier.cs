@@ -9,7 +9,6 @@ public class Barrier : MonoBehaviour
     private bool isActive;
     private bool IsActive
     {
-        get => isActive;
         set
         {
             isActive = value;
@@ -21,7 +20,6 @@ public class Barrier : MonoBehaviour
     private bool isOnCooldown;
     private bool IsOnCooldown
     {
-        get => isOnCooldown;
         set
         {
             isOnCooldown = value;
@@ -38,10 +36,10 @@ public class Barrier : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         IsActive = false;
     }
-
-    void Update()
+    
+    public void Activate()
     {
-        if (!Input.GetKeyDown(KeyCode.G) || IsOnCooldown || IsActive) return;
+        if (isActive || isOnCooldown) return;
         
         IsActive = true;
         StartCoroutine(WaitToTurnOff());

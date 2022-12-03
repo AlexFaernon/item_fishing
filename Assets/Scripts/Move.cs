@@ -27,6 +27,7 @@ public class Move : MonoBehaviour
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 break;
             case Mode.Player:
+                rb.velocity = Vector2.zero;
                 rb.bodyType = RigidbodyType2D.Static;
                 break;
             default:
@@ -42,7 +43,9 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hookScript.isLaunched || hookScript.isRetracting || SwitchMode.Mode == Mode.Player)
+        if (SwitchMode.Mode == Mode.Player) return;
+
+        if (hookScript.isLaunched || hookScript.isRetracting)
         {
             rb.velocity = Vector2.zero;
             return;
