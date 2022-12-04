@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 
 public static class EventAggregator
 {
     public static readonly Event<Mode> ModeSwitched = new();
     public static readonly Event<int> MetalUpdate = new();
-    
+    public static readonly Event<TurretBody> MouseOverTurret = new();
+    public static readonly Event<Wall> MouseOverWall = new();
+
     public class Event<T>
     {
         private readonly List<Action<T>> callbacks = new();

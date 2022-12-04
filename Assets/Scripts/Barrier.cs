@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Barrier : MonoBehaviour
 {
+    public bool IsReady => !(isActive || isOnCooldown);
     private bool isActive;
     private bool IsActive
     {

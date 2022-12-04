@@ -9,12 +9,12 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private GameObject barrier;
     [SerializeField] private SpriteRenderer hpBar;
     public bool isBarrierInstalled;
-    private Barrier barrierScript;
+    public Barrier barrierScript;
     public Side Side => side;
-    private int maxHealth = 5;
+    public int maxHealth = 5;
     private int health = 5;
     private const int TimeToRepair = 2;
-    private const int MetalToRepair = 2;
+    public int MetalToRepair = 2;
     private bool isRepairing;
     public int Health
     {
@@ -27,7 +27,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     
     public bool isBroken;
-    private bool isPlayerInRange;
+    public bool isPlayerInRange;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
 
@@ -103,6 +103,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         spriteRenderer.color = Color.yellow;
         hpBar.transform.parent.gameObject.SetActive(true);
+        EventAggregator.MouseOverTurret.Publish(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -110,6 +111,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         spriteRenderer.color = normalColor;
         hpBar.transform.parent.gameObject.SetActive(false);
         StopRepair();
+        EventAggregator.MouseOverTurret.Publish(null);
     }
 
     public void OnPointerDown(PointerEventData eventData)

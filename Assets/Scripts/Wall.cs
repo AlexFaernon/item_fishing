@@ -12,14 +12,14 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private Color normalColor;
     public Side Side => side;
 
-    private const int MetalToRepair = 2;
+    public int MetalToRepair = 2;
     private const int TimeToRepair = 3;
     private bool isRepairing;
-    private int maxHealth = 5;
+    public int maxHealth = 5;
     private int health = 5;
     private bool isHovered;
     private float holdTime;
-    private bool isPlayerInRange;
+    public bool isPlayerInRange;
 
     public int Health
     {
@@ -93,6 +93,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         spriteRenderer.color = Color.yellow;
         hpBar.transform.parent.gameObject.SetActive(true);
+        EventAggregator.MouseOverWall.Publish(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -100,6 +101,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         spriteRenderer.color = normalColor;
         hpBar.transform.parent.gameObject.SetActive(false);
         StopRepair();
+        EventAggregator.MouseOverWall.Publish(null);
     }
 
     public void OnPointerDown(PointerEventData eventData)
