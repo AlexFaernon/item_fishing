@@ -25,12 +25,9 @@ public static class Ship
     public static GameObject GetTarget(Side side)
     {
         var turretsOnSide = Turrets.Where(turret => turret.Side == side && !turret.isBroken).ToList();
-        if (turretsOnSide.Count > 0)
-        {
-            return turretsOnSide[Random.Next(turretsOnSide.Count)].gameObject;
-        }
-
-        return Walls.First(wall => wall.Side == side).gameObject;
+        return turretsOnSide.Count > 0
+            ? turretsOnSide[Random.Next(turretsOnSide.Count)].gameObject
+            : Walls.First(wall => wall.Side == side).gameObject;
     }
 }
 

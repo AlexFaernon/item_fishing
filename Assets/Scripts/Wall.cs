@@ -12,13 +12,12 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private Color normalColor;
     public Side Side => side;
 
-    public int MetalToRepair = 2;
+    public int metalToRepair = 2;
     private const int TimeToRepair = 3;
     private bool isRepairing;
-    public int maxHealth = 5;
+    public int maxHealthRank = 2;
+    private int MaxHealth => new[]{2, 3, 4, 5}[maxHealthRank];
     private int health = 5;
-    private bool isHovered;
-    private float holdTime;
     public bool isPlayerInRange;
 
     public int Health
@@ -51,9 +50,9 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private void Repair()
     {
         Health += 1;
-        Resources.Metal.Count -= MetalToRepair;
+        Resources.Metal.Count -= metalToRepair;
         Debug.Log("repaired");
-        if (Health < maxHealth)
+        if (Health < MaxHealth)
         {
             Invoke(nameof(Repair), TimeToRepair);
             Debug.Log("repairing continued");
@@ -106,7 +105,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isPlayerInRange || Health == maxHealth) return;
+        if (!isPlayerInRange || Health == MaxHealth) return;
         
         Invoke(nameof(Repair), TimeToRepair);
         isRepairing = true;

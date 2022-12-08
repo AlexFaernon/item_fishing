@@ -11,10 +11,13 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public bool isBarrierInstalled;
     public Barrier barrierScript;
     public Side Side => side;
-    public int maxHealth = 5;
+    public int maxHealthRank = 1;
+    public int MaxHealth => new[]{2, 3}[maxHealthRank];
     private int health = 5;
+    public int damageRank = 3;
+    public int Damage => new[]{10, 15, 20, 25}[damageRank];
     private const int TimeToRepair = 2;
-    public int MetalToRepair = 2;
+    public int metalToRepair = 2;
     private bool isRepairing;
     public int Health
     {
@@ -29,7 +32,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public bool isBroken;
     public bool isPlayerInRange;
     private SpriteRenderer spriteRenderer;
-    private Color normalColor;
+    private Color normalColor; //todo разгрести дерьмо
 
     private void Awake()
     {
@@ -57,9 +60,9 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void Repair()
     {
         Health += 1;
-        Resources.Metal.Count -= MetalToRepair;
+        Resources.Metal.Count -= metalToRepair;
         Debug.Log("repaired");
-        if (Health < maxHealth)
+        if (Health < MaxHealth)
         {
             Invoke(nameof(Repair), TimeToRepair);
             Debug.Log("repairing continued");
@@ -116,7 +119,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isPlayerInRange || Health == maxHealth) return;
+        if (!isPlayerInRange || Health == MaxHealth) return;
         
         Invoke(nameof(Repair), TimeToRepair);
         isRepairing = true;

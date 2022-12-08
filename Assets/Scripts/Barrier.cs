@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Barrier : MonoBehaviour
 {
+    public int cooldownRank;
+    private int Cooldown => new[] { 25, 20, 18, 15 }[cooldownRank];
     public bool IsReady => !(isActive || isOnCooldown);
     private bool isActive;
     private bool IsActive
@@ -52,10 +54,10 @@ public class Barrier : MonoBehaviour
 
         IsActive = false;
         IsOnCooldown = true;
-        StartCoroutine(Cooldown());
+        StartCoroutine(StartCooldown());
     }
 
-    private IEnumerator Cooldown()
+    private IEnumerator StartCooldown()
     {
         yield return new WaitForSeconds(2);
 

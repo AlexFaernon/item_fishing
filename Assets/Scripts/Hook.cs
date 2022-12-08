@@ -29,21 +29,10 @@ public class Hook : MonoBehaviour
 
     void Update()
     {
-        if (isLaunched || isRetracting) return;
-        
-        if (!Input.GetMouseButtonDown(0)) return;
-        audioSource.Play();
-        isLaunched = true;
-        spring.attachedRigidbody.simulated = true;
-        initialPosition = transform.position;
-    }
-
-    private void FixedUpdate()
-    {
         if (isRetracting)
         {
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
-            if (Math.Abs(distance) > 0.01)
+            if (Math.Abs(distance) > 0.1)
             {
                 transform.Translate(Vector3.down * (Time.deltaTime * velocity));
             }
@@ -73,9 +62,17 @@ public class Hook : MonoBehaviour
                 isLaunched = false;
                 isRetracting = true;
             }
+            
+            return;
         }
+        
+        if (!Input.GetMouseButtonDown(0)) return;
+        audioSource.Play();
+        isLaunched = true;
+        spring.attachedRigidbody.simulated = true;
+        initialPosition = transform.position;
     }
-    
+
     private void OnTriggerEnter2D(Collider2D item)
     {
         if (!item.gameObject.CompareTag("Metal") && !item.gameObject.CompareTag("Electronics")) return;
