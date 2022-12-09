@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UpgradeModule : MonoBehaviour
@@ -14,9 +15,15 @@ public class UpgradeModule : MonoBehaviour
 
     private void Awake()
     {
+        if (upgradingModule == null)
+        {
+            return;
+        }
+        
         upgradingModule.TryGetComponent(out wall);
         upgradingModule.TryGetComponent(out turret);
         upgradingModule.TryGetComponent(out barrier);
+        button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
     }
 
@@ -24,17 +31,17 @@ public class UpgradeModule : MonoBehaviour
     {
         if (wall)
         {
-            
+            EventAggregator.ChooseUpgradeWall.Publish(wall);
         }
 
         if (turret)
         {
-            
+            EventAggregator.ChooseUpgradeTurret.Publish(turret);
         }
 
         if (barrier)
         {
-            
+            EventAggregator.ChooseUpgradeBarrier.Publish(barrier);
         }
     }
 }

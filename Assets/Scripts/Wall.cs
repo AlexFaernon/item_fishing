@@ -15,8 +15,10 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int metalToRepair = 2;
     private const int TimeToRepair = 3;
     private bool isRepairing;
-    public int maxHealthRank = 2;
-    private int MaxHealth => new[]{2, 3, 4, 5}[maxHealthRank];
+    public int healthRank = 3;
+    public int healthMaxRank = new[] { 2, 3, 4, 5 }.Length - 1;
+    public int MaxHealth => new[]{2, 3, 4, 5}[healthRank];
+    public int NextUpgradeCost => new[] { 10, 20, 30 }[healthRank];
     private int health = 5;
     public bool isPlayerInRange;
 

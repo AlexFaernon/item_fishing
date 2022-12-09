@@ -55,7 +55,7 @@ public class LMBHelper : MonoBehaviour
 
         if (wall)
         {
-            if (wall.Health < wall.maxHealth)
+            if (wall.Health < wall.MaxHealth)
             {
                 SetValues(wall.metalToRepair, wall.isPlayerInRange);
             }

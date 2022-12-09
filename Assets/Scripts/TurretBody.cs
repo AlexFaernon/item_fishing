@@ -11,11 +11,18 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public bool isBarrierInstalled;
     public Barrier barrierScript;
     public Side Side => side;
-    public int maxHealthRank = 1;
-    public int MaxHealth => new[]{2, 3}[maxHealthRank];
+    
+    public int healthRank = 1;
+    public int healthMaxRank = new[] {2, 3}.Length - 1;
+    public int MaxHealth => new[]{2, 3}[healthRank];
+    public int NextHealthUpgradeCost => new[] { 10, 20, 30 }[healthRank];
     private int health = 5;
+    
     public int damageRank = 3;
-    public int Damage => new[]{10, 15, 20, 25}[damageRank];
+    public int damageMaxRank = new[] { 10, 15, 20, 25 }.Length - 1;
+    public int NextDamageUpgradeCost => new[] { 10, 20, 30 }[healthRank];
+    public int Damage => new[] { 10, 15, 20, 25 }[damageRank];
+    
     private const int TimeToRepair = 2;
     public int metalToRepair = 2;
     private bool isRepairing;
