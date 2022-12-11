@@ -9,7 +9,7 @@ public class Barrier : MonoBehaviour
     public int cooldownRank;
     public int CooldownMaxRank => new[] { 25, 20, 18, 15 }.Length - 1;
     private int Cooldown => new[] { 25, 20, 18, 15 }[cooldownRank];
-    public int NextUpgradeCost => new[] { 10, 20, 30 }[cooldownRank];
+    public int NextUpgradeCost => new[] { 10, 20, 30, 0 }[cooldownRank];
     public bool IsReady => !(isActive || isOnCooldown);
     private bool isActive;
     private bool IsActive

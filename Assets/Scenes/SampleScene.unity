@@ -848,10 +848,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 63285174}
+  - component: {fileID: 63285178}
   - component: {fileID: 63285176}
   - component: {fileID: 63285175}
   - component: {fileID: 63285177}
-  - component: {fileID: 63285178}
   m_Layer: 0
   m_Name: GunLeftD
   m_TagString: Untagged
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 149013090}
 --- !u!1 &66192822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,9 +1974,9 @@ MonoBehaviour:
   side: 3
   barrier: {fileID: 568851408}
   hpBar: {fileID: 1402538492}
+  hpBarLength: {fileID: 916079111}
   isBarrierInstalled: 0
   barrierScript: {fileID: 0}
-  healthRank: 1
   healthMaxRank: 1
   damageRank: 3
   damageMaxRank: 3
@@ -4265,8 +4265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   hpBar: {fileID: 1831900583}
+  hpBarLength: {fileID: 234698384}
   metalToRepair: 2
-  healthRank: 3
   healthMaxRank: 3
   isPlayerInRange: 0
 --- !u!1 &321415863
@@ -4551,6 +4551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 340369568}
+  - component: {fileID: 340369572}
   - component: {fileID: 340369571}
   - component: {fileID: 340369570}
   - component: {fileID: 340369569}
@@ -4604,9 +4605,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4663,6 +4664,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340369567}
   m_CullTransparentMesh: 1
+--- !u!114 &340369572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340369567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c3c658f6c03114b8910293a7c870c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeType: 0
 --- !u!1 &362044468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4713,9 +4727,9 @@ MonoBehaviour:
   side: 1
   barrier: {fileID: 1878922435}
   hpBar: {fileID: 1360112773}
+  hpBarLength: {fileID: 1575380719}
   isBarrierInstalled: 0
   barrierScript: {fileID: 0}
-  healthRank: 1
   healthMaxRank: 1
   damageRank: 3
   damageMaxRank: 3
@@ -5395,10 +5409,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 456963549}
+  - component: {fileID: 456963553}
   - component: {fileID: 456963552}
   - component: {fileID: 456963551}
   - component: {fileID: 456963550}
-  - component: {fileID: 456963553}
   m_Layer: 0
   m_Name: WallUp
   m_TagString: Untagged
@@ -5450,7 +5464,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0.8946395, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
+    m_SelectedColor: {r: 0, g: 0.8941177, b: 1, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5840,10 +5854,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 484913485}
+  - component: {fileID: 484913489}
   - component: {fileID: 484913487}
   - component: {fileID: 484913486}
   - component: {fileID: 484913488}
-  - component: {fileID: 484913489}
   m_Layer: 0
   m_Name: BarrierUPL
   m_TagString: Untagged
@@ -5896,7 +5910,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.85
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -5965,7 +5979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 237741804}
 --- !u!1 &488191357
 GameObject:
   m_ObjectHideFlags: 0
@@ -6378,10 +6392,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 515918364}
+  - component: {fileID: 515918368}
   - component: {fileID: 515918366}
   - component: {fileID: 515918365}
   - component: {fileID: 515918367}
-  - component: {fileID: 515918368}
   m_Layer: 0
   m_Name: GunLeftU
   m_TagString: Untagged
@@ -6503,7 +6517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 1874888375}
 --- !u!1 &519142671
 GameObject:
   m_ObjectHideFlags: 0
@@ -6690,10 +6704,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 540859077}
+  - component: {fileID: 540859081}
   - component: {fileID: 540859079}
   - component: {fileID: 540859078}
   - component: {fileID: 540859080}
-  - component: {fileID: 540859081}
   m_Layer: 0
   m_Name: BarrierLeftD
   m_TagString: Untagged
@@ -6815,7 +6829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 568851408}
 --- !u!1 &556777770
 GameObject:
   m_ObjectHideFlags: 0
@@ -7849,6 +7863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 664826145}
+  - component: {fileID: 664826149}
   - component: {fileID: 664826148}
   - component: {fileID: 664826147}
   - component: {fileID: 664826146}
@@ -7904,7 +7919,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -7961,6 +7976,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664826144}
   m_CullTransparentMesh: 1
+--- !u!114 &664826149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664826144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c3c658f6c03114b8910293a7c870c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeType: 1
 --- !u!1 &683639270
 GameObject:
   m_ObjectHideFlags: 0
@@ -7970,10 +7998,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 683639271}
+  - component: {fileID: 683639275}
   - component: {fileID: 683639274}
   - component: {fileID: 683639273}
   - component: {fileID: 683639272}
-  - component: {fileID: 683639275}
   m_Layer: 0
   m_Name: WallRight
   m_TagString: Untagged
@@ -8025,7 +8053,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0.8946395, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
+    m_SelectedColor: {r: 0, g: 0.8941177, b: 1, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -8514,10 +8542,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724902350}
+  - component: {fileID: 724902354}
   - component: {fileID: 724902353}
   - component: {fileID: 724902352}
   - component: {fileID: 724902351}
-  - component: {fileID: 724902354}
   m_Layer: 0
   m_Name: WallDown
   m_TagString: Untagged
@@ -8569,7 +8597,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0.8946395, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
+    m_SelectedColor: {r: 0, g: 0.8941177, b: 1, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -8639,7 +8667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 1589536520}
 --- !u!1 &753509276
 GameObject:
   m_ObjectHideFlags: 0
@@ -8852,9 +8880,9 @@ MonoBehaviour:
   side: 1
   barrier: {fileID: 1807508767}
   hpBar: {fileID: 275120393}
+  hpBarLength: {fileID: 877556234}
   isBarrierInstalled: 0
   barrierScript: {fileID: 0}
-  healthRank: 1
   healthMaxRank: 1
   damageRank: 3
   damageMaxRank: 3
@@ -9411,10 +9439,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877418125}
+  - component: {fileID: 877418129}
   - component: {fileID: 877418127}
   - component: {fileID: 877418126}
   - component: {fileID: 877418128}
-  - component: {fileID: 877418129}
   m_Layer: 0
   m_Name: BarrierRightU
   m_TagString: Untagged
@@ -9536,7 +9564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 1807508767}
 --- !u!1 &877556231
 GameObject:
   m_ObjectHideFlags: 0
@@ -9683,10 +9711,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 881160454}
+  - component: {fileID: 881160458}
   - component: {fileID: 881160456}
   - component: {fileID: 881160455}
   - component: {fileID: 881160457}
-  - component: {fileID: 881160458}
   m_Layer: 0
   m_Name: GunDownR
   m_TagString: Untagged
@@ -9808,7 +9836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 2060129999}
 --- !u!1 &916079108
 GameObject:
   m_ObjectHideFlags: 0
@@ -9955,10 +9983,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 923958415}
+  - component: {fileID: 923958419}
   - component: {fileID: 923958417}
   - component: {fileID: 923958416}
   - component: {fileID: 923958418}
-  - component: {fileID: 923958419}
   m_Layer: 0
   m_Name: BarrierDownL
   m_TagString: Untagged
@@ -10080,7 +10108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 63137376}
 --- !u!1 &930775661
 GameObject:
   m_ObjectHideFlags: 0
@@ -10811,6 +10839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1013390812}
+  - component: {fileID: 1013390816}
   - component: {fileID: 1013390815}
   - component: {fileID: 1013390814}
   - component: {fileID: 1013390813}
@@ -10866,7 +10895,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10923,6 +10952,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013390811}
   m_CullTransparentMesh: 1
+--- !u!114 &1013390816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013390811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c3c658f6c03114b8910293a7c870c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeType: 2
 --- !u!1 &1032164052
 GameObject:
   m_ObjectHideFlags: 0
@@ -11125,7 +11167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1075629012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11148,7 +11190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -24.900024, y: 31}
   m_SizeDelta: {x: -81, y: -68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075629013
@@ -11316,8 +11358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 3
   hpBar: {fileID: 1268669211}
+  hpBarLength: {fileID: 162580586}
   metalToRepair: 2
-  healthRank: 3
   healthMaxRank: 3
   isPlayerInRange: 0
 --- !u!1 &1107112668
@@ -11639,10 +11681,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1178282023}
+  - component: {fileID: 1178282027}
   - component: {fileID: 1178282025}
   - component: {fileID: 1178282024}
   - component: {fileID: 1178282026}
-  - component: {fileID: 1178282027}
   m_Layer: 0
   m_Name: GunUPR
   m_TagString: Untagged
@@ -11938,10 +11980,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1224189686}
+  - component: {fileID: 1224189690}
   - component: {fileID: 1224189688}
   - component: {fileID: 1224189687}
   - component: {fileID: 1224189689}
-  - component: {fileID: 1224189690}
   m_Layer: 0
   m_Name: BarrierDownR
   m_TagString: Untagged
@@ -12063,7 +12105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 1812255418}
 --- !u!1 &1230811649
 GameObject:
   m_ObjectHideFlags: 0
@@ -12239,10 +12281,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1243582118}
+  - component: {fileID: 1243582122}
   - component: {fileID: 1243582120}
   - component: {fileID: 1243582119}
   - component: {fileID: 1243582121}
-  - component: {fileID: 1243582122}
   m_Layer: 0
   m_Name: BarrierUPR
   m_TagString: Untagged
@@ -12364,7 +12406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 130003932}
 --- !u!1 &1246267277
 GameObject:
   m_ObjectHideFlags: 0
@@ -12807,9 +12849,9 @@ MonoBehaviour:
   side: 0
   barrier: {fileID: 130003932}
   hpBar: {fileID: 778067175}
+  hpBarLength: {fileID: 607787486}
   isBarrierInstalled: 1
   barrierScript: {fileID: 0}
-  healthRank: 1
   healthMaxRank: 1
   damageRank: 3
   damageMaxRank: 3
@@ -13182,9 +13224,9 @@ MonoBehaviour:
   side: 2
   barrier: {fileID: 63137376}
   hpBar: {fileID: 753509278}
+  hpBarLength: {fileID: 2110698232}
   isBarrierInstalled: 0
   barrierScript: {fileID: 0}
-  healthRank: 1
   healthMaxRank: 1
   damageRank: 3
   damageMaxRank: 3
@@ -13751,10 +13793,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1322879505}
+  - component: {fileID: 1322879509}
   - component: {fileID: 1322879507}
   - component: {fileID: 1322879506}
   - component: {fileID: 1322879508}
-  - component: {fileID: 1322879509}
   m_Layer: 0
   m_Name: GunUPL
   m_TagString: Untagged
@@ -13876,7 +13918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 1373340342}
 --- !u!1 &1331210220
 GameObject:
   m_ObjectHideFlags: 0
@@ -14344,9 +14386,9 @@ MonoBehaviour:
   side: 0
   barrier: {fileID: 237741804}
   hpBar: {fileID: 1111625787}
+  hpBarLength: {fileID: 503624078}
   isBarrierInstalled: 1
   barrierScript: {fileID: 0}
-  healthRank: 1
   healthMaxRank: 1
   damageRank: 3
   damageMaxRank: 3
@@ -15057,10 +15099,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1499905265}
+  - component: {fileID: 1499905269}
   - component: {fileID: 1499905268}
   - component: {fileID: 1499905267}
   - component: {fileID: 1499905266}
-  - component: {fileID: 1499905269}
   m_Layer: 0
   m_Name: WallLeft
   m_TagString: Untagged
@@ -15112,7 +15154,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0.8946395, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
+    m_SelectedColor: {r: 0, g: 0.8941177, b: 1, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -15182,7 +15224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 1084773156}
 --- !u!1 &1545161207
 GameObject:
   m_ObjectHideFlags: 0
@@ -16085,8 +16127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 2
   hpBar: {fileID: 1107112670}
+  hpBarLength: {fileID: 1804421920}
   metalToRepair: 2
-  healthRank: 3
   healthMaxRank: 3
   isPlayerInRange: 0
 --- !u!1 &1592857144
@@ -16467,10 +16509,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1627127414}
+  - component: {fileID: 1627127418}
   - component: {fileID: 1627127416}
   - component: {fileID: 1627127415}
   - component: {fileID: 1627127417}
-  - component: {fileID: 1627127418}
   m_Layer: 0
   m_Name: GunDownL
   m_TagString: Untagged
@@ -16592,7 +16634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 1281859611}
 --- !u!1 &1646744410
 GameObject:
   m_ObjectHideFlags: 0
@@ -16904,8 +16946,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   hpBar: {fileID: 1240576857}
+  hpBarLength: {fileID: 91848332}
   metalToRepair: 2
-  healthRank: 3
   healthMaxRank: 3
   isPlayerInRange: 0
 --- !u!1 &1666665533
@@ -17851,10 +17893,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1803849106}
+  - component: {fileID: 1803849110}
   - component: {fileID: 1803849108}
   - component: {fileID: 1803849107}
   - component: {fileID: 1803849109}
-  - component: {fileID: 1803849110}
   m_Layer: 0
   m_Name: GunRightU
   m_TagString: Untagged
@@ -17976,7 +18018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 763231102}
 --- !u!1 &1804421917
 GameObject:
   m_ObjectHideFlags: 0
@@ -18437,10 +18479,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1835175497}
+  - component: {fileID: 1835175501}
   - component: {fileID: 1835175499}
   - component: {fileID: 1835175498}
   - component: {fileID: 1835175500}
-  - component: {fileID: 1835175501}
   m_Layer: 0
   m_Name: BarrierLeftU
   m_TagString: Untagged
@@ -19142,9 +19184,9 @@ MonoBehaviour:
   side: 3
   barrier: {fileID: 965704170}
   hpBar: {fileID: 1646744412}
+  hpBarLength: {fileID: 2051804353}
   isBarrierInstalled: 0
   barrierScript: {fileID: 0}
-  healthRank: 1
   healthMaxRank: 1
   damageRank: 3
   damageMaxRank: 3
@@ -19353,10 +19395,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1884007153}
+  - component: {fileID: 1884007157}
   - component: {fileID: 1884007155}
   - component: {fileID: 1884007154}
   - component: {fileID: 1884007156}
-  - component: {fileID: 1884007157}
   m_Layer: 0
   m_Name: GunRightD
   m_TagString: Untagged
@@ -19478,7 +19520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 362044468}
 --- !u!1 &1885612295
 GameObject:
   m_ObjectHideFlags: 0
@@ -20395,10 +20437,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2014474858}
+  - component: {fileID: 2014474862}
   - component: {fileID: 2014474860}
   - component: {fileID: 2014474859}
   - component: {fileID: 2014474861}
-  - component: {fileID: 2014474862}
   m_Layer: 0
   m_Name: BarrierRightD
   m_TagString: Untagged
@@ -20520,7 +20562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6989920b96fca4291ecc336603c35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradingModule: {fileID: 0}
+  upgradingModule: {fileID: 1878922435}
 --- !u!1 &2041957321
 GameObject:
   m_ObjectHideFlags: 0
@@ -20736,7 +20778,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 5, y: 4.2656984}
+  m_Size: {x: 5, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -20792,9 +20834,9 @@ MonoBehaviour:
   side: 2
   barrier: {fileID: 1812255418}
   hpBar: {fileID: 109231883}
+  hpBarLength: {fileID: 1885612298}
   isBarrierInstalled: 1
   barrierScript: {fileID: 0}
-  healthRank: 1
   healthMaxRank: 1
   damageRank: 3
   damageMaxRank: 3

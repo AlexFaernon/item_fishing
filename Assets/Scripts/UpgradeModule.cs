@@ -25,6 +25,21 @@ public class UpgradeModule : MonoBehaviour
         upgradingModule.TryGetComponent(out barrier);
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
+        EventAggregator.ChooseUpgradeType.Subscribe(SetInteractable);
+        button.interactable = false;
+    }
+
+    private void SetInteractable(UpgradeType upgradeType)
+    {
+        if (wall && upgradeType == UpgradeType.Wall || turret && upgradeType == UpgradeType.Turret ||
+            barrier && upgradeType == UpgradeType.Barrier)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
     }
 
     private void OnClick()
@@ -43,5 +58,10 @@ public class UpgradeModule : MonoBehaviour
         {
             EventAggregator.ChooseUpgradeBarrier.Publish(barrier);
         }
+    }
+
+    private void OnDestroy()
+    {
+        EventAggregator.ChooseUpgradeType.Unsubscribe(SetInteractable);
     }
 }

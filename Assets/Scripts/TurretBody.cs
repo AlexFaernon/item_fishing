@@ -8,19 +8,29 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private Side side;
     [SerializeField] private GameObject barrier;
     [SerializeField] private SpriteRenderer hpBar;
+    [SerializeField] private SpriteRenderer hpBarLength;
     public bool isBarrierInstalled;
     public Barrier barrierScript;
     public Side Side => side;
     
-    public int healthRank = 1;
+    private int healthRank;
+    public int HealthRank
+    {
+        get => healthRank;
+        set
+        {
+            healthRank = value;
+            hpBarLength.size = new Vector2(MaxHealth, 4);
+        }
+    }
     public int healthMaxRank = new[] {2, 3}.Length - 1;
-    public int MaxHealth => new[]{2, 3}[healthRank];
-    public int NextHealthUpgradeCost => new[] { 10, 20, 30 }[healthRank];
+    public int MaxHealth => new[]{2, 3}[HealthRank];
+    public int NextHealthUpgradeCost => new[] { 10, 0 }[HealthRank];
     private int health = 5;
     
-    public int damageRank = 3;
+    public int damageRank;
     public int damageMaxRank = new[] { 10, 15, 20, 25 }.Length - 1;
-    public int NextDamageUpgradeCost => new[] { 10, 20, 30 }[healthRank];
+    public int NextDamageUpgradeCost => new[] { 10, 20, 30, 0 }[HealthRank];
     public int Damage => new[] { 10, 15, 20, 25 }[damageRank];
     
     private const int TimeToRepair = 2;
@@ -32,7 +42,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         private set
         {
             health = value;
-            hpBar.size = new Vector2(value, 3);
+            hpBar.size = new Vector2(value, 4);
         }
     }
     
@@ -49,7 +59,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;
         hpBar.transform.parent.gameObject.SetActive(false);
-        Health = 1;
+        HealthRank = 0;
+        Health = MaxHealth;
     }
 
     private void Update()

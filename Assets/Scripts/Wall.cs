@@ -8,6 +8,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 {
     [SerializeField] private Side side;
     [SerializeField] private SpriteRenderer hpBar;
+    [SerializeField] private SpriteRenderer hpBarLength;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
     public Side Side => side;
@@ -15,10 +16,20 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int metalToRepair = 2;
     private const int TimeToRepair = 3;
     private bool isRepairing;
-    public int healthRank = 3;
+
+    private int healthRank;
+    public int HealthRank
+    {
+        get => healthRank;
+        set
+        {
+            healthRank = value;
+            hpBarLength.size = new Vector2(MaxHealth, 1);
+        }
+    }
     public int healthMaxRank = new[] { 2, 3, 4, 5 }.Length - 1;
-    public int MaxHealth => new[]{2, 3, 4, 5}[healthRank];
-    public int NextUpgradeCost => new[] { 10, 20, 30 }[healthRank];
+    public int MaxHealth => new[]{2, 3, 4, 5}[HealthRank];
+    public int NextUpgradeCost => new[] { 10, 20, 30, 0 }[HealthRank];
     private int health = 5;
     public bool isPlayerInRange;
 
@@ -38,8 +49,8 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;
         hpBar.transform.parent.gameObject.SetActive(false);
-        Health = 2;
-
+        HealthRank = 0;
+        Health = MaxHealth;
     }
 
     private void Update()
