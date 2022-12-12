@@ -9,8 +9,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private GameObject barrier;
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
-    public bool isBarrierInstalled;
-    public Barrier barrierScript;
+    public bool isBarrierInstalled; 
+    [NonSerialized] public Barrier barrierScript;
     public Side Side => side;
     
     private int healthRank;
@@ -23,18 +23,18 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             hpBarLength.size = new Vector2(MaxHealth, 4);
         }
     }
-    public int healthMaxRank = new[] {2, 3}.Length - 1;
+    public int HealthMaxRank => new[] {2, 3}.Length - 1;
     public int MaxHealth => new[]{2, 3}[HealthRank];
     public int NextHealthUpgradeCost => new[] { 10, 0 }[HealthRank];
     private int health = 5;
-    
-    public int damageRank;
-    public int damageMaxRank = new[] { 10, 15, 20, 25 }.Length - 1;
+
+    [NonSerialized] public int DamageRank;
+    public int DamageMaxRank => new[] { 10, 15, 20, 25 }.Length - 1;
     public int NextDamageUpgradeCost => new[] { 10, 20, 30, 0 }[HealthRank];
-    public int Damage => new[] { 10, 15, 20, 25 }[damageRank];
+    public int Damage => new[] { 10, 15, 20, 25 }[DamageRank];
     
     private const int TimeToRepair = 2;
-    public int metalToRepair = 2;
+    [NonSerialized] public int MetalToRepair = 2;
     private bool isRepairing;
     public int Health
     {
@@ -47,7 +47,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     
     public bool isBroken;
-    public bool isPlayerInRange;
+    [NonSerialized] public bool IsPlayerInRange;
     private SpriteRenderer spriteRenderer;
     private Color normalColor; //todo разгрести дерьмо
 
@@ -65,7 +65,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Update()
     {
-        if (isPlayerInRange && Input.GetMouseButtonDown(1))
+        if (IsPlayerInRange && Input.GetMouseButtonDown(1))
         {
             barrierScript.Activate();
         }
@@ -78,7 +78,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void Repair()
     {
         Health += 1;
-        Resources.Metal.Count -= metalToRepair;
+        Resources.Metal.Count -= MetalToRepair;
         Debug.Log("repaired");
         if (Health < MaxHealth)
         {
@@ -98,7 +98,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            isPlayerInRange = true;
+            IsPlayerInRange = true;
             return;
         }
         
@@ -116,7 +116,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (!other.gameObject.CompareTag("Player")) return;
 
-        isPlayerInRange = false;
+        IsPlayerInRange = false;
         StopRepair();
     }
 
@@ -137,7 +137,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isPlayerInRange || Health == MaxHealth) return;
+        if (!IsPlayerInRange || Health == MaxHealth) return;
         
         Invoke(nameof(Repair), TimeToRepair);
         isRepairing = true;

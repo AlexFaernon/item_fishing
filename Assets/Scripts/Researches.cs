@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Research
 {
-    public static bool TurretsUpgrade;
-    public static bool TwoTurretsUpgrade;
-    public static bool BarriersUpgrade;
+    public static bool TurretsResearch;
+    public static bool TwoTurretsResearch;
+    public static bool BarriersResearch;
 }

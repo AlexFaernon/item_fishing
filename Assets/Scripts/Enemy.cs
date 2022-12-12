@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         {
             var fromTarget = (Vector2)(transform.position - ship.transform.position).normalized;
             var sign = fromTarget.y <= 0? -1.0f : 1.0f;
-            var angle = Vector2.Angle(Vector2.right, fromTarget)     * sign;
+            var angle = Vector2.Angle(Vector2.right, fromTarget) * sign;
             return angle switch
             {
                 >= -45 and < 45 => Side.Right,

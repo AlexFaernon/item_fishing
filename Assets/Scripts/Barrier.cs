@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Barrier : MonoBehaviour
 {
-    public int cooldownRank;
+    [NonSerialized] public int cooldownRank;
     public int CooldownMaxRank => new[] { 25, 20, 18, 15 }.Length - 1;
     private int Cooldown => new[] { 25, 20, 18, 15 }[cooldownRank];
     public int NextUpgradeCost => new[] { 10, 20, 30, 0 }[cooldownRank];

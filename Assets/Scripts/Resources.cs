@@ -18,7 +18,7 @@
     
     public static class Electronics
     {
-        public static int Count;
+        public static int Count = 99;
         public const int MaxTimeToCatch = 15;
     }
 }

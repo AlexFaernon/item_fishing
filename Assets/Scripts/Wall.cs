@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,7 +14,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private Color normalColor;
     public Side Side => side;
 
-    public int metalToRepair = 2;
+    [NonSerialized] public int metalToRepair = 2;
     private const int TimeToRepair = 3;
     private bool isRepairing;
 
@@ -27,7 +28,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             hpBarLength.size = new Vector2(MaxHealth, 1);
         }
     }
-    public int healthMaxRank = new[] { 2, 3, 4, 5 }.Length - 1;
+    public int HealthMaxRank => new[] { 2, 3, 4, 5 }.Length - 1;
     public int MaxHealth => new[]{2, 3, 4, 5}[HealthRank];
     public int NextUpgradeCost => new[] { 10, 20, 30, 0 }[HealthRank];
     private int health = 5;

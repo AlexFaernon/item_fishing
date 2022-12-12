@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = System.Random;
 
 public class Hook : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Hook : MonoBehaviour
     private BoxCollider2D boxCollider2D;
 
     private AudioSource audioSource;
+
+    private Random random = new();
 
     // Update is called once per frame
     private void Start()
@@ -44,6 +47,15 @@ public class Hook : MonoBehaviour
                 if (spring.connectedBody == null) return;
 
                 Destroy(spring.connectedBody.gameObject);
+                switch (spring.connectedBody.tag)
+                {
+                    case "Metal":
+                        Resources.Metal.Count += random.Next(1, 4);
+                        break;
+                    case "Electronics":
+                        Resources.Electronics.Count += 1;
+                        break;
+                }
                 spring.connectedBody = null;
                 boxCollider2D.enabled = true;
             }
