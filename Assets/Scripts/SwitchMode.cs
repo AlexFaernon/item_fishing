@@ -11,44 +11,43 @@ public class SwitchMode : MonoBehaviour
     public static Mode Mode
     {
         get => _mode;
-        private set
+        set
         {
             _mode = value;
+            switch (value)
+            {
+                case Mode.Player:
+                    TurnPlayerMode();
+                    break;
+                case Mode.Ship:
+                    TurnShipMode();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             EventAggregator.ModeSwitched.Publish(value);
         }
     }
 
     private void Start()
     {
-        TurnPlayerMode();
+        Mode = Mode.Player;
     }
 
     private void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.Tab)) return;
-        
-        switch (Mode)
-        {
-            case Mode.Ship:
-                TurnPlayerMode();
-                break;
-            case Mode.Player:
-                TurnShipMode();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        if (!Input.GetKeyDown(KeyCode.E) || Mode == Mode.Player) return;
+
+        Mode = Mode.Player;
     }
 
     private static void TurnPlayerMode()
     {
-        Mode = Mode.Player;
         Camera.main.orthographicSize = CloseCamera;
     }
 
     private static void TurnShipMode()
     {
-        Mode = Mode.Ship;
         Camera.main.orthographicSize = FarCamera;
     }
 }
