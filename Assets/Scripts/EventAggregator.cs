@@ -13,6 +13,7 @@ public static class EventAggregator
     public static readonly Event<Wall> ChooseUpgradeWall = new();
     public static readonly Event<Barrier> ChooseUpgradeBarrier = new();
     public static readonly Event<UpgradeType> ChooseUpgradeType = new();
+    public static readonly Event TurretsResearched = new();
 
 
     public class Event<T>
@@ -33,6 +34,29 @@ public static class EventAggregator
         }
 
         public void Unsubscribe(Action<T> action)
+        {
+            callbacks.Remove(action);
+        }
+    }
+    
+    public class Event
+    {
+        private readonly List<Action> callbacks = new();
+
+        public void Subscribe(Action action)
+        {
+            callbacks.Add(action);
+        }
+    
+        public void Publish()
+        {
+            foreach (var action in callbacks.ToList())
+            {
+                action();
+            }
+        }
+
+        public void Unsubscribe(Action action)
         {
             callbacks.Remove(action);
         }

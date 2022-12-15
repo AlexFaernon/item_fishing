@@ -33,8 +33,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public int NextDamageUpgradeCost => new[] { 10, 20, 30, 0 }[HealthRank];
     public int Damage => new[] { 10, 15, 20, 25 }[DamageRank];
     
-    private const int TimeToRepair = 2;
-    [NonSerialized] public int MetalToRepair = 2;
+    private int TimeToRepair => !IsBroken && IsInstalled ? 2 : 5;
+    public int MetalToRepair => !IsBroken && IsInstalled ? 2 : 5;
     private bool isRepairing;
     public int Health
     {
@@ -45,22 +45,62 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             hpBar.size = new Vector2(value, 4);
         }
     }
-    
-    public bool isBroken;
+
+    public bool IsBroken
+    {
+        get => isBroken;
+        private set
+        {
+            isBroken = value;
+            transform.parent.GetComponent<Turret>().enabled = value;
+        }
+    }
+
+    public bool IsInstalled
+    {
+        get => isInstalled;
+        private set
+        {
+            isInstalled = value;
+            transform.parent.GetComponent<Turret>().enabled = value;
+        }
+    }
+
+    private bool isInstalled;
+    private bool isBroken;
     [NonSerialized] public bool IsPlayerInRange;
     private SpriteRenderer spriteRenderer;
     private Color normalColor; //todo разгрести дерьмо
 
     private void Awake()
     {
-        Ship.AddTurret(this);
-        barrier.SetActive(isBarrierInstalled);
         barrierScript = barrier.GetComponent<Barrier>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        normalColor = spriteRenderer.color;
         hpBar.transform.parent.gameObject.SetActive(false);
-        HealthRank = 0;
         Health = MaxHealth;
+        if (!IsInstalled)
+        {
+            Health = 0;
+            barrier.SetActive(false);
+            spriteRenderer.color = normalColor = Color.gray; //пустой слот
+            transform.parent.GetComponent<Turret>().enabled = false;
+            if (!Research.TurretsResearch)
+            {
+                gameObject.SetActive(false);
+                EventAggregator.TurretsResearched.Subscribe(EnableOnResearch);
+                return;
+            }
+        }
+
+        if (IsBroken)
+        {
+            spriteRenderer.color = Color.black; //сломанный спрайт
+            transform.parent.GetComponent<Turret>().enabled = false;
+        }
+
+        normalColor = spriteRenderer.color;
+        Ship.AddTurret(this);
+        barrier.SetActive(isBarrierInstalled);
     }
 
     private void Update()
@@ -77,8 +117,18 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Repair()
     {
-        Health += 1;
         Resources.Metal.Count -= MetalToRepair;
+        spriteRenderer.color = normalColor = Color.green; //нормальный спрайт
+        if (IsInstalled)
+        {
+            Health += 1;
+        }
+        else
+        {
+            IsInstalled = true;
+            Health = MaxHealth;
+        }
+        IsBroken = false;
         Debug.Log("repaired");
         if (Health < MaxHealth)
         {
@@ -92,6 +142,11 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         hpBar.size = new Vector2(Health, 3);
         CancelInvoke(nameof(Repair));
         isRepairing = false;
+    }
+
+    private void EnableOnResearch()
+    {
+        gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -108,7 +163,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         Debug.Log($"turret hp is {Health}");
         if (Health > 0) return;
         
-        isBroken = true;
+        IsBroken = true;
+        spriteRenderer.color = normalColor = Color.black;
         transform.parent.GetComponent<Turret>().enabled = false;
     }
 
@@ -123,7 +179,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         spriteRenderer.color = Color.yellow;
-        hpBar.transform.parent.gameObject.SetActive(true);
+        hpBar.transform.parent.gameObject.SetActive(isInstalled);
         EventAggregator.MouseOverTurret.Publish(this);
     }
 
@@ -146,5 +202,10 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerUp(PointerEventData eventData)
     {
         StopRepair();
+    }
+
+    private void OnDestroy()
+    {
+        EventAggregator.TurretsResearched.Unsubscribe(EnableOnResearch);
     }
 }
