@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -115,7 +116,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         hpBar.size += Vector2.right * Time.deltaTime / TimeToRepair;
     }
 
-    private void Repair()
+    private void RepairOrInstall()
     {
         Resources.Metal.Count -= MetalToRepair;
         spriteRenderer.color = normalColor = Color.green; //нормальный спрайт
@@ -126,13 +127,14 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         else
         {
             IsInstalled = true;
+            Ship.AddTurret(this);
             Health = MaxHealth;
         }
         IsBroken = false;
         Debug.Log("repaired");
         if (Health < MaxHealth)
         {
-            Invoke(nameof(Repair), TimeToRepair);
+            Invoke(nameof(RepairOrInstall), TimeToRepair);
             Debug.Log("repairing continued");
         }
     }
@@ -140,7 +142,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void StopRepair()
     {
         hpBar.size = new Vector2(Health, 3);
-        CancelInvoke(nameof(Repair));
+        CancelInvoke(nameof(RepairOrInstall));
         isRepairing = false;
     }
 
@@ -195,7 +197,13 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (!IsPlayerInRange || Health == MaxHealth) return;
         
-        Invoke(nameof(Repair), TimeToRepair);
+        if (!isInstalled && !Research.TwoTurretsResearch && Ship.Turrets.Any(turret => turret.side == Side))
+        {
+            Debug.Log("Cant install");
+            return;
+        }
+        
+        Invoke(nameof(RepairOrInstall), TimeToRepair);
         isRepairing = true;
     }
 

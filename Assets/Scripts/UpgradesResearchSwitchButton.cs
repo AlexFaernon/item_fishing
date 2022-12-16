@@ -15,7 +15,7 @@ public class UpgradesResearchSwitchButton : MonoBehaviour
 
     private void OnClick()
     {
-        setActive.SetActive(true);
         transform.parent.gameObject.SetActive(false);
+        setActive.SetActive(true);
     }
 }

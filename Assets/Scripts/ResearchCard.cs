@@ -19,6 +19,16 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
         button.onClick.AddListener(OnClick);
     }
 
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
+
     private void OnClick()
     {
         switch (researchType)

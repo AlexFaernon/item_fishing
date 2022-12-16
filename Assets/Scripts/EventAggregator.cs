@@ -14,6 +14,8 @@ public static class EventAggregator
     public static readonly Event<Barrier> ChooseUpgradeBarrier = new();
     public static readonly Event<UpgradeType> ChooseUpgradeType = new();
     public static readonly Event TurretsResearched = new();
+    public static readonly Event TwoTurretsResearched = new();
+    public static readonly Event BarriersResearched = new();
 
 
     public class Event<T>

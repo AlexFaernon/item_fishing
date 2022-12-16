@@ -8,7 +8,7 @@ using Random = System.Random;
 
 public static class Ship
 {
-    private static readonly List<TurretBody> Turrets = new();
+    public static readonly List<TurretBody> Turrets = new();
     private static readonly List<Wall> Walls = new();
     private static readonly Random Random = new (); 
 
