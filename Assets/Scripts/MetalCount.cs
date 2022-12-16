@@ -17,7 +17,7 @@ public class MetalCount : MonoBehaviour
 
     private void UpdateText(int metalCount)
     {
-        text.text = "МИТАЛ " + metalCount;
+        text.text = metalCount.ToString();
     }
 
     private void OnDestroy()
