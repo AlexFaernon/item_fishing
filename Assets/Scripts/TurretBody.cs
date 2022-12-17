@@ -67,6 +67,16 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
     }
 
+    public bool IsBarrierInstalled
+    {
+        get => isBarrierInstalled;
+        set
+        {
+            isBarrierInstalled = value;
+            barrier.SetActive(value);
+        }
+    }
+
     private bool isInstalled;
     private bool isBroken;
     [NonSerialized] public bool IsPlayerInRange;
@@ -75,6 +85,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Awake()
     {
+        EventAggregator.BarrierInstalled.Subscribe(OnBarrierInstallation);
         barrierScript = barrier.GetComponent<Barrier>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         hpBar.transform.parent.gameObject.SetActive(false);
@@ -101,7 +112,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         normalColor = spriteRenderer.color;
         Ship.AddTurret(this);
-        barrier.SetActive(isBarrierInstalled);
+        barrier.SetActive(IsBarrierInstalled);
     }
 
     private void Update()
@@ -149,6 +160,14 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void EnableOnResearch()
     {
         gameObject.SetActive(true);
+    }
+
+    private void OnBarrierInstallation(Barrier other)
+    {
+        if (barrierScript == other)
+        {
+            IsBarrierInstalled = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -214,6 +233,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void OnDestroy()
     {
+        EventAggregator.BarrierInstalled.Unsubscribe(OnBarrierInstallation);
         EventAggregator.TurretsResearched.Unsubscribe(EnableOnResearch);
     }
 }

@@ -13,10 +13,12 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
     [SerializeField] private ResearchType researchType;
     [SerializeField] private TMP_Text costText;
     [SerializeField] private int cost;
+    private TMP_Text descriptionText;
 
     private void Awake()
     {
         button.onClick.AddListener(OnClick);
+        descriptionText = description.GetComponent<TMP_Text>();
     }
 
     private void OnEnable()
@@ -46,6 +48,8 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
                 throw new ArgumentOutOfRangeException();
         }
 
+        button.gameObject.SetActive(false);
+        description.SetActive(true);
         Resources.Electronics.Count -= cost;
     }
 
@@ -74,6 +78,31 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        
+        descriptionText.color = Color.black;
+        switch (researchType)
+        {
+            case ResearchType.Turrets:
+                if (Research.TurretsResearch)
+                {
+                    descriptionText.color = Color.red;
+                }
+                break;
+            case ResearchType.TwoTurrets:
+                if (!Research.TurretsResearch || Research.TwoTurretsResearch)
+                {
+                    descriptionText.color = Color.red;
+                }
+                break;
+            case ResearchType.Barrier:
+                if (!Research.TwoTurretsResearch || Research.BarriersResearch)
+                {
+                    descriptionText.color = Color.red;
+                }
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     private enum ResearchType
@@ -85,6 +114,24 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        switch (researchType)
+        {
+            case ResearchType.Turrets:
+                if (Research.TurretsResearch)
+                    return;
+                break;
+            case ResearchType.TwoTurrets:
+                if (!Research.TurretsResearch || Research.TwoTurretsResearch)
+                    return;
+                break;
+            case ResearchType.Barrier:
+                if (!Research.TwoTurretsResearch || Research.BarriersResearch)
+                    return;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
         button.gameObject.SetActive(!button.gameObject.activeSelf);
         description.SetActive(!description.activeSelf);
     }

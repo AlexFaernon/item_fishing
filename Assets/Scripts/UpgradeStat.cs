@@ -20,6 +20,7 @@ public class UpgradeStat : MonoBehaviour
         EventAggregator.ChooseUpgradeWall.Subscribe(UpgradeWall);
         EventAggregator.ChooseUpgradeTurret.Subscribe(UpgradeTurret);
         EventAggregator.ChooseUpgradeBarrier.Subscribe(UpgradeBarrier);
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -40,6 +41,7 @@ public class UpgradeStat : MonoBehaviour
             return;
         }
         
+        gameObject.SetActive(true);
         button.interactable = wall.HealthRank < wall.HealthMaxRank && wall.NextUpgradeCost <= Resources.Metal.Count;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
@@ -89,12 +91,13 @@ public class UpgradeStat : MonoBehaviour
 
     private void UpgradeBarrier(Barrier barrier)
     {
-        if (!isFirstStat)
+        if (!isFirstStat || !barrier.gameObject.activeSelf)
         {
             gameObject.SetActive(false);
             return;
         }
 
+        gameObject.SetActive(true);
         button.interactable = barrier.cooldownRank < barrier.CooldownMaxRank && barrier.NextUpgradeCost <= Resources.Metal.Count;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>

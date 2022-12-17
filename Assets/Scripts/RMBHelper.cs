@@ -22,12 +22,12 @@ public class RMBHelper : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        gameObject.SetActive(turret.isBarrierInstalled);
+        gameObject.SetActive(turret.IsBarrierInstalled);
     }
 
     private void Update()
     {
-        if (turret && turret.isBarrierInstalled)
+        if (turret && turret.IsBarrierInstalled)
         {
             if (!turret.IsPlayerInRange)
             {
