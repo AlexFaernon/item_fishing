@@ -37,7 +37,7 @@ public class Hook : MonoBehaviour
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
             if (Math.Abs(distance) > 0.1)
             {
-                transform.Translate(Vector3.down * (Time.deltaTime * velocity));
+                transform.Translate(Vector3.left * (Time.deltaTime * velocity));
             }
             else
             {
@@ -67,7 +67,7 @@ public class Hook : MonoBehaviour
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
             if (distance < Length)
             {
-                transform.Translate(Vector3.up * (Time.deltaTime * 10));
+                transform.Translate(Vector3.right * (Time.deltaTime * 10));
             }
             else
             {

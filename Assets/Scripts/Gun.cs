@@ -37,10 +37,10 @@ public class Gun : MonoBehaviour
         switch (mode)
         {
             case Mode.Ship:
-                gameObject.SetActive(true);
+                transform.parent.gameObject.SetActive(true);
                 break;
             case Mode.Player:
-                gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
