@@ -8,9 +8,9 @@ public class Hook : MonoBehaviour
     private const float Length = 15;
     private float velocity = 10;
     
-    public bool isLaunched;
-    public bool isRetracting;
-    
+    public static bool IsLaunched;
+    public static bool IsRetracting;
+
     private Vector2 initialPosition;
     
     private SpringJoint2D spring;
@@ -32,7 +32,7 @@ public class Hook : MonoBehaviour
 
     void Update()
     {
-        if (isRetracting)
+        if (IsRetracting)
         {
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
             if (Math.Abs(distance) > 0.1)
@@ -41,7 +41,7 @@ public class Hook : MonoBehaviour
             }
             else
             {
-                isRetracting = false;
+                IsRetracting = false;
                 spring.attachedRigidbody.simulated = false;
                 velocity = 10;
                 if (spring.connectedBody == null) return;
@@ -62,7 +62,7 @@ public class Hook : MonoBehaviour
             return;
         }
         
-        if (isLaunched)
+        if (IsLaunched)
         {
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
             if (distance < Length)
@@ -71,8 +71,8 @@ public class Hook : MonoBehaviour
             }
             else
             {
-                isLaunched = false;
-                isRetracting = true;
+                IsLaunched = false;
+                IsRetracting = true;
             }
             
             return;
@@ -80,7 +80,7 @@ public class Hook : MonoBehaviour
         
         if (!Input.GetMouseButtonDown(0)) return;
         audioSource.Play();
-        isLaunched = true;
+        IsLaunched = true;
         spring.attachedRigidbody.simulated = true;
         initialPosition = transform.position;
     }
@@ -97,8 +97,8 @@ public class Hook : MonoBehaviour
         };
         spring.connectedBody = item.attachedRigidbody;
         item.isTrigger = true;
-        isLaunched = false;
-        isRetracting = true;
+        IsLaunched = false;
+        IsRetracting = true;
         boxCollider2D.enabled = false;
     }
 }

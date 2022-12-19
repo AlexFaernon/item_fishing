@@ -14,6 +14,7 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
     [SerializeField] private TMP_Text costText;
     [SerializeField] private int cost;
     private TMP_Text descriptionText;
+    private float timeScale;
 
     private void Awake()
     {
@@ -23,15 +24,16 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
 
     private void OnEnable()
     {
+        timeScale = Time.timeScale;
         Time.timeScale = 0;
     }
 
     private void OnDisable()
     {
-        Time.timeScale = 1;
+        Time.timeScale = timeScale;
     }
 
-    private void OnClick()
+    private void OnClick() //todo cost
     {
         switch (researchType)
         {

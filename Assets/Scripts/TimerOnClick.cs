@@ -14,6 +14,11 @@ public class TimerOnClick : MonoBehaviour
         button = GetComponent<Button>();
     }
 
+    private void Update()
+    {
+        gameObject.SetActive(!GamePhaseManager.IsBattlePhase);
+    }
+
     public void OnClickRewind()
     {
         if (isRewind)

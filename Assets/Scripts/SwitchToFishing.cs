@@ -20,6 +20,12 @@ public class SwitchToFishing : MonoBehaviour
 
     private void Update()
     {
+        if (GamePhaseManager.IsBattlePhase)
+        {
+            helper.SetActive(false);
+            return;
+        }
+        
         if (IsPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             SwitchMode.Mode = Mode.Ship;
@@ -28,7 +34,7 @@ public class SwitchToFishing : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col is BoxCollider2D && col.CompareTag("Player"))
+        if (col is BoxCollider2D && col.CompareTag("Player") || !GamePhaseManager.IsBattlePhase)
         {
             IsPlayerInRange = true;
         }

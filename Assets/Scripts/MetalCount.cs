@@ -6,22 +6,16 @@ using UnityEngine;
 
 public class MetalCount : MonoBehaviour
 {
+    [SerializeField] private bool isMetal;
     private TMP_Text text;
 
     private void Awake()
     {
         text = GetComponent<TMP_Text>();
-        EventAggregator.MetalUpdate.Subscribe(UpdateText);
-        UpdateText(Resources.Metal.Count);
     }
 
-    private void UpdateText(int metalCount)
+    private void Update()
     {
-        text.text = metalCount.ToString();
-    }
-
-    private void OnDestroy()
-    {
-        EventAggregator.MetalUpdate.Unsubscribe(UpdateText);
+        text.text = isMetal ? Resources.Metal.Count.ToString() : Resources.Electronics.Count.ToString();
     }
 }

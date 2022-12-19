@@ -17,7 +17,7 @@ public class ItemSpawner : MonoBehaviour
         }
         else
         {
-            itemInstantiate.tag = "Metal";
+            itemInstantiate.tag = "Electronics";
             itemInstantiate.GetComponent<SpriteRenderer>().color = Color.green;
         }
     }

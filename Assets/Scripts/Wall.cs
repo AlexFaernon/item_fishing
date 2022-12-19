@@ -129,5 +129,4 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         StopRepair();
     }
-
 }

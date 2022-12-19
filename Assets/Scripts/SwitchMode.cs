@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SwitchMode : MonoBehaviour
 {
+    public static bool ShouldSwitchToShip;
+    
     private const float FarCamera = 20;
     private const float CloseCamera = 15;
 
@@ -36,8 +38,10 @@ public class SwitchMode : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.E) || Mode == Mode.Player) return;
+        if (!(Input.GetKeyDown(KeyCode.E) || ShouldSwitchToShip) || Mode == Mode.Player || Hook.IsLaunched ||
+            Hook.IsRetracting) return;
 
+        ShouldSwitchToShip = false;
         Mode = Mode.Player;
     }
 

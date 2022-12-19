@@ -140,6 +140,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             IsInstalled = true;
             Ship.AddTurret(this);
             Health = MaxHealth;
+            HealthRank = 0;
         }
         IsBroken = false;
         Debug.Log("repaired");

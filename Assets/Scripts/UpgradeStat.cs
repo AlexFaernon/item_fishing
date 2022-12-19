@@ -14,6 +14,7 @@ public class UpgradeStat : MonoBehaviour
     [SerializeField] private Image rank;
     [SerializeField] private Button button;
     [SerializeField] private bool isFirstStat;
+    private float timeScale;
 
     private void Awake()
     {
@@ -25,12 +26,13 @@ public class UpgradeStat : MonoBehaviour
 
     private void OnEnable()
     {
+        timeScale = Time.timeScale;
         Time.timeScale = 0;
     }
 
     private void OnDisable()
     {
-        Time.timeScale = 1;
+        Time.timeScale = timeScale;
     }
     
     private void UpgradeWall(Wall wall)

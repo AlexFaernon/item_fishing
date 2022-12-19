@@ -1,40 +1,46 @@
+using System;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
  
 public class Timer: MonoBehaviour
 {
-    [SerializeField] private float time;
     [SerializeField] private TMP_Text timerText;
- 
-    private float _timeLeft = 0f;
- 
+
+    private float timeLeft;
+
+    [NonSerialized] public bool isTimeout;
+
+    public void SetTimer(int seconds)
+    {
+        isTimeout = false;
+        timeLeft = seconds;
+        StartCoroutine(StartTimer());
+    }
+
     private IEnumerator StartTimer()
     {
-        while (_timeLeft > 0)
+        while (timeLeft > 0)
         {
-            _timeLeft -= Time.deltaTime;
+            timeLeft -= Time.deltaTime;
             UpdateTimeText();
             yield return null;
         }
+
+        isTimeout = true;
+        Time.timeScale = 1;
         Debug.Log("Stop timer");
     }
- 
-    private void Start()
-    {
-        _timeLeft = time;
-        StartCoroutine(StartTimer());
-        //Time.timeScale = 3f;
-    }
- 
+
     private void UpdateTimeText()
     {
-        if (_timeLeft < 0)
-            _timeLeft = 0;
+        if (timeLeft < 0)
+            timeLeft = 0;
  
-        float minutes = Mathf.FloorToInt(_timeLeft / 60);
-        float seconds = Mathf.FloorToInt(_timeLeft % 60);
+        float minutes = Mathf.FloorToInt(timeLeft / 60);
+        float seconds = Mathf.FloorToInt(timeLeft % 60);
         timerText.text = $"{minutes:00} : {seconds:00}";
     }
 }

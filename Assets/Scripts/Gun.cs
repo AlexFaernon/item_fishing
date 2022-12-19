@@ -5,7 +5,6 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private GameObject hook;
     private LineRenderer line;
-    private Hook hookScript;
 
     private void Awake()
     {
@@ -15,14 +14,13 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         line = GetComponent<LineRenderer>();
-        hookScript = hook.GetComponent<Hook>();
     }
 
     void Update()
     {
         line.SetPosition(0, transform.position);
         line.SetPosition(1, hook.transform.position);
-        if (hookScript.isLaunched || hookScript.isRetracting) return;
+        if (Hook.IsLaunched || Hook.IsRetracting) return;
         TurnToMouse();
     }
 
