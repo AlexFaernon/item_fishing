@@ -24,7 +24,7 @@ public class GamePhaseManager : MonoBehaviour
     private void OnFishingEnd()
     {
         IsBattlePhase = true;
-        SwitchMode.ShouldSwitchToShip = true;
+        GameMode.ShouldSwitchToShip = true;
         timer.SetTimer(60);
         StartCoroutine(WaitForTimer(OnBattleEnd));
     }

@@ -40,7 +40,7 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (SwitchMode.Mode == Mode.Player) return;
+        if (GameMode.Mode == Mode.Player) return;
 
         if (Hook.IsLaunched || Hook.IsRetracting)
         {

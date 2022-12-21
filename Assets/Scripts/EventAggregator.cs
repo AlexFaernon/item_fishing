@@ -16,6 +16,7 @@ public static class EventAggregator
     public static readonly Event TwoTurretsResearched = new();
     public static readonly Event BarriersResearched = new();
     public static readonly Event<Barrier> BarrierInstalled = new ();
+    public static readonly Event SecondLifeActivated = new();
 
 
     public class Event<T>

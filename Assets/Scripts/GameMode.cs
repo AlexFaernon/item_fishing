@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SwitchMode : MonoBehaviour
+public class GameMode : MonoBehaviour
 {
     public static bool ShouldSwitchToShip;
     

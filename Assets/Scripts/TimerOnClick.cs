@@ -8,6 +8,7 @@ public class TimerOnClick : MonoBehaviour
     [SerializeField] private Sprite rewindTimeImage;
     private bool isRewind;
     private Button button;
+    public static float TimeScale = 1f;
 
     private void Awake()
     {
@@ -23,13 +24,13 @@ public class TimerOnClick : MonoBehaviour
     {
         if (isRewind)
         {
-            Time.timeScale = 1f;
+            TimeScale = Time.timeScale = 1f;
             isRewind = false;
             button.image.sprite = normalTimeImage;
         }
         else
         {
-            Time.timeScale = 3f;
+            TimeScale = Time.timeScale = 3f;
             isRewind = true;
             button.image.sprite = rewindTimeImage;
         }

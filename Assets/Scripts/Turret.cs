@@ -37,7 +37,7 @@ public class Turret : MonoBehaviour
     
     private IEnumerator WaitToShoot()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(PowerUps.TurretsBoost ? 1.5f : 3f);
 
         canShoot = true;
         //Debug.Log("shoot now");

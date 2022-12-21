@@ -52,6 +52,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         hpBar.transform.parent.gameObject.SetActive(false);
         HealthRank = 0;
         Health = MaxHealth;
+        EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
     }
 
     private void Update()
@@ -71,6 +72,11 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             Invoke(nameof(Repair), TimeToRepair);
             Debug.Log("repairing continued");
         }
+    }
+
+    private void RepairOnSecondLife()
+    {
+        Health = MaxHealth;
     }
 
     private void StopRepair()
@@ -104,6 +110,8 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (GameMode.Mode == Mode.Ship) return;
+        
         spriteRenderer.color = Color.yellow;
         hpBar.transform.parent.gameObject.SetActive(true);
         EventAggregator.MouseOverWall.Publish(this);
@@ -128,5 +136,11 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerUp(PointerEventData eventData)
     {
         StopRepair();
+    }
+
+    private void OnDestroy()
+    {
+        EventAggregator.SecondLifeActivated.Unsubscribe(RepairOnSecondLife);
+
     }
 }

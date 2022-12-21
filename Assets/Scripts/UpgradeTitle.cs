@@ -12,6 +12,16 @@ public class UpgradeTitle : MonoBehaviour
         EventAggregator.ChooseUpgradeType.Subscribe(SetUpgradeName);
         text.text = "";
     }
+    
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = TimerOnClick.TimeScale;
+    }
 
     private void SetUpgradeName(UpgradeType upgradeType)
     {

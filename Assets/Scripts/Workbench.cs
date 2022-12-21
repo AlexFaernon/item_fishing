@@ -29,7 +29,7 @@ public class Workbench : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col is BoxCollider2D && col.CompareTag("Player"))
+        if (col is BoxCollider2D && col.CompareTag("Player") && !GamePhaseManager.IsBattlePhase)
         {
             IsPlayerInRange = true;
         }

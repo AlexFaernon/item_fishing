@@ -113,6 +113,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         normalColor = spriteRenderer.color;
         Ship.AddTurret(this);
         barrier.SetActive(IsBarrierInstalled);
+        EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
     }
 
     private void Update()
@@ -138,6 +139,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         else
         {
             IsInstalled = true;
+            EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
             Ship.AddTurret(this);
             Health = MaxHealth;
             HealthRank = 0;
@@ -161,6 +163,14 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void EnableOnResearch()
     {
         gameObject.SetActive(true);
+    }
+
+    private void RepairOnSecondLife()
+    {
+        if (Ship.Turrets.Any(turret => turret.side == Side && !turret.isBroken)) return;
+
+        IsBroken = false;
+        Health = MaxHealth;
     }
 
     private void OnBarrierInstallation(Barrier other)
@@ -200,6 +210,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (GameMode.Mode == Mode.Ship) return;
+        
         spriteRenderer.color = Color.yellow;
         hpBar.transform.parent.gameObject.SetActive(isInstalled);
         EventAggregator.MouseOverTurret.Publish(this);
@@ -236,5 +248,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         EventAggregator.BarrierInstalled.Unsubscribe(OnBarrierInstallation);
         EventAggregator.TurretsResearched.Unsubscribe(EnableOnResearch);
+        EventAggregator.SecondLifeActivated.Unsubscribe(RepairOnSecondLife);
+
     }
 }
