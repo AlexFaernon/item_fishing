@@ -28,36 +28,68 @@ public class EnemyAI : MonoBehaviour
     {
         Enemies.Remove(enemy.gameObject);
     }
-    
+
+    private void Start()
+    {
+        StartCoroutine(RandomAttack());
+    }
+
     private void Update()
     {
         if (!_canAttack || !Enemies.Any()) return;
         
-        Attack();
-        _canAttack = false;
-        StartCoroutine(WaitToAttack());
+        PrepareAndAttack();
     }
 
-    private static IEnumerator WaitToAttack()
+    private IEnumerator Attack(Enemy enemy1, Enemy enemy2)
     {
-        yield return new WaitForSeconds(5);
-
+        enemy1.Attack(Ship.GetTarget(enemy1.CurrentSide));
+        Debug.Log("enemy1 attack");
+        yield return new WaitUntil(() => enemy1.IsReadyToAttack);
+        
+        if (enemy2 is not null)
+        {
+            yield return new WaitForSeconds(8);
+            enemy2.Attack(Ship.GetTarget(enemy2.CurrentSide));
+            Debug.Log("enemy2 attack");
+            yield return new WaitUntil(() => enemy1.IsReadyToAttack);
+        }
+        
+        yield return new WaitForSeconds(10);
         _canAttack = true;
-        Debug.Log("attack now");
     }
 
-    private static void Attack()
+    private IEnumerator RandomAttack()
     {
-        // var groupBySide = Enemies.Values.GroupBy(enemy => enemy.CurrentSide).ToList();
-        // var skipTo = _random.Next(groupBySide.Count);
-        // var side = groupBySide.Skip(skipTo).First();
-        //
-        // Debug.Log(side.Key.ToString());
-        //
-        // var enemyList = side.ToList();
-        var enemy = Enemies.Values.ToList()[Random.Next(Enemies.Count)];
-        var target = Ship.GetTarget(enemy.CurrentSide);
-        enemy.Attack(target);
+        yield return new WaitForSeconds(30);
+        if (Random.Next(10) >= 7)
+        {
+            var enemy = GetRandomEnemy();
+            enemy.Attack(Ship.GetTarget(enemy.CurrentSide));
+            Debug.Log("random enemy attack");
+        }
 
+        if (Enemies.Any())
+        {
+            StartCoroutine(RandomAttack());
+        }
+    }
+
+    private void PrepareAndAttack()
+    {
+        var enemy1 = GetRandomEnemy();
+        Enemy enemy2 = null;
+        if (Enemies.Count > 1)
+        {
+            enemy2 = GetRandomEnemy(enemy1);
+        }
+        _canAttack = false;
+        StartCoroutine(Attack(enemy1, enemy2));
+    }
+
+    private Enemy GetRandomEnemy(Enemy other = null)
+    {
+        var list = Enemies.Values.Where(enemy => enemy.IsReadyToAttack && enemy != other).ToList();
+        return list[Random.Next(list.Count)];
     }
 }

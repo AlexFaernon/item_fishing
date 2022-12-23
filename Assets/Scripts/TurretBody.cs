@@ -53,7 +53,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         private set
         {
             isBroken = value;
-            transform.parent.GetComponent<Turret>().enabled = value;
+            turretControlScript.enabled = !value;
         }
     }
 
@@ -63,7 +63,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         private set
         {
             isInstalled = value;
-            transform.parent.GetComponent<Turret>().enabled = value;
+            turretControlScript.enabled = value;
         }
     }
 
@@ -82,10 +82,12 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [NonSerialized] public bool IsPlayerInRange;
     private SpriteRenderer spriteRenderer;
     private Color normalColor; //todo разгрести дерьмо
+    private Turret turretControlScript;
 
     private void Awake()
     {
         EventAggregator.BarrierInstalled.Subscribe(OnBarrierInstallation);
+        turretControlScript = transform.parent.gameObject.GetComponent<Turret>();
         barrierScript = barrier.GetComponent<Barrier>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         hpBar.transform.parent.gameObject.SetActive(false);
@@ -95,7 +97,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             Health = 0;
             barrier.SetActive(false);
             spriteRenderer.color = normalColor = Color.gray; //пустой слот
-            transform.parent.GetComponent<Turret>().enabled = false;
+            turretControlScript.enabled = false;
             if (!Research.TurretsResearch)
             {
                 gameObject.SetActive(false);
@@ -107,7 +109,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (IsBroken)
         {
             spriteRenderer.color = Color.black; //сломанный спрайт
-            transform.parent.GetComponent<Turret>().enabled = false;
+            turretControlScript.enabled = false;
         }
 
         normalColor = spriteRenderer.color;
@@ -197,7 +199,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
         IsBroken = true;
         spriteRenderer.color = normalColor = Color.black;
-        transform.parent.GetComponent<Turret>().enabled = false;
+        turretControlScript.enabled = false;
     }
 
     private void OnTriggerExit2D(Collider2D other)

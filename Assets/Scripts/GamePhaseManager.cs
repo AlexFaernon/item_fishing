@@ -6,6 +6,7 @@ using UnityEngine;
 public class GamePhaseManager : MonoBehaviour
 {
     [SerializeField] private Timer timer;
+    [SerializeField] private EnemySpawner enemySpawner;
     public static bool IsBattlePhase { get; private set; }
 
     private void Awake()
@@ -25,6 +26,7 @@ public class GamePhaseManager : MonoBehaviour
     {
         IsBattlePhase = true;
         GameMode.ShouldSwitchToShip = true;
+        enemySpawner.enabled = true;
         timer.SetTimer(60);
         StartCoroutine(WaitForTimer(OnBattleEnd));
     }

@@ -1,13 +1,15 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject ship;
+    public GameObject ship;
 
     public int Health { get; private set; } = 30;
+    public bool IsReadyToAttack => !(isAttacking || isReturning || isStunned);
     public Side CurrentSide
     {
         get
@@ -28,6 +30,7 @@ public class Enemy : MonoBehaviour
 
     private bool isAttacking;
     private bool isReturning;
+    private bool isStunned;
     private Vector2 attackVector;
     private Vector2 startPoint;
 
@@ -48,14 +51,14 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    private void Start()
+    private void Awake()
     {
         EnemyAI.AddEnemy(this);
     }
 
     private void Update()
     {
-        if (isAttacking || isReturning) return;
+        if (isAttacking || isReturning || isStunned) return;
 
         transform.RotateAround(ship.transform.position, Vector3.forward, Time.deltaTime * 20);
     }
@@ -70,7 +73,7 @@ public class Enemy : MonoBehaviour
         if (isReturning)
         {
             var distance = (startPoint - (Vector2)transform.position).magnitude;
-            if (distance < 0.01)
+            if (distance < 0.1)
             {
                 transform.position = startPoint;
                 isReturning = false;
@@ -80,12 +83,33 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if ((col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Turret") || col.gameObject.CompareTag("Barrier")) && !isReturning)
+        if ((!col.gameObject.CompareTag("Wall") && !col.gameObject.CompareTag("Turret") &&
+             !col.gameObject.CompareTag("Barrier")) || isReturning || isStunned) return;
+
+        isAttacking = false;
+        if (col.gameObject.CompareTag("Barrier"))
         {
-            isAttacking = false;
-            isReturning = true;
-            attackVector = -attackVector;
+            StartCoroutine(Stun());
         }
+        else
+        {
+            ReturnAfterHit();
+        }
+    }
+
+    private IEnumerator Stun()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(6);
+
+        isStunned = false;
+        ReturnAfterHit();
+    }
+    
+    private void ReturnAfterHit()
+    {
+        isReturning = true;
+        attackVector = -attackVector;
     }
 
     private void OnDestroy()
