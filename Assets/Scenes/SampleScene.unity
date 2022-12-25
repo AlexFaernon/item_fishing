@@ -4934,6 +4934,7 @@ MonoBehaviour:
   side: 1
   hpBar: {fileID: 1831900583}
   hpBarLength: {fileID: 234698384}
+  gameOver: {fileID: 2136480973}
   isPlayerInRange: 0
 --- !u!1 &321415863
 GameObject:
@@ -15053,6 +15054,7 @@ MonoBehaviour:
   side: 3
   hpBar: {fileID: 1268669211}
   hpBarLength: {fileID: 162580586}
+  gameOver: {fileID: 2136480973}
   isPlayerInRange: 0
 --- !u!1 &1089654045
 GameObject:
@@ -15556,6 +15558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 2006519694}
   enemySpawner: {fileID: 1161482439}
+  win: {fileID: 375036038}
 --- !u!114 &1161482439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21849,6 +21852,7 @@ MonoBehaviour:
   side: 2
   hpBar: {fileID: 1107112670}
   hpBarLength: {fileID: 1804421920}
+  gameOver: {fileID: 2136480973}
   isPlayerInRange: 0
 --- !u!1 &1592857144
 GameObject:
@@ -22666,6 +22670,7 @@ MonoBehaviour:
   side: 0
   hpBar: {fileID: 1240576857}
   hpBarLength: {fileID: 91848332}
+  gameOver: {fileID: 2136480973}
   isPlayerInRange: 0
 --- !u!1 &1666665533
 GameObject:

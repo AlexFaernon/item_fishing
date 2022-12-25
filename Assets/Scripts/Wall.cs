@@ -10,6 +10,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private Side side;
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
+    [SerializeField] private GameObject gameOver;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
     public Side Side => side;
@@ -41,6 +42,10 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             health = value;
             hpBar.size = new Vector2(value, 1);
+            if (health <= 0)
+            {
+                StartCoroutine(GameOver());
+            }
         }
     }
 
@@ -84,6 +89,14 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         hpBar.size = new Vector2(Health, 3);
         CancelInvoke(nameof(Repair));
         isRepairing = false;
+    }
+
+    private IEnumerator GameOver() //todo second life
+    {
+        Time.timeScale = 0; //todo reset in game over
+        spriteRenderer.color = Color.black;
+        yield return new WaitForSecondsRealtime(2);
+        gameOver.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

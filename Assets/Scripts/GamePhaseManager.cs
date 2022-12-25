@@ -7,6 +7,7 @@ public class GamePhaseManager : MonoBehaviour
 {
     [SerializeField] private Timer timer;
     [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private GameObject win;
     public static bool IsBattlePhase { get; private set; }
 
     private void Awake()
@@ -33,6 +34,8 @@ public class GamePhaseManager : MonoBehaviour
 
     private void OnBattleEnd()
     {
+        Time.timeScale = 0;
+        win.SetActive(true);
         Debug.Log("End");
     }
 }
