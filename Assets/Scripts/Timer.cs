@@ -51,6 +51,6 @@ public class Timer: MonoBehaviour
  
         float minutes = Mathf.FloorToInt(timeLeft / 60);
         float seconds = Mathf.FloorToInt(timeLeft % 60);
-        timerText.text = $"{minutes:00} : {seconds:00}";
+        timerText.text = $"{minutes:00}:{seconds:00}";
     }
 }
