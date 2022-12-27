@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     public GameObject ship;
 
-    public int Health { get; private set; } = 30;
+    public int Health { get; private set; } = 100;
     public bool IsReadyToAttack => !(isAttacking || isReturning || isStunned);
     public Side CurrentSide
     {
@@ -86,6 +86,15 @@ public class Enemy : MonoBehaviour
         if ((!col.gameObject.CompareTag("Wall") && !col.gameObject.CompareTag("Turret") &&
              !col.gameObject.CompareTag("Barrier")) || isReturning || isStunned) return;
 
+        if (col.gameObject.CompareTag("Turret"))
+        {
+            var turret = col.GetComponent<TurretBody>();
+            if (turret.IsBroken || !turret.IsInstalled)
+            {
+                return;
+            }
+        }
+        
         isAttacking = false;
         if (col.gameObject.CompareTag("Barrier"))
         {

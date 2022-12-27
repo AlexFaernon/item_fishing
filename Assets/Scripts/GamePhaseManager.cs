@@ -28,7 +28,7 @@ public class GamePhaseManager : MonoBehaviour
         IsBattlePhase = true;
         GameMode.ShouldSwitchToShip = true;
         enemySpawner.enabled = true;
-        timer.SetTimer(60);
+        timer.SetTimer(180);
         StartCoroutine(WaitForTimer(OnBattleEnd));
     }
 

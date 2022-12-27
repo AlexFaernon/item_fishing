@@ -18,7 +18,7 @@ public class Barrier : MonoBehaviour
         set
         {
             isActive = value;
-            spriteRenderer.color = value ? new Color(0, 0, 1f, 0.7f) : new Color(0, 0, 1f, 0.2f);
+            spriteRenderer.color = value ? Color.white : new Color(1,1,1, 0.5f);
             collider2D.enabled = value;
         }
     }
@@ -29,7 +29,7 @@ public class Barrier : MonoBehaviour
         set
         {
             isOnCooldown = value;
-            spriteRenderer.color = value ? new Color(1f, 0, 0, 0.1f) : new Color(0, 0, 1f, 0.2f);
+            spriteRenderer.color = value ? Color.red : new Color(1,1,1, 0.5f);
         }
     }
 

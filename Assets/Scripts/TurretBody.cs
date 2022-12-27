@@ -190,8 +190,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             IsPlayerInRange = true;
             return;
         }
-        
-        if (!col.gameObject.CompareTag("Enemy")) return;
+
+        if (!col.gameObject.CompareTag("Enemy") || isBroken || !isInstalled) return;
         
         Health -= 1;
         Debug.Log($"turret hp is {Health}");
