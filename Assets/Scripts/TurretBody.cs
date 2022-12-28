@@ -1,37 +1,39 @@
-using System;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private Side side;
+    [SerializeField] private Side positionOnWall;
     [SerializeField] private GameObject barrier;
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
-    public bool isBarrierInstalled; 
-    [NonSerialized] public Barrier barrierScript;
+    [HideInInspector] public Barrier barrierScript;
+    private TurretClass turretClass;
     public Side Side => side;
+    public Side PositionOnWall => positionOnWall;
     
-    private int healthRank;
     public int HealthRank
     {
-        get => healthRank;
+        get => turretClass.HealthRank;
         set
         {
-            healthRank = value;
+            turretClass.HealthRank = value;
             hpBarLength.size = new Vector2(MaxHealth, 4);
         }
     }
     public int HealthMaxRank => new[] {2, 3}.Length - 1;
     public int MaxHealth => new[]{2, 3}[HealthRank];
     public int NextHealthUpgradeCost => new[] { 10, 0 }[HealthRank];
-    private int health = 5;
 
-    [NonSerialized] public int DamageRank;
+    public int DamageRank
+    {
+        get => turretClass.DamageRank;
+        set => turretClass.DamageRank = value;
+    }
     public int DamageMaxRank => new[] { 10, 15, 20, 25 }.Length - 1;
-    public int NextDamageUpgradeCost => new[] { 10, 20, 30, 0 }[HealthRank];
+    public int NextDamageUpgradeCost => new[] { 10, 20, 30, 0 }[DamageRank];
     public int Damage => new[] { 10, 15, 20, 25 }[DamageRank];
     
     private int TimeToRepair => !IsBroken && IsInstalled ? 2 : 5;
@@ -39,63 +41,59 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private bool isRepairing;
     public int Health
     {
-        get => health;
+        get => turretClass.Health;
         private set
         {
-            health = value;
+            turretClass.Health = value;
             hpBar.size = new Vector2(value, 4);
         }
     }
 
     public bool IsBroken
     {
-        get => isBroken;
+        get => turretClass.IsBroken;
         private set
         {
-            isBroken = value;
+            turretClass.IsBroken = value;
             turretControlScript.enabled = !value;
         }
     }
 
     public bool IsInstalled
     {
-        get => isInstalled;
+        get => turretClass.IsInstalled;
         private set
         {
-            isInstalled = value;
+            turretClass.IsInstalled = value;
             turretControlScript.enabled = value;
         }
     }
 
     public bool IsBarrierInstalled
     {
-        get => isBarrierInstalled;
+        get => turretClass.IsBarrierInstalled;
         set
         {
-            isBarrierInstalled = value;
+            turretClass.IsBarrierInstalled = value;
             barrier.SetActive(value);
         }
     }
 
-    private bool isInstalled;
-    private bool isBroken;
-    [NonSerialized] public bool IsPlayerInRange;
+    [HideInInspector] public bool isPlayerInRange;
     private SpriteRenderer spriteRenderer;
     private Color normalColor; //todo разгрести дерьмо
     private Turret turretControlScript;
 
     private void Awake()
     {
+        turretClass = SaveController.GetSavedTurret(side, positionOnWall) ?? new TurretClass(side, positionOnWall);
         EventAggregator.BarrierInstalled.Subscribe(OnBarrierInstallation);
         turretControlScript = transform.parent.gameObject.GetComponent<Turret>();
         barrierScript = barrier.GetComponent<Barrier>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         hpBar.transform.parent.gameObject.SetActive(false);
-        Health = MaxHealth;
         if (!IsInstalled)
         {
-            Health = 0;
-            barrier.SetActive(false);
             spriteRenderer.color = normalColor = Color.gray; //пустой слот
             turretControlScript.enabled = false;
             if (!Research.TurretsResearch)
@@ -120,7 +118,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Update()
     {
-        if (IsPlayerInRange && Input.GetMouseButtonDown(1))
+        if (isPlayerInRange && Input.GetMouseButtonDown(1))
         {
             barrierScript.Activate();
         }
@@ -144,15 +142,13 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
             Ship.AddTurret(this);
             Health = MaxHealth;
-            HealthRank = 0;
         }
         IsBroken = false;
         Debug.Log("repaired");
-        if (Health < MaxHealth)
-        {
-            Invoke(nameof(RepairOrInstall), TimeToRepair);
-            Debug.Log("repairing continued");
-        }
+        if (Health >= MaxHealth) return;
+        
+        Invoke(nameof(RepairOrInstall), TimeToRepair);
+        Debug.Log("repairing continued");
     }
 
     private void StopRepair()
@@ -169,7 +165,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void RepairOnSecondLife()
     {
-        if (Ship.Turrets.Any(turret => turret.side == Side && !turret.isBroken)) return;
+        if (Ship.Turrets.Any(turret => turret.side == Side && !turret.IsBroken)) return;
 
         IsBroken = false;
         Health = MaxHealth;
@@ -187,11 +183,11 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            IsPlayerInRange = true;
+            isPlayerInRange = true;
             return;
         }
 
-        if (!col.gameObject.CompareTag("Enemy") || isBroken || !isInstalled) return;
+        if (!col.gameObject.CompareTag("Enemy") || IsBroken || !IsInstalled) return;
         
         Health -= 1;
         Debug.Log($"turret hp is {Health}");
@@ -206,7 +202,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (!other.gameObject.CompareTag("Player")) return;
 
-        IsPlayerInRange = false;
+        isPlayerInRange = false;
         StopRepair();
     }
 
@@ -215,7 +211,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (GameMode.Mode == Mode.Ship) return;
         
         spriteRenderer.color = Color.yellow;
-        hpBar.transform.parent.gameObject.SetActive(isInstalled);
+        hpBar.transform.parent.gameObject.SetActive(IsInstalled);
         EventAggregator.MouseOverTurret.Publish(this);
     }
 
@@ -229,9 +225,9 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!IsPlayerInRange || Health == MaxHealth) return;
+        if (!isPlayerInRange || Health == MaxHealth) return;
         
-        if (!isInstalled && !Research.TwoTurretsResearch && Ship.Turrets.Any(turret => turret.side == Side))
+        if (!IsInstalled && !Research.TwoTurretsResearch && Ship.Turrets.Any(turret => turret.side == Side))
         {
             Debug.Log("Cant install");
             return;

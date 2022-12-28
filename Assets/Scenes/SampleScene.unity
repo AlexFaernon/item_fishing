@@ -1973,10 +1973,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 3
+  positionOnWall: 2
   barrier: {fileID: 568851408}
   hpBar: {fileID: 1402538492}
   hpBarLength: {fileID: 916079111}
+  barrierScript: {fileID: 0}
+  damageRank: 0
   isBarrierInstalled: 0
+  IsPlayerInRange: 0
 --- !u!61 &149013095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4560,6 +4564,7 @@ MonoBehaviour:
   hpBar: {fileID: 1831900583}
   hpBarLength: {fileID: 234698384}
   gameOver: {fileID: 2136480973}
+  metalToRepair: 2
   isPlayerInRange: 0
 --- !u!1 &327898917
 GameObject:
@@ -5253,10 +5258,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 1
+  positionOnWall: 2
   barrier: {fileID: 1878922435}
   hpBar: {fileID: 1360112773}
   hpBarLength: {fileID: 1575380719}
+  barrierScript: {fileID: 0}
+  damageRank: 0
   isBarrierInstalled: 0
+  IsPlayerInRange: 0
 --- !u!212 &362044472
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11085,10 +11094,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 1
+  positionOnWall: 0
   barrier: {fileID: 1807508767}
   hpBar: {fileID: 275120393}
   hpBarLength: {fileID: 877556234}
+  barrierScript: {fileID: 0}
+  damageRank: 0
   isBarrierInstalled: 0
+  IsPlayerInRange: 0
 --- !u!61 &763231107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14364,6 +14377,7 @@ MonoBehaviour:
   hpBar: {fileID: 1268669211}
   hpBarLength: {fileID: 162580586}
   gameOver: {fileID: 2136480973}
+  metalToRepair: 2
   isPlayerInRange: 0
 --- !u!1 &1089654045
 GameObject:
@@ -16815,10 +16829,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 0
+  positionOnWall: 1
   barrier: {fileID: 130003932}
   hpBar: {fileID: 778067175}
   hpBarLength: {fileID: 607787486}
+  barrierScript: {fileID: 0}
+  damageRank: 0
   isBarrierInstalled: 1
+  IsPlayerInRange: 0
 --- !u!212 &1263008987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17156,10 +17174,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 2
+  positionOnWall: 3
   barrier: {fileID: 63137376}
   hpBar: {fileID: 753509278}
   hpBarLength: {fileID: 2110698232}
+  barrierScript: {fileID: 0}
+  damageRank: 0
   isBarrierInstalled: 0
+  IsPlayerInRange: 0
 --- !u!61 &1281859616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18564,10 +18586,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 0
+  positionOnWall: 3
   barrier: {fileID: 237741804}
   hpBar: {fileID: 1111625787}
   hpBarLength: {fileID: 503624078}
+  barrierScript: {fileID: 0}
+  damageRank: 0
   isBarrierInstalled: 1
+  IsPlayerInRange: 0
 --- !u!61 &1373340347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21376,6 +21402,7 @@ MonoBehaviour:
   hpBar: {fileID: 1107112670}
   hpBarLength: {fileID: 1804421920}
   gameOver: {fileID: 2136480973}
+  metalToRepair: 2
   isPlayerInRange: 0
 --- !u!1 &1592857144
 GameObject:
@@ -22272,6 +22299,7 @@ MonoBehaviour:
   hpBar: {fileID: 1240576857}
   hpBarLength: {fileID: 91848332}
   gameOver: {fileID: 2136480973}
+  metalToRepair: 2
   isPlayerInRange: 0
 --- !u!1 &1666665533
 GameObject:
@@ -25542,10 +25570,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 3
+  positionOnWall: 0
   barrier: {fileID: 965704170}
   hpBar: {fileID: 1646744412}
   hpBarLength: {fileID: 2051804353}
+  barrierScript: {fileID: 0}
+  damageRank: 0
   isBarrierInstalled: 0
+  IsPlayerInRange: 0
 --- !u!61 &1874888378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27397,10 +27429,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 2
+  positionOnWall: 1
   barrier: {fileID: 1812255418}
   hpBar: {fileID: 109231883}
   hpBarLength: {fileID: 1885612298}
+  barrierScript: {fileID: 0}
+  damageRank: 0
   isBarrierInstalled: 1
+  IsPlayerInRange: 0
 --- !u!212 &2060130003
 SpriteRenderer:
   m_ObjectHideFlags: 0

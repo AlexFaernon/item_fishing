@@ -13,3 +13,9 @@
         public const int MaxTimeToCatch = 15;
     }
 }
+
+public enum ResourceType
+{
+    Metal,
+    Electronics
+}

@@ -105,13 +105,6 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    private enum ResearchType
-    {
-        Turrets,
-        TwoTurrets,
-        Barrier
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         switch (researchType)
@@ -135,4 +128,11 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
         button.gameObject.SetActive(!button.gameObject.activeSelf);
         description.SetActive(!description.activeSelf);
     }
+}
+
+public enum ResearchType
+{
+    Turrets,
+    TwoTurrets,
+    Barrier
 }

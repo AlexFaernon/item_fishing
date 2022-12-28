@@ -11,38 +11,37 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
     [SerializeField] private GameObject gameOver;
+    private WallClass wallClass;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
     public Side Side => side;
-
-    [NonSerialized] public int metalToRepair = 2;
+    
+    [HideInInspector] public int metalToRepair = 2;
     private const int TimeToRepair = 3;
     private bool isRepairing;
-
-    private int healthRank;
+    
     public int HealthRank
     {
-        get => healthRank;
+        get => wallClass.HealthRank;
         set
         {
-            healthRank = value;
+            wallClass.HealthRank = value;
             hpBarLength.size = new Vector2(MaxHealth, 1);
         }
     }
     public int HealthMaxRank => new[] { 2, 3, 4, 5 }.Length - 1;
     public int MaxHealth => new[]{2, 3, 4, 5}[HealthRank];
     public int NextUpgradeCost => new[] { 10, 20, 30, 0 }[HealthRank];
-    private int health = 5;
     public bool isPlayerInRange;
 
     public int Health
     {
-        get => health;
+        get => wallClass.Health;
         private set
         {
-            health = value;
+            wallClass.Health = value;
             hpBar.size = new Vector2(value, 1);
-            if (health <= 0)
+            if (wallClass.Health <= 0)
             {
                 StartCoroutine(GameOver());
             }
@@ -51,12 +50,12 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private void Awake()
     {
+        wallClass = SaveController.GetSavedWall(Side);
         Ship.AddWall(this);
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;
         hpBar.transform.parent.gameObject.SetActive(false);
-        HealthRank = 0;
-        Health = MaxHealth;
+        Health = MaxHealth; //todo убрать потом
         EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
     }
 

@@ -29,7 +29,7 @@ public class RMBHelper : MonoBehaviour
     {
         if (turret && turret.IsBarrierInstalled)
         {
-            if (!turret.IsPlayerInRange)
+            if (!turret.isPlayerInRange)
             {
                 spriteRenderer.color = Color.gray;
                 return;

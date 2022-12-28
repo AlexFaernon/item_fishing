@@ -5,7 +5,7 @@ public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject item;
     private static System.Random _random = new();
-    private void Awake()
+    private void Awake() //todo item counter
     {
         var coord = Random.insideUnitCircle;
         var rect = GetComponent<RectTransform>().rect;

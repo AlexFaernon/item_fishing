@@ -40,7 +40,7 @@ public class LMBHelper : MonoBehaviour
         {
             if (turret.Health < turret.MaxHealth)
             {
-                SetValues(turret.MetalToRepair, turret.IsPlayerInRange);
+                SetValues(turret.MetalToRepair, turret.isPlayerInRange);
             }
             else
             {

@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private int enemyCount;
     
-    private void Start()
+    private void Start() //todo enemy counter
     {
         enemyPrefab.GetComponent<Enemy>().ship = ship;
         for (var i = 0; i < enemyCount; i++)

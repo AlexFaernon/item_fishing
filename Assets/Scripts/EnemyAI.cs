@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 {
     private static readonly Dictionary<GameObject, Enemy> Enemies = new();
     private static readonly Random Random = new();
-    private static bool _canAttack = false;
+    private static bool _canAttack;
 
     public static Enemy GetEnemy(GameObject gameObject) => Enemies[gameObject];
     public static void AddEnemy(Enemy enemy)

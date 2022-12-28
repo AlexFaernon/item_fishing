@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Barrier : MonoBehaviour
 {
-    [NonSerialized] public int cooldownRank;
+    [NonSerialized] public int cooldownRank; //todo save
     public int CooldownMaxRank => new[] { 25, 20, 18, 15 }.Length - 1;
     private int Cooldown => new[] { 25, 20, 18, 15 }[cooldownRank];
     public int NextUpgradeCost => new[] { 10, 20, 30, 0 }[cooldownRank];
