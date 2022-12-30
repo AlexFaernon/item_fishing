@@ -11,7 +11,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
     [SerializeField] private GameObject gameOver;
-    private WallClass wallClass;
+    public WallClass wallClass;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
     public Side Side => side;
@@ -50,7 +50,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private void Awake()
     {
-        wallClass = SaveController.GetSavedWall(Side);
+        wallClass = LoadedData.GetSavedWall(side) ?? new WallClass();
         Ship.AddWall(this);
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;

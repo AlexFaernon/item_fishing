@@ -88,17 +88,17 @@ public class UpgradeStat : MonoBehaviour
         }
 
         gameObject.SetActive(true);
-        button.interactable = barrier.cooldownRank < barrier.CooldownMaxRank && barrier.NextUpgradeCost <= Resources.Metal.Count;
+        button.interactable = barrier.CooldownRank < barrier.CooldownMaxRank && barrier.NextUpgradeCost <= Resources.Metal.Count;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
-            SetOnClick(() => barrier.cooldownRank += 1, () => EventAggregator.ChooseUpgradeBarrier.Publish(barrier),
+            SetOnClick(() => barrier.CooldownRank += 1, () => EventAggregator.ChooseUpgradeBarrier.Publish(barrier),
                 barrier.NextUpgradeCost));
         statName.text = "Перезарядка";
-        cost.text = barrier.cooldownRank < barrier.CooldownMaxRank
+        cost.text = barrier.CooldownRank < barrier.CooldownMaxRank
             ? $"{barrier.NextUpgradeCost}/{Resources.Metal.Count}"
             : "";
         cost.color = barrier.NextUpgradeCost <= Resources.Metal.Count ? Color.black : Color.red;
-        rank.fillAmount = (float)barrier.cooldownRank / barrier.CooldownMaxRank;
+        rank.fillAmount = (float)barrier.CooldownRank / barrier.CooldownMaxRank;
     }
 
     private void SetOnClick(Action upgrade, Action eventCall, int cost)

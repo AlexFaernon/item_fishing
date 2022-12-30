@@ -50,7 +50,7 @@ public class UpgradeTypeButton : MonoBehaviour
     
     private void TurnInteractable(UpgradeType otherUpgradeType)
     {
-        image.color = upgradeType == otherUpgradeType ? Color.black : Color.gray;
+        image.color = upgradeType == otherUpgradeType ? Color.gray : Color.white;
     }
 
     private void OnDestroy()

@@ -971,6 +971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fa5ceba5d07749b13fbce3f0e673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  positionOnWall: 0
 --- !u!58 &63137381
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1090,7 +1092,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1766,6 +1768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fa5ceba5d07749b13fbce3f0e673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  positionOnWall: 0
 --- !u!58 &130003937
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1978,9 +1982,7 @@ MonoBehaviour:
   hpBar: {fileID: 1402538492}
   hpBarLength: {fileID: 916079111}
   barrierScript: {fileID: 0}
-  damageRank: 0
-  isBarrierInstalled: 0
-  IsPlayerInRange: 0
+  isPlayerInRange: 0
 --- !u!61 &149013095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3183,6 +3185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fa5ceba5d07749b13fbce3f0e673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  positionOnWall: 0
 --- !u!58 &237741809
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5263,9 +5267,7 @@ MonoBehaviour:
   hpBar: {fileID: 1360112773}
   hpBarLength: {fileID: 1575380719}
   barrierScript: {fileID: 0}
-  damageRank: 0
-  isBarrierInstalled: 0
-  IsPlayerInRange: 0
+  isPlayerInRange: 0
 --- !u!212 &362044472
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5353,6 +5355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 375036039}
+  - component: {fileID: 375036042}
   - component: {fileID: 375036041}
   - component: {fileID: 375036040}
   m_Layer: 0
@@ -5425,6 +5428,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375036038}
   m_CullTransparentMesh: 1
+--- !u!114 &375036042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375036038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395977e8e637cfc489a61a69b66c54d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &391599994
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,7 +6618,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.8941177, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -7170,7 +7185,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -7918,7 +7933,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -8154,7 +8169,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -8422,6 +8437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fa5ceba5d07749b13fbce3f0e673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  positionOnWall: 0
 --- !u!58 &568851413
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9966,7 +9983,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.8941177, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10586,7 +10603,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.8941177, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11099,9 +11116,7 @@ MonoBehaviour:
   hpBar: {fileID: 275120393}
   hpBarLength: {fileID: 877556234}
   barrierScript: {fileID: 0}
-  damageRank: 0
-  isBarrierInstalled: 0
-  IsPlayerInRange: 0
+  isPlayerInRange: 0
 --- !u!61 &763231107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11921,7 +11936,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -12193,7 +12208,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -12735,7 +12750,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -13190,6 +13205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fa5ceba5d07749b13fbce3f0e673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  positionOnWall: 0
 --- !u!1 &965788099
 GameObject:
   m_ObjectHideFlags: 0
@@ -15203,7 +15220,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -15874,7 +15891,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -16307,7 +16324,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -16834,9 +16851,7 @@ MonoBehaviour:
   hpBar: {fileID: 778067175}
   hpBarLength: {fileID: 607787486}
   barrierScript: {fileID: 0}
-  damageRank: 0
-  isBarrierInstalled: 1
-  IsPlayerInRange: 0
+  isPlayerInRange: 0
 --- !u!212 &1263008987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17179,9 +17194,7 @@ MonoBehaviour:
   hpBar: {fileID: 753509278}
   hpBarLength: {fileID: 2110698232}
   barrierScript: {fileID: 0}
-  damageRank: 0
-  isBarrierInstalled: 0
-  IsPlayerInRange: 0
+  isPlayerInRange: 0
 --- !u!61 &1281859616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17902,7 +17915,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -18591,9 +18604,7 @@ MonoBehaviour:
   hpBar: {fileID: 1111625787}
   hpBarLength: {fileID: 503624078}
   barrierScript: {fileID: 0}
-  damageRank: 0
-  isBarrierInstalled: 1
-  IsPlayerInRange: 0
+  isPlayerInRange: 0
 --- !u!61 &1373340347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20232,7 +20243,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.8941177, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -21952,7 +21963,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -24268,7 +24279,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -24657,6 +24668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fa5ceba5d07749b13fbce3f0e673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  positionOnWall: 0
 --- !u!58 &1807508772
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -24771,6 +24784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fa5ceba5d07749b13fbce3f0e673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  positionOnWall: 0
 --- !u!58 &1812255423
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -25050,7 +25065,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -25575,9 +25590,7 @@ MonoBehaviour:
   hpBar: {fileID: 1646744412}
   hpBarLength: {fileID: 2051804353}
   barrierScript: {fileID: 0}
-  damageRank: 0
-  isBarrierInstalled: 0
-  IsPlayerInRange: 0
+  isPlayerInRange: 0
 --- !u!61 &1874888378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25754,6 +25767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fa5ceba5d07749b13fbce3f0e673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  positionOnWall: 0
 --- !u!58 &1878922440
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -25873,7 +25888,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -26879,7 +26894,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -27434,9 +27449,7 @@ MonoBehaviour:
   hpBar: {fileID: 109231883}
   hpBarLength: {fileID: 1885612298}
   barrierScript: {fileID: 0}
-  damageRank: 0
-  isBarrierInstalled: 1
-  IsPlayerInRange: 0
+  isPlayerInRange: 0
 --- !u!212 &2060130003
 SpriteRenderer:
   m_ObjectHideFlags: 0

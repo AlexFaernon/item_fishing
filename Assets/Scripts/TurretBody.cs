@@ -10,7 +10,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
     [HideInInspector] public Barrier barrierScript;
-    private TurretClass turretClass;
+    public TurretClass turretClass;
     public Side Side => side;
     public Side PositionOnWall => positionOnWall;
     
@@ -86,10 +86,13 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Awake()
     {
-        turretClass = SaveController.GetSavedTurret(side, positionOnWall) ?? new TurretClass(side, positionOnWall);
+        turretClass = LoadedData.GetSavedTurret(side, positionOnWall) ?? new TurretClass();
         EventAggregator.BarrierInstalled.Subscribe(OnBarrierInstallation);
         turretControlScript = transform.parent.gameObject.GetComponent<Turret>();
         barrierScript = barrier.GetComponent<Barrier>();
+        barrierScript.side = side;
+        barrierScript.positionOnWall = positionOnWall;
+        barrier.SetActive(IsBarrierInstalled);
         spriteRenderer = GetComponent<SpriteRenderer>();
         hpBar.transform.parent.gameObject.SetActive(false);
         if (!IsInstalled)
@@ -112,13 +115,12 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         normalColor = spriteRenderer.color;
         Ship.AddTurret(this);
-        barrier.SetActive(IsBarrierInstalled);
         EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
     }
 
     private void Update()
     {
-        if (isPlayerInRange && Input.GetMouseButtonDown(1))
+        if (isPlayerInRange && IsBarrierInstalled && Input.GetMouseButtonDown(1))
         {
             barrierScript.Activate();
         }
@@ -140,7 +142,6 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             IsInstalled = true;
             EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
-            Ship.AddTurret(this);
             Health = MaxHealth;
         }
         IsBroken = false;
@@ -161,6 +162,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void EnableOnResearch()
     {
         gameObject.SetActive(true);
+        Ship.AddTurret(this);
     }
 
     private void RepairOnSecondLife()

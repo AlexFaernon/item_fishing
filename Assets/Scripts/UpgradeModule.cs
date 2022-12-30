@@ -12,6 +12,7 @@ public class UpgradeModule : MonoBehaviour
     private Wall wall;
     private TurretBody turret;
     private Barrier barrier;
+    private UpgradeType upgradeType;
 
     private void Awake()
     {
@@ -25,13 +26,19 @@ public class UpgradeModule : MonoBehaviour
         upgradingModule.TryGetComponent(out barrier);
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
-        EventAggregator.ChooseUpgradeType.Subscribe(SetInteractable);
+        EventAggregator.ChooseUpgradeType.Subscribe(SetUpgradeType);
         button.interactable = false;
     }
 
-    private void SetInteractable(UpgradeType upgradeType)
+    private void SetUpgradeType(UpgradeType other)
     {
-        if (wall && upgradeType == UpgradeType.Wall || turret && upgradeType == UpgradeType.Turret ||
+        upgradeType = other;
+    }
+
+    private void Update()
+    {
+        if (wall && upgradeType == UpgradeType.Wall ||
+            turret && turret.IsInstalled && upgradeType == UpgradeType.Turret ||
             barrier && upgradeType == UpgradeType.Barrier)
         {
             button.interactable = true;
@@ -62,6 +69,6 @@ public class UpgradeModule : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventAggregator.ChooseUpgradeType.Unsubscribe(SetInteractable);
+        EventAggregator.ChooseUpgradeType.Unsubscribe(SetUpgradeType);
     }
 }
