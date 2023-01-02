@@ -4,11 +4,10 @@ using System.Collections.Generic;
 public static class LoadedData
 {
     public static int LevelNumber;
-    private static Dictionary<(Side, Side), TurretClass> _turrets = new();
-    private static Dictionary<(Side, Side), BarrierClass> _barriers = new();
-    private static Dictionary<Side, WallClass> _walls = new();
-
-    private static Dictionary<ResearchType, bool> _researches
+    public static Dictionary<Tuple<Side, Side>, TurretClass> Turrets { get; set; } = new();
+    public static Dictionary<Tuple<Side, Side>, BarrierClass> Barriers { get; set; } = new();
+    public static Dictionary<Side, WallClass> Walls { get; set; } = new();
+    public static Dictionary<ResearchType, bool> Researches
     {
         set
         {
@@ -18,27 +17,27 @@ public static class LoadedData
         }
     }
 
-    private static Dictionary<ResourceType, int> _resources
+    public static Dictionary<ResourceType, int> Resources
     {
         set
         {
-            Resources.Metal.Count = value[ResourceType.Metal];
-            Resources.Electronics.Count = value[ResourceType.Electronics];
+            global::Resources.Metal.Count = value[ResourceType.Metal];
+            global::Resources.Electronics.Count = value[ResourceType.Electronics];
         }
     }
 
     public static TurretClass GetSavedTurret(Side side, Side positionOnWall)
     {
-        return _turrets.TryGetValue((side, positionOnWall), out var turret) ? turret : null;
+        return Turrets.TryGetValue(new Tuple<Side, Side>(side, positionOnWall), out var turret) ? turret : null;
     }
 
     public static WallClass GetSavedWall(Side side)
     {
-        return _walls.TryGetValue(side, out var wall) ? wall : null;
+        return Walls.TryGetValue(side, out var wall) ? wall : null;
     }
 
     public static BarrierClass GetSavedBarrier(Side side, Side positionOnWall)
     {
-        return _barriers.TryGetValue((side, positionOnWall), out var barrier) ? barrier : null;
+        return Barriers.TryGetValue(new Tuple<Side, Side>(side, positionOnWall), out var barrier) ? barrier : null;
     }
 }

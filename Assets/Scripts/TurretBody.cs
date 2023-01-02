@@ -20,22 +20,18 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         set
         {
             turretClass.HealthRank = value;
-            hpBarLength.size = new Vector2(MaxHealth, 4);
+            hpBarLength.size = new Vector2(turretClass.MaxHealth, 4);
         }
     }
-    public int HealthMaxRank => new[] {2, 3}.Length - 1;
-    public int MaxHealth => new[]{2, 3}[HealthRank];
-    public int NextHealthUpgradeCost => new[] { 10, 0 }[HealthRank];
 
     public int DamageRank
     {
         get => turretClass.DamageRank;
         set => turretClass.DamageRank = value;
     }
-    public int DamageMaxRank => new[] { 10, 15, 20, 25 }.Length - 1;
-    public int NextDamageUpgradeCost => new[] { 10, 20, 30, 0 }[DamageRank];
-    public int Damage => new[] { 10, 15, 20, 25 }[DamageRank];
-    
+
+    public int MaxHealth => turretClass.MaxHealth;
+
     private int TimeToRepair => !IsBroken && IsInstalled ? 2 : 5;
     public int MetalToRepair => !IsBroken && IsInstalled ? 2 : 5;
     private bool isRepairing;
@@ -142,11 +138,11 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             IsInstalled = true;
             EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
-            Health = MaxHealth;
+            Health = turretClass.MaxHealth;
         }
         IsBroken = false;
         Debug.Log("repaired");
-        if (Health >= MaxHealth) return;
+        if (Health >= turretClass.MaxHealth) return;
         
         Invoke(nameof(RepairOrInstall), TimeToRepair);
         Debug.Log("repairing continued");
@@ -170,7 +166,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (Ship.Turrets.Any(turret => turret.side == Side && !turret.IsBroken)) return;
 
         IsBroken = false;
-        Health = MaxHealth;
+        Health = turretClass.MaxHealth;
     }
 
     private void OnBarrierInstallation(Barrier other)
@@ -227,7 +223,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isPlayerInRange || Health == MaxHealth) return;
+        if (!isPlayerInRange || Health == turretClass.MaxHealth) return;
         
         if (!IsInstalled && !Research.TwoTurretsResearch && Ship.Turrets.Any(turret => turret.side == Side))
         {

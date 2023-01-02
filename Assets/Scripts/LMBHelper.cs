@@ -19,7 +19,7 @@ public class LMBHelper : MonoBehaviour
     private void OnTurret(TurretBody turretBody)
     {
         turret = turretBody;
-        if (turret && turret.Health < turret.MaxHealth)
+        if (turret && turret.Health < turret.turretClass.MaxHealth)
         {
             gameObject.SetActive(true);
         }
@@ -28,7 +28,7 @@ public class LMBHelper : MonoBehaviour
     private void OnWall(Wall wall)
     {
         this.wall = wall;
-        if (this.wall && this.wall.Health < this.wall.MaxHealth)
+        if (this.wall && this.wall.Health < this.wall.wallClass.MaxHealth)
         {
             gameObject.SetActive(true);
         }
@@ -38,7 +38,7 @@ public class LMBHelper : MonoBehaviour
     {
         if (turret)
         {
-            if (turret.Health < turret.MaxHealth)
+            if (turret.Health < turret.turretClass.MaxHealth)
             {
                 SetValues(turret.MetalToRepair, turret.isPlayerInRange);
             }
@@ -51,7 +51,7 @@ public class LMBHelper : MonoBehaviour
 
         if (wall)
         {
-            if (wall.Health < wall.MaxHealth)
+            if (wall.Health < wall.wallClass.MaxHealth)
             {
                 SetValues(wall.metalToRepair, wall.isPlayerInRange);
             }

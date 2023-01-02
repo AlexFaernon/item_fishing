@@ -26,12 +26,10 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         set
         {
             wallClass.HealthRank = value;
-            hpBarLength.size = new Vector2(MaxHealth, 1);
+            hpBarLength.size = new Vector2(wallClass.MaxHealth, 1);
         }
     }
-    public int HealthMaxRank => new[] { 2, 3, 4, 5 }.Length - 1;
-    public int MaxHealth => new[]{2, 3, 4, 5}[HealthRank];
-    public int NextUpgradeCost => new[] { 10, 20, 30, 0 }[HealthRank];
+    
     public bool isPlayerInRange;
 
     public int Health
@@ -55,7 +53,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;
         hpBar.transform.parent.gameObject.SetActive(false);
-        Health = MaxHealth; //todo убрать потом
+        Health = wallClass.MaxHealth; //todo убрать потом
         EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
     }
 
@@ -71,7 +69,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         Health += 1;
         Resources.Metal.Count -= metalToRepair;
         Debug.Log("repaired");
-        if (Health < MaxHealth)
+        if (Health < wallClass.MaxHealth)
         {
             Invoke(nameof(Repair), TimeToRepair);
             Debug.Log("repairing continued");
@@ -80,7 +78,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private void RepairOnSecondLife()
     {
-        Health = MaxHealth;
+        Health = wallClass.MaxHealth;
     }
 
     private void StopRepair()
@@ -139,7 +137,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isPlayerInRange || Health == MaxHealth) return;
+        if (!isPlayerInRange || Health == wallClass.MaxHealth) return;
         
         Invoke(nameof(Repair), TimeToRepair);
         isRepairing = true;
