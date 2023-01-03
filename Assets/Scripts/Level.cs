@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,9 +29,9 @@ public class Level : MonoBehaviour
     private void LoadLevel()
     {
         LoadedData.LevelNumber = levelNumber;
-        LoadedData.Turrets = GetJson<Dictionary<Tuple<Side, Side>, TurretClass>>(SaveData.TurretsFileName);
+        LoadedData.Turrets = GetJson<Dictionary<string, TurretClass>>(SaveData.TurretsFileName);
         LoadedData.Walls = GetJson<Dictionary<Side, WallClass>>(SaveData.WallsFileName);
-        LoadedData.Barriers = GetJson<Dictionary<Tuple<Side, Side>, BarrierClass>>(SaveData.BarrierFileName);
+        LoadedData.Barriers = GetJson<Dictionary<string, BarrierClass>>(SaveData.BarrierFileName);
         LoadedData.Researches = GetJson<Dictionary<ResearchType, bool>>(SaveData.ResearchesFileName);
         LoadedData.Resources = GetJson<Dictionary<ResourceType, int>>(SaveData.ResourcesFileName);
         EventAggregator.ShowLevelInfo.Publish();
@@ -37,9 +40,9 @@ public class Level : MonoBehaviour
     private void LoadFirstLevel()
     {
         LoadedData.LevelNumber = levelNumber;
-        LoadedData.Turrets = new Dictionary<Tuple<Side, Side>, TurretClass>();
+        LoadedData.Turrets = new Dictionary<string, TurretClass>();
         LoadedData.Walls = new Dictionary<Side, WallClass>();
-        LoadedData.Barriers = new Dictionary<Tuple<Side, Side>, BarrierClass>();
+        LoadedData.Barriers = new Dictionary<string, BarrierClass>();
         LoadedData.Researches = new Dictionary<ResearchType, bool>
         {
             { ResearchType.Turrets, false },

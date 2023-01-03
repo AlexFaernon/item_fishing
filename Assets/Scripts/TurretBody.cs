@@ -83,14 +83,20 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void Awake()
     {
         turretClass = LoadedData.GetSavedTurret(side, positionOnWall) ?? new TurretClass();
-        EventAggregator.BarrierInstalled.Subscribe(OnBarrierInstallation);
         turretControlScript = transform.parent.gameObject.GetComponent<Turret>();
+        
+        EventAggregator.BarrierInstalled.Subscribe(OnBarrierInstallation);
         barrierScript = barrier.GetComponent<Barrier>();
         barrierScript.side = side;
         barrierScript.positionOnWall = positionOnWall;
         barrier.SetActive(IsBarrierInstalled);
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        hpBar.size = new Vector2(Health, 4);
+        hpBarLength.size = new Vector2(turretClass.MaxHealth, 4);
         hpBar.transform.parent.gameObject.SetActive(false);
+        
         if (!IsInstalled)
         {
             spriteRenderer.color = normalColor = Color.gray; //пустой слот
@@ -116,6 +122,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Update()
     {
+        
         if (isPlayerInRange && IsBarrierInstalled && Input.GetMouseButtonDown(1))
         {
             barrierScript.Activate();
@@ -224,8 +231,9 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerDown(PointerEventData eventData)
     {
         if (!isPlayerInRange || Health == turretClass.MaxHealth) return;
-        
-        if (!IsInstalled && !Research.TwoTurretsResearch && Ship.Turrets.Any(turret => turret.side == Side))
+
+        if (!IsInstalled && !Research.TwoTurretsResearch &&
+            Ship.Turrets.Any(turret => turret.side == Side && turret.IsInstalled))
         {
             Debug.Log("Cant install");
             return;

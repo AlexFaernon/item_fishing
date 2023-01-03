@@ -20,13 +20,13 @@ public class SaveData : MonoBehaviour
             file.Delete();
         }
 
-        var turrets = new Dictionary<(Side, Side), TurretClass>();
-        var barriers = new Dictionary<(Side, Side), BarrierClass>();
+        var turrets = new Dictionary<string, TurretClass>();
+        var barriers = new Dictionary<string, BarrierClass>();
         foreach (var turret in Ship.Turrets)
         {
-            turrets[(turret.Side, turret.PositionOnWall)] = turret.turretClass;
+            turrets[turret.Side.ToString() + turret.PositionOnWall] = turret.turretClass;
             var barrier = turret.barrierScript;
-            barriers[(barrier.side, barrier.positionOnWall)] = barrier.barrierClass;
+            barriers[barrier.side.ToString() + barrier.positionOnWall] = barrier.barrierClass;
         }
         SaveObject(turrets, TurretsFileName);
         SaveObject(barriers, BarrierFileName);

@@ -18,12 +18,19 @@ public class WinWindow : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 0;
         turretCount.text = $"{Ship.Turrets.Count(turret => turret.IsInstalled && !turret.IsBroken)}";
         metal.text = Resources.Metal.Count.ToString();
         electronics.text = Resources.Electronics.Count.ToString();
         var wallsHealth = Ship.Walls.Select(wall => wall.Health).Sum();
         var wallsMaxHealth = Ship.Walls.Select(wall => wall.wallClass.MaxHealth).Sum();
         shipHealth.text = $"{(int)((double)wallsHealth / wallsMaxHealth * 100)}%";
-        continueButton.onClick.AddListener(() => SceneManager.LoadScene("Levels"));
+        continueButton.onClick.AddListener(Continue);
+    }
+
+    private void Continue()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Levels");
     }
 }

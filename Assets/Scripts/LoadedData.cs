@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public static class LoadedData
 {
     public static int LevelNumber;
-    public static Dictionary<Tuple<Side, Side>, TurretClass> Turrets { get; set; } = new();
-    public static Dictionary<Tuple<Side, Side>, BarrierClass> Barriers { get; set; } = new();
+    public static Dictionary<string, TurretClass> Turrets { get; set; } = new();
+    public static Dictionary<string, BarrierClass> Barriers { get; set; } = new();
     public static Dictionary<Side, WallClass> Walls { get; set; } = new();
     public static Dictionary<ResearchType, bool> Researches
     {
@@ -28,7 +28,7 @@ public static class LoadedData
 
     public static TurretClass GetSavedTurret(Side side, Side positionOnWall)
     {
-        return Turrets.TryGetValue(new Tuple<Side, Side>(side, positionOnWall), out var turret) ? turret : null;
+        return Turrets.TryGetValue(side.ToString() + positionOnWall, out var turret) ? turret : null;
     }
 
     public static WallClass GetSavedWall(Side side)
@@ -38,6 +38,6 @@ public static class LoadedData
 
     public static BarrierClass GetSavedBarrier(Side side, Side positionOnWall)
     {
-        return Barriers.TryGetValue(new Tuple<Side, Side>(side, positionOnWall), out var barrier) ? barrier : null;
+        return Barriers.TryGetValue(side.ToString() + positionOnWall, out var barrier) ? barrier : null;
     }
 }

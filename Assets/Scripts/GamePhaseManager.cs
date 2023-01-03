@@ -34,7 +34,6 @@ public class GamePhaseManager : MonoBehaviour
 
     private void OnBattleEnd()
     {
-        Time.timeScale = 0;
         win.SetActive(true);
         Debug.Log("End");
     }

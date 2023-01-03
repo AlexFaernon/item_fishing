@@ -51,6 +51,6 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventAggregator.ModeSwitched.Subscribe(SetActiveOnMod);
+        EventAggregator.ModeSwitched.Unsubscribe(SetActiveOnMod);
     }
 }

@@ -50,10 +50,14 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         wallClass = LoadedData.GetSavedWall(side) ?? new WallClass();
         Ship.AddWall(this);
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;
+        
+        hpBar.size = new Vector2(Health, 4);
+        hpBarLength.size = new Vector2(wallClass.MaxHealth, 4);
         hpBar.transform.parent.gameObject.SetActive(false);
-        Health = wallClass.MaxHealth; //todo убрать потом
+        
         EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
     }
 
