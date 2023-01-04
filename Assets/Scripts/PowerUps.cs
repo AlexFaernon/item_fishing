@@ -4,25 +4,24 @@ using UnityEngine;
 
 public static class PowerUps
 {
-    public static int Tokens { get; private set; }
     public static bool SecondLife { get; private set; }
     public static bool TurretsBoost { get; private set; }
 
     public static void AddToken()
     {
-        Tokens++;
+        Resources.Coins += 2;
     }
 
     public static void ActivateSecondLife()
     {
         SecondLife = true;
-        Tokens -= 2;
+        Resources.Coins -= 2;
     }
 
     public static void ActivateTurretBoost()
     {
         TurretsBoost = true;
-        Tokens -= 1;
+        Resources.Coins -= 1;
     }
 
     public static void DeactivateTurretBoost()

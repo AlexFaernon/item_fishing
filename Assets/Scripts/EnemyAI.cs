@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random = System.Random;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour //todo fix attacking
 {
     private static readonly Dictionary<GameObject, Enemy> Enemies = new();
     private static readonly Random Random = new();
@@ -53,14 +53,14 @@ public class EnemyAI : MonoBehaviour
     {
         enemy1.Attack(Ship.GetTarget(enemy1.CurrentSide));
         Debug.Log("enemy1 attack");
-        yield return new WaitUntil(() => enemy1.IsReadyToAttack);
+        yield return new WaitUntil(() => enemy1.IsReadyToAttack || enemy1.Health == 0);
         
         if (enemy2 is not null)
         {
             yield return new WaitForSeconds(8);
             enemy2.Attack(Ship.GetTarget(enemy2.CurrentSide));
             Debug.Log("enemy2 attack");
-            yield return new WaitUntil(() => enemy1.IsReadyToAttack);
+            yield return new WaitUntil(() => enemy2.IsReadyToAttack || enemy2.Health == 0);
         }
         
         yield return new WaitForSeconds(10);

@@ -92,12 +92,20 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         isRepairing = false;
     }
 
-    private IEnumerator GameOver() //todo second life
+    private IEnumerator GameOver() //todo second life window
     {
-        Time.timeScale = 0; //todo reset in game over
         spriteRenderer.color = Color.black;
+        Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(2);
-        gameOver.SetActive(true);
+        if (PowerUps.SecondLife)
+        {
+            EventAggregator.SecondLifeActivated.Publish();
+            PowerUps.ActivateSecondLife();
+        }
+        else
+        {
+            gameOver.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)

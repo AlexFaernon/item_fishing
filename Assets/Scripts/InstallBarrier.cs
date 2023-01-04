@@ -1,21 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InstallBarrier : MonoBehaviour
 {
     [SerializeField] private Button button;
+    [SerializeField] private TMP_Text text;
     private Barrier barrier;
 
-    private void Awake() //todo cost
+    private void Awake()
     {
         EventAggregator.ChooseUpgradeWall.Subscribe(OnNonBarrier);
         EventAggregator.ChooseUpgradeTurret.Subscribe(OnNonBarrier);
         EventAggregator.ChooseUpgradeBarrier.Subscribe(ShowBarrierInstallation);
         button.onClick.AddListener(OnClick);
         gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        text.text = $"{Resources.Metal.Count}/10";
+        button.interactable = Resources.Metal.Count <= 10;
     }
 
     private void OnClick()

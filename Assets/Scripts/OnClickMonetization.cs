@@ -9,14 +9,9 @@ public class OnClickMonetization : MonoBehaviour
     {
         SceneManager.LoadScene("Levels");
     }
-    
-    public void OnClickViewAd()
-    {
-        // todo запустить рекламку начислить ресурсы;
-    } 
-    
+
     public void OnClickStart()
     {
-        // todo в бой
+        SceneManager.LoadScene("SampleScene");
     }
 }

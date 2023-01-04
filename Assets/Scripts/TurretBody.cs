@@ -170,7 +170,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void RepairOnSecondLife()
     {
-        if (Ship.Turrets.Any(turret => turret.side == Side && !turret.IsBroken)) return;
+        if (Ship.Turrets.Any(turret => turret.side == Side && turret.IsInstalled && !turret.IsBroken)) return;
 
         IsBroken = false;
         Health = turretClass.MaxHealth;

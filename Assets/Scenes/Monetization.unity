@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 353414125}
   - component: {fileID: 353414128}
   - component: {fileID: 353414127}
+  - component: {fileID: 353414129}
   - component: {fileID: 353414126}
   m_Layer: 0
   m_Name: Continue
@@ -402,7 +403,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 353414127}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 353414129}
+        m_TargetAssemblyTypeName: OnClickMonetization, Assembly-CSharp
+        m_MethodName: OnClickStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &353414127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +454,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353414124}
   m_CullTransparentMesh: 1
+--- !u!114 &353414129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353414124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5330963804f00449b841b4a16004c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368719605
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 447649697}
   - component: {fileID: 447649700}
+  - component: {fileID: 447649701}
   - component: {fileID: 447649699}
   - component: {fileID: 447649698}
   m_Layer: 0
@@ -847,6 +873,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447649696}
   m_CullTransparentMesh: 1
+--- !u!114 &447649701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447649696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc8aa4dab22114468c67a0402803a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &573850651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,7 +1271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d27ed830fdbfac4a9e2a13553533566, type: 2}
   m_sharedMaterial: {fileID: -2488903439599084082, guid: 8d27ed830fdbfac4a9e2a13553533566, type: 2}
@@ -1676,9 +1714,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999390695}
-        m_TargetAssemblyTypeName: YandexSDK, Assembly-CSharp
-        m_MethodName: ShowRewarded
+      - m_Target: {fileID: 172360642}
+        m_TargetAssemblyTypeName: Coins, Assembly-CSharp
+        m_MethodName: Reward
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3161,6 +3199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2033264351}
   - component: {fileID: 2033264354}
+  - component: {fileID: 2033264355}
   - component: {fileID: 2033264353}
   - component: {fileID: 2033264352}
   m_Layer: 0
@@ -3273,6 +3312,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033264350}
   m_CullTransparentMesh: 1
+--- !u!114 &2033264355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033264350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b40b218a73989d419fb0e43b2b750b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2067085241
 GameObject:
   m_ObjectHideFlags: 0

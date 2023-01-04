@@ -49,7 +49,8 @@ public class SaveData : MonoBehaviour
         var resources = new Dictionary<ResourceType, int>
         {
             { ResourceType.Metal, Resources.Metal.Count },
-            { ResourceType.Electronics, Resources.Electronics.Count }
+            { ResourceType.Electronics, Resources.Electronics.Count },
+            { ResourceType.Coins, Resources.Coins }
         };
         SaveObject(resources, ResourcesFileName);
     }

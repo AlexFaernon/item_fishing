@@ -8,8 +8,8 @@ using Random = System.Random;
 
 public static class Ship
 {
-    public static readonly List<TurretBody> Turrets = new(); //todo clear clear after level
-    public static readonly List<Wall> Walls = new(); //todo cleat after level
+    public static readonly List<TurretBody> Turrets = new();
+    public static readonly List<Wall> Walls = new();
     private static readonly Random Random = new (); 
 
     public static void AddTurret(TurretBody turret)

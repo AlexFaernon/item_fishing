@@ -16,6 +16,12 @@ public class GamePhaseManager : MonoBehaviour
         StartCoroutine(WaitForTimer(OnFishingEnd));
     }
 
+    private void Start()
+    {
+        Debug.Log(Ship.Walls.Count);
+        Debug.Log(Ship.Turrets.Count);
+    }
+
     private IEnumerator WaitForTimer(Action action)
     {
         yield return new WaitUntil(() => timer.isTimeout);
@@ -36,5 +42,14 @@ public class GamePhaseManager : MonoBehaviour
     {
         win.SetActive(true);
         Debug.Log("End");
+    }
+
+    private void OnDestroy()
+    {
+        Ship.Walls.Clear();
+        Ship.Turrets.Clear();
+        PowerUps.UseSecondLife();
+        PowerUps.DeactivateTurretBoost();
+        Time.timeScale = 1;
     }
 }

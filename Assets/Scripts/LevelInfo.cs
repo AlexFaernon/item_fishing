@@ -19,7 +19,7 @@ public class LevelInfo : MonoBehaviour, IPointerDownHandler
     private void Awake()
     {
         EventAggregator.ShowLevelInfo.Subscribe(ShowLevelInfo);
-        startLevel.onClick.AddListener(() => SceneManager.LoadScene("SampleScene")); //todo загружать монетизацию
+        startLevel.onClick.AddListener(() => SceneManager.LoadScene("Monetization"));
         gameObject.SetActive(false);
     }
 

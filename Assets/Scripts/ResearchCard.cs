@@ -31,7 +31,7 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
         Time.timeScale = TimerOnClick.TimeScale;
     }
 
-    private void OnClick() //todo cost
+    private void OnClick()
     {
         switch (researchType)
         {
