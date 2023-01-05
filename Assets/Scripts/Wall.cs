@@ -11,6 +11,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
     [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject secondLife;
     public WallClass wallClass;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
@@ -99,8 +100,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         yield return new WaitForSecondsRealtime(2);
         if (PowerUps.SecondLife)
         {
-            EventAggregator.SecondLifeActivated.Publish();
-            PowerUps.ActivateSecondLife();
+            secondLife.SetActive(true);
         }
         else
         {

@@ -26,11 +26,22 @@ public class WinWindow : MonoBehaviour
         var wallsMaxHealth = Ship.Walls.Select(wall => wall.wallClass.MaxHealth).Sum();
         shipHealth.text = $"{(int)((double)wallsHealth / wallsMaxHealth * 100)}%";
         continueButton.onClick.AddListener(Continue);
+        replayButton.onClick.AddListener(Replay);
+        mainMenuButton.onClick.AddListener(MainMenu);
     }
 
     private void Continue()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene("Levels");
+    }
+
+    private void Replay()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    private void MainMenu()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }

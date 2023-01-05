@@ -27,8 +27,8 @@ public class LevelInfo : MonoBehaviour, IPointerDownHandler
     {
         levelNumber.text = $"{LoadedData.LevelNumber} уровень";
         turretCount.text = $"{LoadedData.Turrets.Values.Count(turret => turret.IsInstalled && !turret.IsBroken)}";
-        metal.text = Resources.Metal.Count.ToString();
-        electronics.text = Resources.Electronics.Count.ToString();
+        metal.text = LoadedData.Resources[ResourceType.Metal].ToString();
+        electronics.text = LoadedData.Resources[ResourceType.Electronics].ToString();
         var wallsHealth = LoadedData.Walls.Values.Select(wall => wall.Health).Sum();
         var wallsMaxHealth = LoadedData.Walls.Values.Select(wall => wall.MaxHealth).Sum();
         shipHealth.text = $"{(int)((double)wallsHealth / wallsMaxHealth * 100)}%";
