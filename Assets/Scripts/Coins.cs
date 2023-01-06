@@ -9,8 +9,8 @@ public class Coins : MonoBehaviour
 
     private void Start()
     {
-        //sdk = YandexSDK.instance;
-        //sdk.onRewardedAdReward += Reward;
+        sdk = YandexSDK.instance;
+        sdk.onRewardedAdReward += Reward;
     }
 
     private void Update()
