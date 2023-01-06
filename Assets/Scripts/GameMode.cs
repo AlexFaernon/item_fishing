@@ -38,7 +38,7 @@ public class GameMode : MonoBehaviour
 
     private void Update()
     {
-        if (!(Input.GetKeyDown(KeyCode.E) || ShouldSwitchToShip) || Mode == Mode.Player || Hook.IsLaunched ||
+        if (!(Input.GetKeyDown(KeyCode.Q) || ShouldSwitchToShip) || Mode == Mode.Player || Hook.IsLaunched ||
             Hook.IsRetracting) return;
 
         ShouldSwitchToShip = false;

@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random = System.Random;
 
-public class EnemyAI : MonoBehaviour //todo fix attacking
+public class EnemyAI : MonoBehaviour
 {
     private static readonly Dictionary<GameObject, Enemy> Enemies = new();
     private static readonly Random Random = new();

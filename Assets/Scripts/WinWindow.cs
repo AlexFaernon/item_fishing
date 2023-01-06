@@ -37,6 +37,7 @@ public class WinWindow : MonoBehaviour
 
     private void Replay()
     {
+        Level.ReloadLevel();
         SceneManager.LoadScene("SampleScene");
     }
 

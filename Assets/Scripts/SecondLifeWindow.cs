@@ -13,7 +13,7 @@ public class SecondLifeWindow : MonoBehaviour
     private IEnumerator OnSecondLife()
     {
         Time.timeScale = 0;
-        PowerUps.ActivateSecondLife();
+        PowerUps.UseSecondLife();
         yield return new WaitForSecondsRealtime(1.5f);
         Time.timeScale = 1;
         EventAggregator.SecondLifeActivated.Publish();

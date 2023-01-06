@@ -50,4 +50,10 @@ public class Move : MonoBehaviour
         
         rb.velocity = new Vector2(mx, my).normalized * speed;
     }
+
+    private void OnDestroy()
+    {
+        EventAggregator.ModeSwitched.Unsubscribe(OnModeSwitch);
+
+    }
 }

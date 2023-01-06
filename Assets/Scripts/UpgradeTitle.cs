@@ -18,7 +18,7 @@ public class UpgradeTitle : MonoBehaviour
     {
         EventAggregator.ChooseUpgradeType.Subscribe(SetUpgradeName);
         text.text = "";
-        
+        icon.sprite = wallIcon;
     }
     
     private void OnEnable()

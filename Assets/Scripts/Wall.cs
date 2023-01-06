@@ -93,7 +93,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         isRepairing = false;
     }
 
-    private IEnumerator GameOver() //todo second life window
+    private IEnumerator GameOver()
     {
         spriteRenderer.color = Color.black;
         Time.timeScale = 0;

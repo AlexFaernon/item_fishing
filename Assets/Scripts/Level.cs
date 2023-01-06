@@ -20,26 +20,50 @@ public class Level : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(isFirstLevel ? LoadFirstLevel : LoadLevel);
+        button.onClick.AddListener(ShowLevelInfo);
         isCompleted = Directory.Exists($"{Application.persistentDataPath}\\{levelNumber}");
         isPreviousCompleted = Directory.Exists($"{Application.persistentDataPath}\\{levelNumber - 1}");
         button.interactable = isFirstLevel || isCompleted || isPreviousCompleted;
     }
 
-    private void LoadLevel()
+    private void ShowLevelInfo()
     {
         LoadedData.LevelNumber = levelNumber;
+        if (isFirstLevel)
+        {
+            LoadFirstLevel();
+        }
+        else
+        {
+            LoadLevel();
+        }
+
+        EventAggregator.ShowLevelInfo.Publish();
+    }
+
+    public static void ReloadLevel()
+    {
+        if (LoadedData.LevelNumber == 1)
+        {
+            LoadFirstLevel();
+        }
+        else
+        {
+            LoadLevel();
+        }
+    }
+
+    private static void LoadLevel()
+    {
         LoadedData.Turrets = GetJson<Dictionary<string, TurretClass>>(SaveData.TurretsFileName);
         LoadedData.Walls = GetJson<Dictionary<Side, WallClass>>(SaveData.WallsFileName);
         LoadedData.Barriers = GetJson<Dictionary<string, BarrierClass>>(SaveData.BarrierFileName);
         LoadedData.Researches = GetJson<Dictionary<ResearchType, bool>>(SaveData.ResearchesFileName);
         LoadedData.Resources = GetJson<Dictionary<ResourceType, int>>(SaveData.ResourcesFileName);
-        EventAggregator.ShowLevelInfo.Publish();
     }
 
-    private void LoadFirstLevel()
+    private static void LoadFirstLevel()
     {
-        LoadedData.LevelNumber = levelNumber;
         LoadedData.Turrets = new Dictionary<string, TurretClass>();
         LoadedData.Walls = new Dictionary<Side, WallClass>();
         LoadedData.Barriers = new Dictionary<string, BarrierClass>();
@@ -52,14 +76,14 @@ public class Level : MonoBehaviour
         LoadedData.Resources = new Dictionary<ResourceType, int>
         {
             { ResourceType.Metal, 100 },
-            { ResourceType.Electronics, 10 }
+            { ResourceType.Electronics, 10 },
+            { ResourceType.Coins, 10 }
         };
-        EventAggregator.ShowLevelInfo.Publish();
     }
 
-    private T GetJson<T>(string fileName)
+    private static T GetJson<T>(string fileName)
     {
         return JsonConvert.DeserializeObject<T>(
-            File.ReadAllText($"{Application.persistentDataPath}/{levelNumber - 1}/{fileName}"));
+            File.ReadAllText($"{Application.persistentDataPath}/{LoadedData.LevelNumber - 1}/{fileName}"));
     }
 }

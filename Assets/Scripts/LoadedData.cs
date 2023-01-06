@@ -7,8 +7,26 @@ public static class LoadedData
     public static Dictionary<string, TurretClass> Turrets { get; set; } = new();
     public static Dictionary<string, BarrierClass> Barriers { get; set; } = new();
     public static Dictionary<Side, WallClass> Walls { get; set; } = new();
-    public static Dictionary<ResearchType, bool> Researches { get; set; } = new();
-    public static Dictionary<ResourceType, int> Resources { get; set; } = new();
+
+    public static Dictionary<ResearchType, bool> Researches
+    {
+        set
+        {
+            Research.TurretsResearch = value[ResearchType.Turrets];
+            Research.TwoTurretsResearch = value[ResearchType.TwoTurrets];
+            Research.BarriersResearch = value[ResearchType.Barrier];
+        }
+    }
+
+    public static Dictionary<ResourceType, int> Resources
+    {
+        set
+        {
+            global::Resources.Metal.Count = value[ResourceType.Metal];
+            global::Resources.Electronics.Count = value[ResourceType.Electronics];
+            global::Resources.Coins = value[ResourceType.Coins];
+        }
+    }
 
     public static TurretClass GetSavedTurret(Side side, Side positionOnWall)
     {

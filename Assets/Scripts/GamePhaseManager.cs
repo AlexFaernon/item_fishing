@@ -12,11 +12,7 @@ public class GamePhaseManager : MonoBehaviour
 
     private void Awake()
     {
-        Resources.Metal.Count = LoadedData.Resources[ResourceType.Metal];
-        Resources.Metal.Count = LoadedData.Resources[ResourceType.Electronics];
-        Research.TurretsResearch = LoadedData.Researches[ResearchType.Turrets];
-        Research.TwoTurretsResearch = LoadedData.Researches[ResearchType.TwoTurrets];
-        Research.BarriersResearch = LoadedData.Researches[ResearchType.Barrier];
+        IsBattlePhase = false;
         timer.SetTimer(60);
         StartCoroutine(WaitForTimer(OnFishingEnd));
     }

@@ -12,7 +12,13 @@ public class LoseWindow : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 0;
-        replayButton.onClick.AddListener(() => SceneManager.LoadScene("SampleScene"));
+        replayButton.onClick.AddListener(Replay);
         mainMenuButton.onClick.AddListener(() => SceneManager.LoadScene("MainMenu"));
+    }
+
+    private void Replay()
+    {
+        Level.ReloadLevel();
+        SceneManager.LoadScene("SampleScene");
     }
 }
