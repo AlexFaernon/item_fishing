@@ -4,21 +4,28 @@ using Random = UnityEngine.Random;
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject item;
-    private static System.Random _random = new();
+    [SerializeField] private int metalCount;
+    [SerializeField] private int electronicsCount;
     private void Awake() //todo item counter
     {
-        var coord = Random.insideUnitCircle;
+        for (var i = 0; i < LoadedData.MetalCount; i++)
+        {
+            SpawnItem().tag = "Metal";
+        }
+
+        for (var i = 0; i < LoadedData.ElectronicsCount; i++)
+        {
+            var obj = SpawnItem();
+            obj.tag = "Electronics";
+            obj.GetComponent<SpriteRenderer>().color = Color.green;
+        }
+    }
+
+    private GameObject SpawnItem()
+    {
         var rect = GetComponent<RectTransform>().rect;
-        var itemInstantiate = Instantiate(item, new Vector3(coord.x * rect.width / 2, coord.y * rect.height / 2, 0) + transform.position,
-            new Quaternion());
-        if (_random.Next(10) < 8)
-        {
-            itemInstantiate.tag = "Metal";
-        }
-        else
-        {
-            itemInstantiate.tag = "Electronics";
-            itemInstantiate.GetComponent<SpriteRenderer>().color = Color.green;
-        }
+        var x = Random.Range(-rect.width / 2, rect.width / 2);
+        var y = Random.Range(-rect.height / 2, rect.height / 2);
+        return Instantiate(item, new Vector3(x, y, 0) + transform.position, new Quaternion());
     }
 }

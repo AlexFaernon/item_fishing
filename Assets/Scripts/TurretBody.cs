@@ -1,4 +1,5 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -122,7 +123,6 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Update()
     {
-        
         if (isPlayerInRange && IsBarrierInstalled && Input.GetMouseButtonDown(1))
         {
             barrierScript.Activate();
@@ -149,10 +149,15 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
         IsBroken = false;
         Debug.Log("repaired");
-        if (Health >= turretClass.MaxHealth) return;
-        
-        Invoke(nameof(RepairOrInstall), TimeToRepair);
-        Debug.Log("repairing continued");
+        if (Health < turretClass.MaxHealth)
+        {
+            Invoke(nameof(RepairOrInstall), TimeToRepair);
+            Debug.Log("repairing continued");
+        }
+        else
+        {
+            StopRepair();
+        }
     }
 
     private void StopRepair()

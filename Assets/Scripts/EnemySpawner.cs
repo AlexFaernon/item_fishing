@@ -10,12 +10,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemyAI enemyAI;
     [SerializeField] private GameObject ship;
     [SerializeField] private float radius;
-    [SerializeField] private int enemyCount;
-    
-    private void Start() //todo enemy counter
+
+    private void Start()
     {
         enemyPrefab.GetComponent<Enemy>().ship = ship;
-        for (var i = 0; i < enemyCount; i++)
+        for (var i = 0; i < LoadedData.EnemyCounter; i++)
         {
             Instantiate(enemyPrefab, GetPointOnCircle(), new Quaternion());
         }

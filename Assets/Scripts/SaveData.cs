@@ -58,6 +58,6 @@ public class SaveData : MonoBehaviour
     private void SaveObject(object obj, string fileName)
     {
         var json = JsonConvert.SerializeObject(obj);
-        File.WriteAllText($"{Application.persistentDataPath}/{LoadedData.LevelNumber}/{fileName}", json);
+        File.WriteAllText($"{Application.persistentDataPath}\\{LoadedData.LevelNumber}\\{fileName}", json);
     }
 }

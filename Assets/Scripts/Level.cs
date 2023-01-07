@@ -13,6 +13,11 @@ public class Level : MonoBehaviour
 {
     [SerializeField] private bool isFirstLevel;
     [SerializeField] private int levelNumber;
+    [SerializeField] private int metalCount;
+    [SerializeField] private int electronicsCount;
+    [SerializeField] private int enemyCounter;
+    [SerializeField] private int preparationTime;
+    [SerializeField] private int battleTime;
     private bool isCompleted;
     private bool isPreviousCompleted;
     private Button button;
@@ -29,6 +34,11 @@ public class Level : MonoBehaviour
     private void ShowLevelInfo()
     {
         LoadedData.LevelNumber = levelNumber;
+        LoadedData.MetalCount = metalCount;
+        LoadedData.ElectronicsCount = electronicsCount;
+        LoadedData.EnemyCounter = enemyCounter;
+        LoadedData.PreparationTime = preparationTime;
+        LoadedData.BattleTime = battleTime;
         if (isFirstLevel)
         {
             LoadFirstLevel();
@@ -84,6 +94,6 @@ public class Level : MonoBehaviour
     private static T GetJson<T>(string fileName)
     {
         return JsonConvert.DeserializeObject<T>(
-            File.ReadAllText($"{Application.persistentDataPath}/{LoadedData.LevelNumber - 1}/{fileName}"));
+            File.ReadAllText($"{Application.persistentDataPath}\\{LoadedData.LevelNumber - 1}\\{fileName}"));
     }
 }

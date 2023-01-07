@@ -79,6 +79,10 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             Invoke(nameof(Repair), TimeToRepair);
             Debug.Log("repairing continued");
         }
+        else
+        {
+            StopRepair();
+        }
     }
 
     private void RepairOnSecondLife()

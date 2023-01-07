@@ -8,19 +8,14 @@ public class GamePhaseManager : MonoBehaviour
     [SerializeField] private Timer timer;
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private GameObject win;
+    [SerializeField] private GameObject battleBegin;
     public static bool IsBattlePhase { get; private set; }
 
     private void Awake()
     {
         IsBattlePhase = false;
-        timer.SetTimer(60);
+        timer.SetTimer(LoadedData.PreparationTime);
         StartCoroutine(WaitForTimer(OnFishingEnd));
-    }
-
-    private void Start()
-    {
-        Debug.Log(Ship.Walls.Count);
-        Debug.Log(Ship.Turrets.Count);
     }
 
     private IEnumerator WaitForTimer(Action action)
@@ -34,8 +29,18 @@ public class GamePhaseManager : MonoBehaviour
     {
         IsBattlePhase = true;
         GameMode.ShouldSwitchToShip = true;
+        StartCoroutine(PrepareForBattle());
+    }
+
+    private IEnumerator PrepareForBattle()
+    {
+        Time.timeScale = 0;
+        battleBegin.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        battleBegin.SetActive(false);
+        Time.timeScale = 1;
         enemySpawner.enabled = true;
-        timer.SetTimer(180);
+        timer.SetTimer(LoadedData.BattleTime);
         StartCoroutine(WaitForTimer(OnBattleEnd));
     }
 
