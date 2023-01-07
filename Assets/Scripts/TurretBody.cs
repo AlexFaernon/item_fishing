@@ -10,6 +10,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private GameObject barrier;
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
+    [SerializeField] private Light light;
     [HideInInspector] public Barrier barrierScript;
     public TurretClass turretClass;
     public Side Side => side;
@@ -131,6 +132,11 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (!isRepairing) return;
         
         hpBar.size += Vector2.right * Time.deltaTime / TimeToRepair;
+    }
+
+    public void WarningLight(bool isRed)
+    {
+        light.color = isRed ? Color.red : Color.white;
     }
 
     private void RepairOrInstall()

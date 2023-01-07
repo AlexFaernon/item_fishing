@@ -51,16 +51,23 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator Attack(Enemy enemy1, Enemy enemy2)
     {
-        enemy1.Attack(Ship.GetTarget(enemy1.CurrentSide));
-        Debug.Log("enemy1 attack");
-        yield return new WaitUntil(() => enemy1.IsReadyToAttack || enemy1.Health == 0);
+        var target1 = Ship.GetTarget(enemy1.CurrentSide);
+        target1.SendMessage(nameof(TurretBody.WarningLight), true, SendMessageOptions.DontRequireReceiver);
+        enemy1.Attack(target1);
+        
+        yield return new WaitUntil(() => enemy1.IsReadyToAttack || enemy1.Health <= 0);
+        target1.SendMessage(nameof(TurretBody.WarningLight), false, SendMessageOptions.DontRequireReceiver);
         
         if (enemy2 is not null)
         {
             yield return new WaitForSeconds(8);
-            enemy2.Attack(Ship.GetTarget(enemy2.CurrentSide));
-            Debug.Log("enemy2 attack");
-            yield return new WaitUntil(() => enemy2.IsReadyToAttack || enemy2.Health == 0);
+            
+            var target2 = Ship.GetTarget(enemy1.CurrentSide);
+            target2.SendMessage(nameof(TurretBody.WarningLight), true, SendMessageOptions.DontRequireReceiver);
+            enemy2.Attack(target2);
+            
+            yield return new WaitUntil(() => enemy2.IsReadyToAttack || enemy2.Health <= 0);
+            target2.SendMessage(nameof(TurretBody.WarningLight), false, SendMessageOptions.DontRequireReceiver);
         }
         
         yield return new WaitForSeconds(10);
@@ -73,8 +80,11 @@ public class EnemyAI : MonoBehaviour
         if (Random.Next(10) >= 7)
         {
             var enemy = GetRandomEnemy();
-            enemy.Attack(Ship.GetTarget(enemy.CurrentSide));
-            Debug.Log("random enemy attack");
+            var target = Ship.GetTarget(enemy.CurrentSide);
+            target.SendMessage(nameof(TurretBody.WarningLight), true, SendMessageOptions.DontRequireReceiver);
+            enemy.Attack(target);
+            yield return new WaitUntil(() => enemy.IsReadyToAttack || enemy.Health <= 0);
+            target.SendMessage(nameof(TurretBody.WarningLight), false, SendMessageOptions.DontRequireReceiver);
         }
 
         if (Enemies.Any())
