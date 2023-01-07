@@ -43,6 +43,6 @@ public class WinWindow : MonoBehaviour
 
     private void MainMenu()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainMenu");
     }
 }
