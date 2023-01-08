@@ -136,7 +136,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (GameMode.Mode == Mode.Ship) return;
+        if (GameMode.Mode == Mode.Fishing) return;
         
         spriteRenderer.color = Color.yellow;
         hpBar.transform.parent.gameObject.SetActive(true);

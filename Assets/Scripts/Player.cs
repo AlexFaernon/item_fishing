@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     {
         switch (mode)
         {
-            case Mode.Ship:
+            case Mode.Fishing:
                 gameObject.SetActive(false);
                 break;
             case Mode.Player:

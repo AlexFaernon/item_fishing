@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
     {
         if (isAttacking || isReturning)
         {
-            transform.Translate(attackVector * (Time.deltaTime * 6f), Space.World);
+            transform.Translate(attackVector * (Time.deltaTime * 9f), Space.World);
         }
         
         if (isReturning)

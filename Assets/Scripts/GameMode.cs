@@ -21,7 +21,7 @@ public class GameMode : MonoBehaviour
                 case Mode.Player:
                     TurnPlayerMode();
                     break;
-                case Mode.Ship:
+                case Mode.Fishing:
                     TurnShipMode();
                     break;
                 default:
@@ -58,6 +58,6 @@ public class GameMode : MonoBehaviour
 
 public enum Mode
 {
-    Ship,
+    Fishing,
     Player
 }

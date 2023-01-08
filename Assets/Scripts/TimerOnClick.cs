@@ -13,6 +13,7 @@ public class TimerOnClick : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+        TimeScale = 1;
     }
 
     private void Update()

@@ -5510,7 +5510,7 @@ MonoBehaviour:
   metalCount: 5
   electronicsCount: 0
   enemyCounter: 2
-  preparationTime: 60
+  preparationTime: 180
   battleTime: 120
 --- !u!1 &1825379315
 GameObject:
@@ -5699,6 +5699,7 @@ MonoBehaviour:
   electronics: {fileID: 1459687763}
   startLevel: {fileID: 814255781}
   shipHealth: {fileID: 1689372148}
+  time: {fileID: 503784872}
 --- !u!1 &1971905695
 GameObject:
   m_ObjectHideFlags: 0
@@ -5959,7 +5960,7 @@ GameObject:
   - component: {fileID: 2041992718}
   - component: {fileID: 2041992717}
   m_Layer: 0
-  m_Name: Mask
+  m_Name: Levels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

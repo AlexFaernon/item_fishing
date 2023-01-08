@@ -108,6 +108,6 @@ public class EnemyAI : MonoBehaviour
     private Enemy GetRandomEnemy(Enemy other = null)
     {
         var list = Enemies.Values.Where(enemy => enemy.IsReadyToAttack && enemy != other).ToList();
-        return list[Random.Next(list.Count)];
+        return list.Count == 0 ? null : list[Random.Next(list.Count)];
     }
 }

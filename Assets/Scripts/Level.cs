@@ -75,7 +75,10 @@ public class Level : MonoBehaviour
     private static void LoadFirstLevel()
     {
         LoadedData.Turrets = new Dictionary<string, TurretClass>();
-        LoadedData.Walls = new Dictionary<Side, WallClass>();
+        LoadedData.Walls = new Dictionary<Side, WallClass>
+        {
+            { Side.Up, new WallClass { Health = 1 } }
+        };
         LoadedData.Barriers = new Dictionary<string, BarrierClass>();
         LoadedData.Researches = new Dictionary<ResearchType, bool>
         {
@@ -85,8 +88,8 @@ public class Level : MonoBehaviour
         };
         LoadedData.Resources = new Dictionary<ResourceType, int>
         {
-            { ResourceType.Metal, 100 },
-            { ResourceType.Electronics, 10 },
+            { ResourceType.Metal, 0 },
+            { ResourceType.Electronics, 0 },
             { ResourceType.Coins, 10 }
         };
     }

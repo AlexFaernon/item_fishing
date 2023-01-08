@@ -20,7 +20,7 @@ public class Move : MonoBehaviour
     {
         switch (mode)
         {
-            case Mode.Ship:
+            case Mode.Fishing:
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 break;
             case Mode.Player:

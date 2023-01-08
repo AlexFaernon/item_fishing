@@ -4,10 +4,10 @@ using System.Collections.Generic;
 public static class LoadedData
 {
     public static int LevelNumber;
-    public static int MetalCount;
+    public static int MetalCount = 5;
     public static int ElectronicsCount;
     public static int EnemyCounter;
-    public static int PreparationTime;
+    public static int PreparationTime = 600;
     public static int BattleTime;
     public static Dictionary<string, TurretClass> Turrets { get; set; } = new();
     public static Dictionary<string, BarrierClass> Barriers { get; set; } = new();

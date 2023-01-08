@@ -36,7 +36,7 @@ public class Workbench : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            GameMode.Mode = Mode.Ship;
+            GameMode.Mode = Mode.Fishing;
         }
     }
 

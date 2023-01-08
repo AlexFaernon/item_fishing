@@ -10,7 +10,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private GameObject barrier;
     [SerializeField] private SpriteRenderer hpBar;
     [SerializeField] private SpriteRenderer hpBarLength;
-    [SerializeField] private Light light;
+    [SerializeField] private new Light light;
     [HideInInspector] public Barrier barrierScript;
     public TurretClass turretClass;
     public Side Side => side;
@@ -54,6 +54,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             turretClass.IsBroken = value;
             turretControlScript.enabled = !value;
+            light.enabled = !value;
         }
     }
 
@@ -64,6 +65,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             turretClass.IsInstalled = value;
             turretControlScript.enabled = value;
+            light.enabled = value;
         }
     }
 
@@ -103,6 +105,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             spriteRenderer.color = normalColor = Color.gray; //пустой слот
             turretControlScript.enabled = false;
+            light.enabled = false;
             if (!Research.TurretsResearch)
             {
                 gameObject.SetActive(false);
@@ -115,6 +118,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             spriteRenderer.color = Color.black; //сломанный спрайт
             turretControlScript.enabled = false;
+            light.enabled = false;
         }
 
         normalColor = spriteRenderer.color;
@@ -226,7 +230,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (GameMode.Mode == Mode.Ship) return;
+        if (GameMode.Mode == Mode.Fishing) return;
         
         spriteRenderer.color = Color.yellow;
         hpBar.transform.parent.gameObject.SetActive(IsInstalled);

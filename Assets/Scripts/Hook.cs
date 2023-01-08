@@ -35,13 +35,14 @@ public class Hook : MonoBehaviour
         if (IsRetracting)
         {
             var distance = ((Vector2)transform.position - initialPosition).magnitude;
-            if (Math.Abs(distance) > 0.1)
+            if (Math.Abs(distance) > 1)
             {
                 transform.Translate(Vector3.left * (Time.deltaTime * velocity));
             }
             else
             {
                 IsRetracting = false;
+                transform.position = initialPosition;
                 spring.attachedRigidbody.simulated = false;
                 velocity = 10;
                 if (spring.connectedBody == null) return;
@@ -79,6 +80,7 @@ public class Hook : MonoBehaviour
         }
         
         if (!Input.GetMouseButtonDown(0)) return;
+        
         audioSource.Play();
         IsLaunched = true;
         spring.attachedRigidbody.simulated = true;

@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
     {
         switch (mode)
         {
-            case Mode.Ship:
+            case Mode.Fishing:
                 transform.parent.gameObject.SetActive(true);
                 break;
             case Mode.Player:

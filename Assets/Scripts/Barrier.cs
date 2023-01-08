@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Barrier : MonoBehaviour
 {
+    [SerializeField] private new Light light;
     public BarrierClass barrierClass;
     public Side side;
     public Side positionOnWall;
@@ -25,7 +26,7 @@ public class Barrier : MonoBehaviour
         set
         {
             isActive = value;
-            spriteRenderer.color = value ? Color.white : new Color(1,1,1, 0.5f);
+            light.intensity = value ? 70 : 10;
             collider2D.enabled = value;
         }
     }
@@ -36,7 +37,8 @@ public class Barrier : MonoBehaviour
         set
         {
             isOnCooldown = value;
-            spriteRenderer.color = value ? Color.red : new Color(1,1,1, 0.5f);
+            spriteRenderer.color = value ? new Color(0.4f, 0.4f, 0.4f, 0.7f) : new Color(1, 1, 1, 0.7f);
+            light.intensity = value ? 0 : 10;
         }
     }
 
@@ -61,7 +63,7 @@ public class Barrier : MonoBehaviour
 
     private IEnumerator WaitToTurnOff()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
         IsActive = false;
         IsOnCooldown = true;

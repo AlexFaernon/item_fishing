@@ -23,13 +23,14 @@ public class InstallBarrier : MonoBehaviour
     private void Update()
     {
         text.text = $"{Resources.Metal.Count}/10";
-        button.interactable = Resources.Metal.Count <= 10;
+        button.interactable = Resources.Metal.Count >= 10;
     }
 
     private void OnClick()
     {
         EventAggregator.BarrierInstalled.Publish(barrier);
         EventAggregator.ChooseUpgradeBarrier.Publish(barrier);
+        Resources.Metal.Count -= 10;
     }
 
     private void ShowBarrierInstallation(Barrier otherBarrier)
