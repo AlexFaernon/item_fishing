@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -20,6 +18,7 @@ public class VolumeController : MonoBehaviour
 
     private void Start()
     {
+        volume = PlayerPrefs.GetFloat(volumeParameter, Mathf.Log10(slider.value) * Multiplier);
         slider.value = Mathf.Pow(10f, volume / Multiplier);
     }
 
@@ -27,5 +26,10 @@ public class VolumeController : MonoBehaviour
     {
         volume = Mathf.Log10(value) * Multiplier;
         audioMixer.SetFloat(volumeParameter, volume);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat(volumeParameter, volume);
     }
 }

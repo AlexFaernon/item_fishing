@@ -15,6 +15,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public WallClass wallClass;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
+    private AudioSource audioSource;
     public Side Side => side;
     
     [HideInInspector] public int metalToRepair = 2;
@@ -69,6 +70,8 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         
         spriteRenderer = GetComponent<SpriteRenderer>();
         normalColor = spriteRenderer.color;
+        
+        audioSource = GetComponent<AudioSource>();
         
         hpBar.size = new Vector2(Health, 4);
         hpBarLength.size = new Vector2(wallClass.MaxHealth, 4);
@@ -139,6 +142,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         if (!col.gameObject.CompareTag("Enemy")) return;
 
         Health -= 1;
+        audioSource.Play();
         Debug.Log($"wall hp is {Health}");
     }
     

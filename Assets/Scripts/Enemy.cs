@@ -33,10 +33,12 @@ public class Enemy : MonoBehaviour
     private bool isStunned;
     private Vector2 attackVector;
     private Vector2 startPoint;
+    private AudioSource audioSource;
 
     public void Attack(GameObject target)
     {
         isAttacking = true;
+        audioSource.Play();
         var position = transform.position;
         attackVector = (target.transform.position - position).normalized;
         startPoint = position;
@@ -54,6 +56,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         EnemyAI.AddEnemy(this);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
