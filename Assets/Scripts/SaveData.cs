@@ -24,7 +24,7 @@ public class SaveData : MonoBehaviour
         var barriers = new Dictionary<string, BarrierClass>();
         foreach (var turret in Ship.Turrets)
         {
-            turrets[turret.Side.ToString() + turret.PositionOnWall] = turret.turretClass;
+            turrets[turret.Side.ToString() + turret.PositionOnWall] = turret.TurretClass;
             var barrier = turret.barrierScript;
             barriers[barrier.side.ToString() + barrier.positionOnWall] = barrier.barrierClass;
         }

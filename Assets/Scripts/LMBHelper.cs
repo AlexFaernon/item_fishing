@@ -19,7 +19,7 @@ public class LMBHelper : MonoBehaviour
     private void OnTurret(TurretBody turretBody)
     {
         turret = turretBody;
-        if (turret && turret.Health < turret.turretClass.MaxHealth)
+        if (turret && turret.Health < turret.TurretClass.MaxHealth)
         {
             gameObject.SetActive(true);
         }
@@ -38,7 +38,7 @@ public class LMBHelper : MonoBehaviour
     {
         if (turret)
         {
-            if (turret.Health < turret.turretClass.MaxHealth)
+            if (turret.Health < turret.TurretClass.MaxHealth)
             {
                 SetValues(turret.MetalToRepair, turret.isPlayerInRange);
             }

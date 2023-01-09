@@ -40,10 +40,25 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             wallClass.Health = value;
             hpBar.size = new Vector2(value, 1);
+            hpBar.color = HPBarColor;
             if (wallClass.Health <= 0)
             {
                 StartCoroutine(GameOver());
             }
+        }
+    }
+    
+    private Color HPBarColor
+    {
+        get
+        {
+            return ((double)Health / wallClass.MaxHealth) switch
+            {
+                >= 0.6 => Color.green,
+                < 0.6 and >= 0.3 => Color.yellow,
+                < 0.3 => Color.red,
+                _ => throw new ArgumentException()
+            };
         }
     }
 
@@ -57,6 +72,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         
         hpBar.size = new Vector2(Health, 4);
         hpBarLength.size = new Vector2(wallClass.MaxHealth, 4);
+        hpBar.color = HPBarColor;
         hpBar.transform.parent.gameObject.SetActive(false);
         
         EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
@@ -153,7 +169,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isPlayerInRange || Health == wallClass.MaxHealth) return;
+        if (!isPlayerInRange || Health == wallClass.MaxHealth || Resources.Metal.Count < metalToRepair) return;
         
         Invoke(nameof(Repair), TimeToRepair);
         isRepairing = true;

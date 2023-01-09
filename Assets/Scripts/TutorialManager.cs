@@ -58,33 +58,45 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator Level2()
     {
+        yield return new WaitUntil(() => GameMode.Mode == Mode.Player);
+        
         level2Tutorial.GetChild(0).gameObject.SetActive(true);
-        yield return new WaitUntil(() => upgrades.activeSelf);
+        yield return new WaitUntil(() => GameMode.Mode == Mode.Fishing);
         level2Tutorial.GetChild(0).gameObject.SetActive(false);
-
+        
+        yield return new WaitUntil(() => Resources.Electronics.Count > 0);
+        
         level2Tutorial.GetChild(1).gameObject.SetActive(true);
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitUntil(() => GameMode.Mode == Mode.Player);
         level2Tutorial.GetChild(1).gameObject.SetActive(false);
-
+    
         level2Tutorial.GetChild(2).gameObject.SetActive(true);
-        yield return new WaitUntil(() => researches.activeSelf);
+        yield return new WaitUntil(() => upgrades.activeSelf);
         level2Tutorial.GetChild(2).gameObject.SetActive(false);
-        
-        level2Tutorial.GetChild(3).gameObject.SetActive(true);
-        yield return new WaitUntil(() => Research.TurretsResearch);
-        level2Tutorial.GetChild(3).gameObject.SetActive(false);
-        
-        level2Tutorial.GetChild(4).gameObject.SetActive(true);
-        yield return new WaitUntil(() => !researches.activeSelf && !upgrades.activeSelf);
-        level2Tutorial.GetChild(4).gameObject.SetActive(false);
 
+        level2Tutorial.GetChild(3).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(3);
+        level2Tutorial.GetChild(3).gameObject.SetActive(false);
+
+        level2Tutorial.GetChild(4).gameObject.SetActive(true);
+        yield return new WaitUntil(() => researches.activeSelf);
+        level2Tutorial.GetChild(4).gameObject.SetActive(false);
+        
         level2Tutorial.GetChild(5).gameObject.SetActive(true);
-        yield return new WaitUntil(() => Ship.Turrets.Any(turret => turret.IsInstalled));
+        yield return new WaitUntil(() => Research.TurretsResearch);
         level2Tutorial.GetChild(5).gameObject.SetActive(false);
         
         level2Tutorial.GetChild(6).gameObject.SetActive(true);
-        yield return new WaitForSecondsRealtime(4);
+        yield return new WaitUntil(() => !researches.activeSelf && !upgrades.activeSelf);
         level2Tutorial.GetChild(6).gameObject.SetActive(false);
+
+        level2Tutorial.GetChild(7).gameObject.SetActive(true);
+        yield return new WaitUntil(() => Ship.Turrets.Any(turret => turret.IsInstalled));
+        level2Tutorial.GetChild(7).gameObject.SetActive(false);
+        
+        level2Tutorial.GetChild(8).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(4);
+        level2Tutorial.GetChild(8).gameObject.SetActive(false);
 
     }
 }

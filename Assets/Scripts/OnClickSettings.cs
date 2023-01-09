@@ -9,4 +9,9 @@ public class OnClickSettings : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void CloseSettingsInGame()
+    {
+        transform.parent.parent.gameObject.SetActive(false);
+    }
 }

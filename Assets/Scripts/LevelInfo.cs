@@ -20,7 +20,7 @@ public class LevelInfo : MonoBehaviour, IPointerDownHandler
     private void Awake()
     {
         EventAggregator.ShowLevelInfo.Subscribe(ShowLevelInfo);
-        startLevel.onClick.AddListener(() => SceneManager.LoadScene("Monetization"));
+        startLevel.onClick.AddListener(StartLevel);
         gameObject.SetActive(false);
     }
 
@@ -56,6 +56,11 @@ public class LevelInfo : MonoBehaviour, IPointerDownHandler
             shipHealth.text = $"{(int)((double)wallsHealth / wallsMaxHealth * 100)}%";
         }
         gameObject.SetActive(true);
+    }
+
+    private void StartLevel()
+    {
+        SceneManager.LoadScene(LoadedData.LevelNumber == 1 ? "SampleScene" : "Monetization");
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -52,33 +52,33 @@ public class UpgradeStat : MonoBehaviour
 
         if (!isFirstStat)
         {
-            button.interactable = turret.HealthRank < turret.turretClass.HealthMaxRank &&
-                                  turret.turretClass.NextHealthUpgradeCost <= Resources.Metal.Count;
+            button.interactable = turret.HealthRank < turret.TurretClass.HealthMaxRank &&
+                                  turret.TurretClass.NextHealthUpgradeCost <= Resources.Metal.Count;
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() =>
                 SetOnClick(() => turret.HealthRank += 1, () => EventAggregator.ChooseUpgradeTurret.Publish(turret),
-                    turret.turretClass.NextHealthUpgradeCost));
+                    turret.TurretClass.NextHealthUpgradeCost));
             statName.text = "Прочность";
-            cost.text = turret.HealthRank < turret.turretClass.HealthMaxRank
-                ? $"{turret.turretClass.NextHealthUpgradeCost}/{Resources.Metal.Count}"
+            cost.text = turret.HealthRank < turret.TurretClass.HealthMaxRank
+                ? $"{turret.TurretClass.NextHealthUpgradeCost}/{Resources.Metal.Count}"
                 : "";
-            cost.color = turret.turretClass.NextHealthUpgradeCost <= Resources.Metal.Count ? Color.black : Color.red;
-            rank.fillAmount = (float)turret.HealthRank / turret.turretClass.HealthMaxRank;
+            cost.color = turret.TurretClass.NextHealthUpgradeCost <= Resources.Metal.Count ? Color.black : Color.red;
+            rank.fillAmount = (float)turret.HealthRank / turret.TurretClass.HealthMaxRank;
         }
         else
         {
-            button.interactable = turret.DamageRank < turret.turretClass.DamageMaxRank &&
-                                  turret.turretClass.NextDamageUpgradeCost <= Resources.Metal.Count;
+            button.interactable = turret.DamageRank < turret.TurretClass.DamageMaxRank &&
+                                  turret.TurretClass.NextDamageUpgradeCost <= Resources.Metal.Count;
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() =>
                 SetOnClick(() => turret.DamageRank += 1, () => EventAggregator.ChooseUpgradeTurret.Publish(turret),
-                    turret.turretClass.NextDamageUpgradeCost));
+                    turret.TurretClass.NextDamageUpgradeCost));
             statName.text = "Урон";
-            cost.text = turret.DamageRank < turret.turretClass.DamageMaxRank
-                ? $"{turret.turretClass.NextDamageUpgradeCost}/{Resources.Metal.Count}"
+            cost.text = turret.DamageRank < turret.TurretClass.DamageMaxRank
+                ? $"{turret.TurretClass.NextDamageUpgradeCost}/{Resources.Metal.Count}"
                 : "";
-            cost.color = turret.turretClass.NextDamageUpgradeCost <= Resources.Metal.Count ? Color.black : Color.red;
-            rank.fillAmount = (float)turret.DamageRank / turret.turretClass.DamageMaxRank;
+            cost.color = turret.TurretClass.NextDamageUpgradeCost <= Resources.Metal.Count ? Color.black : Color.red;
+            rank.fillAmount = (float)turret.DamageRank / turret.TurretClass.DamageMaxRank;
         }
     }
 

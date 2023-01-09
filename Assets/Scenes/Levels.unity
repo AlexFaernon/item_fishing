@@ -5511,7 +5511,7 @@ MonoBehaviour:
   electronicsCount: 0
   enemyCounter: 2
   preparationTime: 180
-  battleTime: 120
+  battleTime: 60
 --- !u!1 &1825379315
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,7 +51,7 @@ public class Hook : MonoBehaviour
                 switch (spring.connectedBody.tag)
                 {
                     case "Metal":
-                        Resources.Metal.Count += random.Next(1, 4);
+                        Resources.Metal.Count += random.Next(6, 11);
                         break;
                     case "Electronics":
                         Resources.Electronics.Count += 1;

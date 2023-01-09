@@ -29,7 +29,7 @@ public class Turret : MonoBehaviour
         
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, currentTarget.transform.position);
-        currentTarget.TakeDamage(turretBody.turretClass.Damage);
+        currentTarget.TakeDamage(turretBody.TurretClass.Damage);
         canShoot = false;
         StartCoroutine(DestroyLineAfterTime());
         StartCoroutine(WaitToShoot());
