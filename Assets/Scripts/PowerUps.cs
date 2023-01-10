@@ -12,13 +12,13 @@ public static class PowerUps
         Resources.Coins += 2;
     }
 
-    public static void ActivateSecondLife()
+    public static void BuySecondLife()
     {
         SecondLife = true;
         Resources.Coins -= 2;
     }
 
-    public static void ActivateTurretBoost()
+    public static void BuyTurretBoost()
     {
         TurretsBoost = true;
         Resources.Coins -= 1;

@@ -52,7 +52,7 @@ public class TutorialManager : MonoBehaviour
         level1Tutorial.GetChild(4).gameObject.SetActive(false);
 
         level1Tutorial.GetChild(5).gameObject.SetActive(true);
-        yield return new WaitUntil(() => GamePhaseManager.IsBattlePhase);
+        yield return new WaitForSecondsRealtime(4);
         level1Tutorial.GetChild(5).gameObject.SetActive(false);
     }
 

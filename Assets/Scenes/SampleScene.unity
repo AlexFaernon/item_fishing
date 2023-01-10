@@ -1822,7 +1822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &79894298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3498,6 +3498,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 916079111}
   light: {fileID: 1037620206}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
+  brokenSprite: {fileID: 21300000, guid: a3d92d641dc11cd428d237ce142bb5e1, type: 3}
   installBar: {fileID: 1199299211}
   barrierScript: {fileID: 0}
   isPlayerInRange: 0
@@ -3839,7 +3840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &157670180
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5986,7 +5987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &271347072
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6004,7 +6005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 22.24, y: 4.678, z: -27.118}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -15.799683, y: 93.3}
+  m_AnchoredPosition: {x: -15.799622, y: 93.3}
   m_SizeDelta: {x: 100, y: 47.046}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &271347073
@@ -8314,7 +8315,6 @@ GameObject:
   - component: {fileID: 342920728}
   - component: {fileID: 342920731}
   - component: {fileID: 342920730}
-  - component: {fileID: 342920729}
   m_Layer: 0
   m_Name: BattleBegin
   m_TagString: Untagged
@@ -8343,18 +8343,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &342920729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342920727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e451d1c307bc3d34dacc0e1a5a3342e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &342920730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8585,6 +8573,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 1575380719}
   light: {fileID: 784321869}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
+  brokenSprite: {fileID: 21300000, guid: a3d92d641dc11cd428d237ce142bb5e1, type: 3}
   installBar: {fileID: 1043737646}
   barrierScript: {fileID: 0}
   isPlayerInRange: 0
@@ -12255,7 +12244,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0.8946395, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.96862745, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 0, a: 1}
     m_PressedColor: {r: 0.6037736, g: 0.5033292, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0.89411765, b: 1, a: 1}
     m_DisabledColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
@@ -13145,7 +13134,7 @@ Light:
   m_Intensity: 8
   m_Range: 63.2
   m_SpotAngle: 68
-  m_InnerSpotAngle: 21.80208
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -13548,7 +13537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &587913320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14433,7 +14422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &614416887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14714,8 +14703,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15138,7 +15127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &654037292
 Transform:
   m_ObjectHideFlags: 0
@@ -15479,6 +15468,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668226343}
   m_CullTransparentMesh: 1
+--- !u!1 &671636764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 671636765}
+  - component: {fileID: 671636766}
+  m_Layer: 2
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &671636765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671636764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1919899566}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &671636766
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671636764}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: 996d84a0cf2387249809446066553608, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.7426087, y: 1.6873013}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &681974508
 GameObject:
   m_ObjectHideFlags: 0
@@ -17419,6 +17492,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 877556234}
   light: {fileID: 560843732}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
+  brokenSprite: {fileID: 21300000, guid: a3d92d641dc11cd428d237ce142bb5e1, type: 3}
   installBar: {fileID: 125424079}
   barrierScript: {fileID: 0}
   isPlayerInRange: 0
@@ -18273,7 +18347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &821585031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20820,7 +20894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &944983282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21114,7 +21188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &955542367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22076,7 +22150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1012785198
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22787,7 +22861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1033890843
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24088,7 +24162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1091200235
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24629,7 +24703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1116891952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27821,7 +27895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1239247344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28388,6 +28462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1256615186}
   - component: {fileID: 1256615188}
+  - component: {fileID: 1256615189}
   - component: {fileID: 1256615187}
   m_Layer: 0
   m_Name: Text (TMP)
@@ -28515,6 +28590,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256615185}
   m_CullTransparentMesh: 1
+--- !u!114 &1256615189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256615185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776a7f223f472684390ba0faf91b71dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1256734404
 GameObject:
   m_ObjectHideFlags: 0
@@ -28880,6 +28967,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 607787486}
   light: {fileID: 1156072121}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
+  brokenSprite: {fileID: 21300000, guid: a3d92d641dc11cd428d237ce142bb5e1, type: 3}
   installBar: {fileID: 53580996}
   barrierScript: {fileID: 0}
   isPlayerInRange: 0
@@ -29265,6 +29353,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 2110698232}
   light: {fileID: 1947612773}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
+  brokenSprite: {fileID: 21300000, guid: a3d92d641dc11cd428d237ce142bb5e1, type: 3}
   installBar: {fileID: 395272340}
   barrierScript: {fileID: 0}
   isPlayerInRange: 0
@@ -29555,7 +29644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1291299843
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30060,7 +30149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320186748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30703,7 +30792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1350934251
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31084,7 +31173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1373239902
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31249,6 +31338,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 503624078}
   light: {fileID: 333352104}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
+  brokenSprite: {fileID: 21300000, guid: a3d92d641dc11cd428d237ce142bb5e1, type: 3}
   installBar: {fileID: 458247279}
   barrierScript: {fileID: 0}
   isPlayerInRange: 0
@@ -39459,7 +39549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1780541747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40583,7 +40673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1814563882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42092,6 +42182,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 2051804353}
   light: {fileID: 1831098857}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
+  brokenSprite: {fileID: 21300000, guid: a3d92d641dc11cd428d237ce142bb5e1, type: 3}
   installBar: {fileID: 247253001}
   barrierScript: {fileID: 0}
   isPlayerInRange: 0
@@ -43020,7 +43111,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1919899566}
   - component: {fileID: 1919899570}
-  - component: {fileID: 1919899569}
   - component: {fileID: 1919899568}
   - component: {fileID: 1919899567}
   - component: {fileID: 1919899571}
@@ -43047,6 +43137,7 @@ Transform:
   - {fileID: 1321141412}
   - {fileID: 1213081182}
   - {fileID: 849770463}
+  - {fileID: 671636765}
   m_Father: {fileID: 44284114}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43097,58 +43188,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!212 &1919899569
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919899565}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 0.5}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!114 &1919899570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43162,6 +43201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  player: {fileID: 671636764}
 --- !u!58 &1919899571
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -44880,6 +44920,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 1885612298}
   light: {fileID: 1071667083}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
+  brokenSprite: {fileID: 21300000, guid: a3d92d641dc11cd428d237ce142bb5e1, type: 3}
   installBar: {fileID: 1039929597}
   barrierScript: {fileID: 0}
   isPlayerInRange: 0

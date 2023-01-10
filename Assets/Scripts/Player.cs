@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     [SerializeField] private float speed;
+    [SerializeField] private GameObject player;
 
-    float mx;
-    float my;
+    private float mx;
+    private float my;
 
     private void Awake()
     {
@@ -27,6 +28,10 @@ public class Player : MonoBehaviour
     {
         mx = Input.GetAxisRaw("Horizontal");
         my = Input.GetAxisRaw("Vertical");
+        if (rb.velocity != Vector2.zero)
+        {
+            player.transform.right = rb.velocity;
+        }
     }
 
     private void FixedUpdate()

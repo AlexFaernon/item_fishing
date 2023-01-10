@@ -20,6 +20,7 @@ public class UpgradeStat : MonoBehaviour
         EventAggregator.ChooseUpgradeWall.Subscribe(UpgradeWall);
         EventAggregator.ChooseUpgradeTurret.Subscribe(UpgradeTurret);
         EventAggregator.ChooseUpgradeBarrier.Subscribe(UpgradeBarrier);
+        EventAggregator.ChooseUpgradeType.Subscribe(Deactivate);
         gameObject.SetActive(false);
     }
 
@@ -111,10 +112,16 @@ public class UpgradeStat : MonoBehaviour
         eventCall.Invoke();
     }
 
+    private void Deactivate(UpgradeType o)
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnDestroy()
     {
         EventAggregator.ChooseUpgradeWall.Unsubscribe(UpgradeWall);
         EventAggregator.ChooseUpgradeTurret.Unsubscribe(UpgradeTurret);
         EventAggregator.ChooseUpgradeBarrier.Unsubscribe(UpgradeBarrier);
+        EventAggregator.ChooseUpgradeType.Unsubscribe(Deactivate);
     }
 }

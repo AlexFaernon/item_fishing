@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,23 @@ public class WinWindow : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 0;
+        var shipImage = shipHealth.transform.parent.GetComponent<Image>();
         turretCount.text = $"{Ship.Turrets.Count(turret => turret.IsInstalled && !turret.IsBroken)}";
         metal.text = Resources.Metal.Count.ToString();
         electronics.text = Resources.Electronics.Count.ToString();
         var wallsHealth = Ship.Walls.Select(wall => wall.Health).Sum();
         var wallsMaxHealth = Ship.Walls.Select(wall => wall.wallClass.MaxHealth).Sum();
-        shipHealth.text = $"{(int)((double)wallsHealth / wallsMaxHealth * 100)}%";
+
+        var healthPercent = (double)wallsHealth / wallsMaxHealth * 100;
+        shipHealth.text = $"{(int)healthPercent}%";
+        shipImage.color = healthPercent switch
+        {
+            >= 66 => Color.green,
+            < 66 and >= 33 => Color.yellow,
+            < 33 => Color.red,
+            _ => throw new ArgumentException()
+        };
+
         continueButton.onClick.AddListener(Continue);
         replayButton.onClick.AddListener(Replay);
         mainMenuButton.onClick.AddListener(MainMenu);

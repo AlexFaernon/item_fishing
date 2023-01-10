@@ -17,8 +17,10 @@ public class LevelInfo : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Button startLevel;
     [SerializeField] private TMP_Text shipHealth;
     [SerializeField] private TMP_Text time;
+    private Image shipImage;
     private void Awake()
     {
+        shipImage = shipHealth.transform.parent.GetComponent<Image>();
         EventAggregator.ShowLevelInfo.Subscribe(ShowLevelInfo);
         startLevel.onClick.AddListener(StartLevel);
         gameObject.SetActive(false);
@@ -43,17 +45,27 @@ public class LevelInfo : MonoBehaviour, IPointerDownHandler
         
         turretCount.text = $"{LoadedData.Turrets.Values.Count(turret => turret.IsInstalled && !turret.IsBroken)}";
         metal.text = Resources.Metal.Count.ToString();
-        electronics.text = Resources.Metal.Count.ToString();
+        electronics.text = Resources.Electronics.Count.ToString();
         
         if (LoadedData.LevelNumber == 1)
         {
             shipHealth.text = "???";
+            shipImage.color = Color.gray;
         }
         else
         {
             var wallsHealth = LoadedData.Walls.Values.Select(wall => wall.Health).Sum();
             var wallsMaxHealth = LoadedData.Walls.Values.Select(wall => wall.MaxHealth).Sum();
-            shipHealth.text = $"{(int)((double)wallsHealth / wallsMaxHealth * 100)}%";
+            
+            var healthPercent = (double)wallsHealth / wallsMaxHealth * 100;
+            shipHealth.text = $"{(int)healthPercent}%";
+            shipImage.color = healthPercent switch
+            {
+                >= 66 => Color.green,
+                < 66 and >= 33 => Color.yellow,
+                < 33 => Color.red,
+                _ => throw new ArgumentException()
+            };
         }
         gameObject.SetActive(true);
     }

@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         {
             yield return new WaitForSeconds(8);
             
-            var target2 = Ship.GetTarget(enemy1.CurrentSide);
+            var target2 = Ship.GetTarget(enemy2.CurrentSide);
             target2.SendMessage(nameof(TurretBody.WarningLight), true, SendMessageOptions.DontRequireReceiver);
             enemy2.Attack(target2);
             

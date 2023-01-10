@@ -13,8 +13,7 @@ public class InstallBarrier : MonoBehaviour
 
     private void Awake()
     {
-        EventAggregator.ChooseUpgradeWall.Subscribe(OnNonBarrier);
-        EventAggregator.ChooseUpgradeTurret.Subscribe(OnNonBarrier);
+        EventAggregator.ChooseUpgradeType.Subscribe(OnNonBarrier);
         EventAggregator.ChooseUpgradeBarrier.Subscribe(ShowBarrierInstallation);
         button.onClick.AddListener(OnClick);
         gameObject.SetActive(false);
@@ -45,15 +44,14 @@ public class InstallBarrier : MonoBehaviour
         barrier = otherBarrier;
     }
 
-    private void OnNonBarrier(object o)
+    private void OnNonBarrier(UpgradeType o)
     {
         gameObject.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        EventAggregator.ChooseUpgradeWall.Unsubscribe(OnNonBarrier);
-        EventAggregator.ChooseUpgradeTurret.Unsubscribe(OnNonBarrier);
+        EventAggregator.ChooseUpgradeType.Unsubscribe(OnNonBarrier);
         EventAggregator.ChooseUpgradeBarrier.Unsubscribe(ShowBarrierInstallation);
     }
 }

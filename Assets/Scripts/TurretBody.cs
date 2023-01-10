@@ -12,6 +12,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private SpriteRenderer hpBarLength;
     [SerializeField] private new Light light;
     [SerializeField] private Sprite notInstalledSprite;
+    [SerializeField] private Sprite brokenSprite;
     [SerializeField] private GameObject installBar;
     private Sprite normalSprite;
     private SpriteRenderer installFill;
@@ -103,7 +104,6 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     [HideInInspector] public bool isPlayerInRange;
     private SpriteRenderer spriteRenderer;
-    private Color normalColor;
     private Turret turretControlScript;
 
     private void Awake()
@@ -131,7 +131,6 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (!IsInstalled)
         {
             spriteRenderer.sprite = notInstalledSprite;
-            normalColor = spriteRenderer.color;
             turretControlScript.enabled = false;
             light.enabled = false;
             if (!Research.TurretsResearch)
@@ -144,12 +143,11 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         if (IsBroken)
         {
-            spriteRenderer.color = Color.black; //сломанный спрайт
+            spriteRenderer.sprite = brokenSprite;
             turretControlScript.enabled = false;
             light.enabled = false;
         }
-
-        normalColor = spriteRenderer.color;
+        
         Ship.AddTurret(this);
         EventAggregator.SecondLifeActivated.Subscribe(RepairOnSecondLife);
     }
@@ -252,7 +250,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (Health > 0) return;
         
         IsBroken = true;
-        spriteRenderer.color = normalColor = Color.black; //сломанный спрайт
+        spriteRenderer.sprite = brokenSprite;
         turretControlScript.enabled = false;
     }
 
@@ -282,7 +280,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        spriteRenderer.color = normalColor;
+        spriteRenderer.color = Color.white;
         hpBar.transform.parent.gameObject.SetActive(false);
         installBar.SetActive(false);
         StopRepair();

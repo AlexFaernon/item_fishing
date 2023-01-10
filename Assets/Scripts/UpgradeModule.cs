@@ -12,7 +12,8 @@ public class UpgradeModule : MonoBehaviour
     private Wall wall;
     private TurretBody turret;
     private Barrier barrier;
-    private UpgradeType upgradeType;
+    private UpgradeType? upgradeType;
+    private Image image;
 
     private void Awake()
     {
@@ -20,19 +21,29 @@ public class UpgradeModule : MonoBehaviour
         {
             return;
         }
-        
+
+        image = GetComponent<Image>();
         upgradingModule.TryGetComponent(out wall);
         upgradingModule.TryGetComponent(out turret);
         upgradingModule.TryGetComponent(out barrier);
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
         EventAggregator.ChooseUpgradeType.Subscribe(SetUpgradeType);
+        EventAggregator.ChooseUpgradeBarrier.Subscribe(Deactivate);
+        EventAggregator.ChooseUpgradeTurret.Subscribe(Deactivate);
+        EventAggregator.ChooseUpgradeWall.Subscribe(Deactivate);
         button.interactable = false;
     }
 
     private void SetUpgradeType(UpgradeType other)
     {
+        image.color = Color.white;
         upgradeType = other;
+    }
+
+    private void Deactivate(object o)
+    {
+        image.color = Color.white;
     }
 
     private void Update()
@@ -54,16 +65,19 @@ public class UpgradeModule : MonoBehaviour
         if (wall)
         {
             EventAggregator.ChooseUpgradeWall.Publish(wall);
+            image.color = Color.yellow;
         }
 
         if (turret)
         {
             EventAggregator.ChooseUpgradeTurret.Publish(turret);
+            image.color = Color.yellow;
         }
 
         if (barrier)
         {
             EventAggregator.ChooseUpgradeBarrier.Publish(barrier);
+            image.color = Color.yellow;
         }
     }
 

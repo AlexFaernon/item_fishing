@@ -29,6 +29,6 @@ public class BuySecondLife : MonoBehaviour
 
     private void Buy()
     {
-        PowerUps.ActivateSecondLife();
+        PowerUps.BuySecondLife();
     }
 }

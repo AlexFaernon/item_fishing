@@ -28,6 +28,6 @@ public class BuyTurretBoost : MonoBehaviour
 
     private void Buy()
     {
-        PowerUps.ActivateTurretBoost();
+        PowerUps.BuyTurretBoost();
     }
 }
