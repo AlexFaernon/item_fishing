@@ -18,7 +18,7 @@ public class VolumeController : MonoBehaviour
 
     private void Start()
     {
-        volume = PlayerPrefs.GetFloat(volumeParameter, Mathf.Log10(slider.value) * Multiplier);
+        volume = PlayerPrefs.GetFloat(volumeParameter, Mathf.Pow(10f, volume / Multiplier));
         slider.value = Mathf.Pow(10f, volume / Multiplier);
     }
 

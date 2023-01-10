@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,6 +15,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private Sprite notInstalledSprite;
     [SerializeField] private Sprite brokenSprite;
     [SerializeField] private GameObject installBar;
+    [SerializeField] private GameObject cantInstallWin;
     private Sprite normalSprite;
     private SpriteRenderer installFill;
     
@@ -295,6 +297,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             Ship.Turrets.Any(turret => turret.side == Side && turret.IsInstalled))
         {
             Debug.Log("Cant install");
+            StartCoroutine(CantInstallWindowShow(3));
             return;
         }
         
@@ -309,6 +312,12 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         Invoke(nameof(RepairOrInstall), TimeToRepair);
     }
 
+    private IEnumerator CantInstallWindowShow(int time)
+    {
+        cantInstallWin.SetActive(true);
+        yield return new WaitForSecondsRealtime(time);
+        cantInstallWin.SetActive(false);
+    }
     public void OnPointerUp(PointerEventData eventData)
     {
         StopRepair();

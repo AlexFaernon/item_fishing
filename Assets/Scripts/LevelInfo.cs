@@ -38,10 +38,9 @@ public class LevelInfo : MonoBehaviour, IPointerDownHandler
     {
         levelNumber.text = $"{LoadedData.LevelNumber} уровень";
         
-        float levelTime = LoadedData.PreparationTime + LoadedData.BattleTime;
-        float minutes = Mathf.FloorToInt(levelTime / 60);
-        float seconds = Mathf.FloorToInt(levelTime % 60);
-        time.text = $"{minutes:00}:{seconds:00}";
+        float preparationTime = LoadedData.PreparationTime;
+        float battleTime = LoadedData.BattleTime;
+        time.text = $"{Mathf.FloorToInt(preparationTime / 60):00}:{Mathf.FloorToInt(preparationTime % 60):00} + {Mathf.FloorToInt(battleTime / 60):00}:{Mathf.FloorToInt(battleTime % 60):00}";
         
         turretCount.text = $"{LoadedData.Turrets.Values.Count(turret => turret.IsInstalled && !turret.IsBroken)}";
         metal.text = Resources.Metal.Count.ToString();
