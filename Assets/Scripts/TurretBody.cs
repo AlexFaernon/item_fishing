@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -297,7 +298,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             Ship.Turrets.Any(turret => turret.side == Side && turret.IsInstalled))
         {
             Debug.Log("Cant install");
-            StartCoroutine(CantInstallWindowShow(3));
+            StopAllCoroutines();
+            StartCoroutine(CantInstallWindowShow());
             return;
         }
         
@@ -312,10 +314,10 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         Invoke(nameof(RepairOrInstall), TimeToRepair);
     }
 
-    private IEnumerator CantInstallWindowShow(int time)
+    private IEnumerator CantInstallWindowShow()
     {
         cantInstallWin.SetActive(true);
-        yield return new WaitForSecondsRealtime(time);
+        yield return new WaitForSecondsRealtime(3);
         cantInstallWin.SetActive(false);
     }
     public void OnPointerUp(PointerEventData eventData)
