@@ -37,15 +37,15 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => GameMode.Mode == Mode.Player);
         
         story.gameObject.SetActive(true);
-        story.SetStory(false, "О боже... Хорошо что выжил хотя бы. Но, где я черт возьми? Надо связаться с командованием и вызвать помощь.");
+        story.SetStory(false, "О боже... Хорошо, что выжил хотя бы. Но, где я черт возьми? Надо связаться с командованием и вызвать помощь.");
         yield return new WaitUntil(() => story.IsStoryContinued);
-        story.SetStory(false, "Прием. На связи инженер номер 479225. Грузовой корабль потерпел крушение, мой спасательный челнок упал в неизвестную водную среду, высылаю координаты, прием.");
+        story.SetStory(false, "Прием. На связи инженер номер 479225. Грузовой корабль потерпел крушение, мой спасательный челнок упал в неизвестную водную среду. Высылаю координаты. Прием.");
         yield return new WaitUntil(() => story.IsStoryContinued);
-        story.SetStory(true, "Прием, принято. Высылаю спасательную команду, вам необходимо дождаться когда они соберут выживших и останки корабля, пожалуйста ожидайте и будьте на связи.");
+        story.SetStory(true, "Прием, принято. Высылаю спасательную команду. Вам необходимо дождаться, когда они соберут выживших и останки корабля. Пожалуйста, ожидайте и будьте на связи.");
         yield return new WaitUntil(() => story.IsStoryContinued);
-        story.SetStory(true, "Не паникуйте, не пытайтесь выбраться наружу челнока, это может быть небезопасно. В нем должно быть достаточно сухпайков и питьевой воды, чтобы вы могли дождаться спасения.");
+        story.SetStory(true, "Не паникуйте, не пытайтесь выбраться из челнока наружу, это может быть небезопасно. В нем должно быть достаточно сухпайка и питьевой воды, чтобы вы могли дождаться спасения.");
         yield return new WaitUntil(() => story.IsStoryContinued);
-        story.SetStory(false, "Значит придется ждать чертовски долго... Ладно, пока нужно осмотреть корабль, смотрю его все же потрепало от падения.");
+        story.SetStory(false, "Значит, придется ждать чертовски долго... Ладно, пока нужно осмотреть корабль, смотрю, его все же потрепало от падения.");
         yield return new WaitUntil(() => story.IsStoryContinued);
         story.gameObject.SetActive(false);
         
@@ -84,14 +84,14 @@ public class TutorialManager : MonoBehaviour
         level2Tutorial.GetChild(0).gameObject.SetActive(false);
         
         story.gameObject.SetActive(true);
-        story.SetStory(false, "О, это куски оборудования с корабля! Нужно их собрать, думаю я смогу сделать из них что-нибудь полезное.");
+        story.SetStory(false, "О, это куски оборудования с корабля! Нужно их собрать, думаю, я смогу сделать из них что-нибудь полезное.");
         yield return new WaitUntil(() => story.IsStoryContinued);
         story.gameObject.SetActive(false);
 
         yield return new WaitUntil(() => Resources.Electronics.Count > 0);
         
         story.gameObject.SetActive(true);
-        story.SetStory(false, "Надо бы посмотреть в верстаке, что я могу с ними сделать.");
+        story.SetStory(false, "Надо бы посмотреть в верстаке, что я могу сделать с ними.");
         yield return new WaitUntil(() => story.IsStoryContinued);
         story.gameObject.SetActive(false);
         
@@ -133,9 +133,9 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => GameMode.Mode == Mode.Player);
         
         story.gameObject.SetActive(true);
-        story.SetStory(false, "Я заметил, что эти монстры начинают атаковать после этого странного звука, и уплывают когда он звучит снова.");
+        story.SetStory(false, "Я заметил, что эти монстры начинают атаковать после этого странного звука и уплывают, когда он звучит снова.");
         yield return new WaitUntil(() => story.IsStoryContinued);
-        story.SetStory(false, "Не думаю, что смогу перебить всех этих тварей, мне надо просто переждать эти нападки.");
+        story.SetStory(false, "Не думаю, что смогу перебить всех этих тварей, мне надо просто переждать эти нападения.");
         yield return new WaitUntil(() => story.IsStoryContinued);
         story.gameObject.SetActive(false);
     }
