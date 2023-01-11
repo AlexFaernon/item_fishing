@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Linq;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -80,6 +79,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             TurretClass.IsBroken = value;
             turretControlScript.enabled = !value;
             light.enabled = !value;
+            spriteRenderer.sprite = value ? brokenSprite : normalSprite;
         }
     }
 
@@ -98,7 +98,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public bool IsBarrierInstalled
     {
         get => TurretClass.IsBarrierInstalled;
-        set
+        private set
         {
             TurretClass.IsBarrierInstalled = value;
             barrier.SetActive(value);
@@ -181,7 +181,6 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void RepairOrInstall()
     {
         Resources.Metal.Count -= MetalToRepair;
-        spriteRenderer.sprite = normalSprite;
         if (IsInstalled)
         {
             Health += 1;
@@ -193,11 +192,9 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             Health = TurretClass.MaxHealth;
         }
         IsBroken = false;
-        Debug.Log("repaired");
         if (Health < TurretClass.MaxHealth)
         {
             Invoke(nameof(RepairOrInstall), TimeToRepair);
-            Debug.Log("repairing continued");
         }
         else
         {
@@ -253,7 +250,6 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (Health > 0) return;
         
         IsBroken = true;
-        spriteRenderer.sprite = brokenSprite;
         turretControlScript.enabled = false;
     }
 
@@ -270,14 +266,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (GameMode.Mode == Mode.Fishing) return;
         
         spriteRenderer.color = Color.yellow;
-        if (IsInstalled)
-        {
-            hpBar.transform.parent.gameObject.SetActive(IsInstalled);
-        }
-        else
-        {
-            installBar.SetActive(true);
-        }
+        hpBar.transform.parent.gameObject.SetActive(IsInstalled);
+        installBar.SetActive(!IsInstalled);
         EventAggregator.MouseOverTurret.Publish(this);
     }
 
@@ -297,7 +287,6 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (!IsInstalled && !Research.TwoTurretsResearch &&
             Ship.Turrets.Any(turret => turret.side == Side && turret.IsInstalled))
         {
-            Debug.Log("Cant install");
             StopAllCoroutines();
             StartCoroutine(CantInstallWindowShow());
             return;

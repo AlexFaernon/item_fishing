@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public static class PowerUps
 {
     public static bool SecondLife { get; private set; }

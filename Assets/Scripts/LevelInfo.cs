@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -40,7 +38,8 @@ public class LevelInfo : MonoBehaviour, IPointerDownHandler
         
         float preparationTime = LoadedData.PreparationTime;
         float battleTime = LoadedData.BattleTime;
-        time.text = $"{Mathf.FloorToInt(preparationTime / 60):00}:{Mathf.FloorToInt(preparationTime % 60):00} + {Mathf.FloorToInt(battleTime / 60):00}:{Mathf.FloorToInt(battleTime % 60):00}";
+        time.text =
+            $"{Mathf.FloorToInt(preparationTime / 60):00}:{Mathf.FloorToInt(preparationTime % 60):00} + {Mathf.FloorToInt(battleTime / 60):00}:{Mathf.FloorToInt(battleTime % 60):00}";
         
         turretCount.text = $"{LoadedData.Turrets.Values.Count(turret => turret.IsInstalled && !turret.IsBroken)}";
         metal.text = Resources.Metal.Count.ToString();

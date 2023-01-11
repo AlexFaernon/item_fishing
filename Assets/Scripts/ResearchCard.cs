@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +11,8 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
     [SerializeField] private ResearchType researchType;
     [SerializeField] private TMP_Text costText;
     [SerializeField] private int cost;
+    [SerializeField] private GameObject electronicsIcon;
+    [SerializeField] private GameObject fade;
     private TMP_Text descriptionText;
 
     private void Awake()
@@ -60,45 +60,31 @@ public class ResearchCard : MonoBehaviour, IPointerDownHandler
         {
             costText.color = Color.red;
             button.interactable = false;
-            return;
         }
-        
-        costText.color = Color.black;
+        else
+        {
+            costText.color = Color.black;
+            button.interactable = true;
+        }
+
         switch (researchType)
         {
             case ResearchType.Turrets:
-                button.interactable = !Research.TurretsResearch;
+                descriptionText.color = Research.TurretsResearch ? Color.green : Color.black;
+                costText.gameObject.SetActive(!Research.TurretsResearch);
+                electronicsIcon.SetActive(!Research.TurretsResearch);
                 break;
             case ResearchType.TwoTurrets:
-                button.interactable = !Research.TwoTurretsResearch;
+                fade.SetActive(!Research.TurretsResearch);
+                costText.gameObject.SetActive(!Research.TwoTurretsResearch);
+                electronicsIcon.SetActive(!Research.TwoTurretsResearch);
+                descriptionText.color = Research.TwoTurretsResearch ? Color.green : Color.black;
                 break;
             case ResearchType.Barrier:
-                button.interactable = !Research.BarriersResearch;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-        
-        descriptionText.color = Color.black;
-        switch (researchType)
-        {
-            case ResearchType.Turrets:
-                if (Research.TurretsResearch)
-                {
-                    descriptionText.color = Color.red;
-                }
-                break;
-            case ResearchType.TwoTurrets:
-                if (!Research.TurretsResearch || Research.TwoTurretsResearch)
-                {
-                    descriptionText.color = Color.red;
-                }
-                break;
-            case ResearchType.Barrier:
-                if (!Research.TwoTurretsResearch || Research.BarriersResearch)
-                {
-                    descriptionText.color = Color.red;
-                }
+                fade.SetActive(!Research.TwoTurretsResearch);
+                costText.gameObject.SetActive(!Research.BarriersResearch);
+                electronicsIcon.SetActive(!Research.BarriersResearch);
+                descriptionText.color = Research.BarriersResearch ? Color.green : Color.black;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
