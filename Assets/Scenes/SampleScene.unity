@@ -2020,10 +2020,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0427\u0442\u043E\u0431\u044B \u0434\u043E\u0431\u044B\u0442\u044C \u0440\u0435\u0441\u0443\u0440\u0441\u044B
     \u0434\u043B\u044F \u043F\u043E\u0447\u0438\u043D\u043A\u0438 \u0438 \u0443\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F
-    \u043A\u043E\u0440\u0430\u0431\u043B\u044F \u043A\u043E\u0440\u0430\u0431\u043B\u044F
-    \u043F\u043E\u0434\u043E\u0439\u0434\u0438\u0442\u0435 \u043A \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0435
-    \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F \u043A\u043E\u0440\u0430\u0431\u043B\u0435\u043C
-    \u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \xABQ\xBB.\n"
+    \u043A\u043E\u0440\u0430\u0431\u043B\u044F \u043F\u043E\u0434\u043E\u0439\u0434\u0438\u0442\u0435
+    \u043A \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0435 \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F
+    \u043A\u043E\u0440\u0430\u0431\u043B\u0435\u043C \u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435
+    \xABQ\xBB.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31869716823bb424884b24552c472913, type: 2}
   m_sharedMaterial: {fileID: 2393487390592501062, guid: 31869716823bb424884b24552c472913, type: 2}
@@ -2742,7 +2742,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 916079111}
   light: {fileID: 1037620206}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
-  brokenSprite: {fileID: 21300000, guid: e812e7599c612584c8a96f227f87972a, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 76c0162357301f848aa84e51b6765e53, type: 3}
   installBar: {fileID: 1199299211}
   cantInstallWin: {fileID: 958759610}
   barrierScript: {fileID: 0}
@@ -4559,8 +4559,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253225405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.617, y: -0.085, z: 0}
-  m_LocalScale: {x: 0.27116114, y: 0.27116114, z: 0.27116114}
+  m_LocalPosition: {x: 0.594, y: -0.139, z: 0}
+  m_LocalScale: {x: 0.08146631, y: 0.08146631, z: 0.08146631}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1657780436}
@@ -4607,7 +4607,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 61ff1be31258bd149aaa5bc20984c1b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b745d42b78c3ab42bd781e2081803b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5568,8 +5568,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283291148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.414, y: -0.0082, z: 0}
-  m_LocalScale: {x: 1.2017, y: 1.2017, z: 1.2017}
+  m_LocalPosition: {x: -0.382, y: -0.0055, z: 0}
+  m_LocalScale: {x: 0.807561, y: 0.7980835, z: 0.8241259}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 849770463}
@@ -5616,7 +5616,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: be4670e3ad80320439f9140e3b00dca3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 191c0163b31f1c24d9d97b630566808f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7314,7 +7314,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 1575380719}
   light: {fileID: 784321869}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
-  brokenSprite: {fileID: 21300000, guid: e812e7599c612584c8a96f227f87972a, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 76c0162357301f848aa84e51b6765e53, type: 3}
   installBar: {fileID: 1043737646}
   cantInstallWin: {fileID: 958759610}
   barrierScript: {fileID: 0}
@@ -8728,7 +8728,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b5867bf6b2983ff4d8c8da26576d23f4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15613,7 +15613,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 877556234}
   light: {fileID: 560843732}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
-  brokenSprite: {fileID: 21300000, guid: e812e7599c612584c8a96f227f87972a, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 76c0162357301f848aa84e51b6765e53, type: 3}
   installBar: {fileID: 125424079}
   cantInstallWin: {fileID: 958759610}
   barrierScript: {fileID: 0}
@@ -16380,9 +16380,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826791126}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.431, y: -0.014, z: 0}
-  m_LocalScale: {x: 0.98322904, y: 0.98322904, z: 0.98322904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4989, y: 0.009900024, z: 0}
+  m_LocalScale: {x: 0.37405255, y: 0.37405255, z: 0.37405255}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 849770463}
@@ -16429,8 +16429,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f9014f60f8b44774c80e866ac4b3efce, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 1402028170, guid: bf2c5892886d1c2499db26104613c80c, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22554,14 +22554,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144251771}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.46, y: 0.01, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalRotation: {x: -0, y: -0, z: 0.21355934, w: 0.97693014}
+  m_LocalPosition: {x: 0.46, y: 0.05, z: 0}
+  m_LocalScale: {x: 0.11587651, y: 0.12276007, z: 0.09455448}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1213081182}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 24.662}
 --- !u!212 &1144251773
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22603,12 +22603,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 22fb08700e94f3f4197fb1b6c6c28f30, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89ed209659988c34f892cbc382c3e14d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.76, y: 0.64}
+  m_Size: {x: 2.28, y: 1.97}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -26158,7 +26158,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 607787486}
   light: {fileID: 1156072121}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
-  brokenSprite: {fileID: 21300000, guid: e812e7599c612584c8a96f227f87972a, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 76c0162357301f848aa84e51b6765e53, type: 3}
   installBar: {fileID: 53580996}
   cantInstallWin: {fileID: 958759610}
   barrierScript: {fileID: 0}
@@ -26545,7 +26545,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 2110698232}
   light: {fileID: 1947612773}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
-  brokenSprite: {fileID: 21300000, guid: e812e7599c612584c8a96f227f87972a, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 76c0162357301f848aa84e51b6765e53, type: 3}
   installBar: {fileID: 395272340}
   cantInstallWin: {fileID: 958759610}
   barrierScript: {fileID: 0}
@@ -27540,7 +27540,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2610033d66e6a504dbd6f3d7b8e6f0a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4ed61769136ae641b69982a9d2cab72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -28761,7 +28761,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 503624078}
   light: {fileID: 333352104}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
-  brokenSprite: {fileID: 21300000, guid: e812e7599c612584c8a96f227f87972a, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 76c0162357301f848aa84e51b6765e53, type: 3}
   installBar: {fileID: 458247279}
   cantInstallWin: {fileID: 958759610}
   barrierScript: {fileID: 0}
@@ -29091,8 +29091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900337bee5147104c9c517371b31f546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalTimeImage: {fileID: 21300000, guid: 85c3ac0dc3c171c4dab9ad5d6e091047, type: 3}
-  rewindTimeImage: {fileID: 21300000, guid: 3c3c69d5e37e22c49a3f8237c26a826b, type: 3}
+  normalTimeImage: {fileID: -860466130, guid: bf2c5892886d1c2499db26104613c80c, type: 3}
+  rewindTimeImage: {fileID: 21300000, guid: 7d15c769313789b4db3f414a68cc993c, type: 3}
 --- !u!1 &1402538490
 GameObject:
   m_ObjectHideFlags: 0
@@ -29449,7 +29449,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ac4abdef75841414bba858dc304c4eaf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -33368,8 +33368,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2610033d66e6a504dbd6f3d7b8e6f0a1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f4ed61769136ae641b69982a9d2cab72, type: 3}
+  m_Color: {r: 0.6462264, g: 1, b: 0.7055471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -38494,7 +38494,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 2051804353}
   light: {fileID: 1831098857}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
-  brokenSprite: {fileID: 21300000, guid: e812e7599c612584c8a96f227f87972a, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 76c0162357301f848aa84e51b6765e53, type: 3}
   installBar: {fileID: 247253001}
   cantInstallWin: {fileID: 958759610}
   barrierScript: {fileID: 0}
@@ -40648,8 +40648,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050523644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.414, y: -0.0082, z: 0}
-  m_LocalScale: {x: 1.2017, y: 1.2017, z: 1.2017}
+  m_LocalPosition: {x: -0.455, y: -0.006, z: 0}
+  m_LocalScale: {x: 0.79792875, y: 0.79792875, z: 0.79792875}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1213081182}
@@ -40696,7 +40696,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: be4670e3ad80320439f9140e3b00dca3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad962cf388a253849bab840da9ea4958, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -40898,7 +40898,7 @@ MonoBehaviour:
   hpBarLength: {fileID: 1885612298}
   light: {fileID: 1071667083}
   notInstalledSprite: {fileID: 21300000, guid: 6fead7667b3b09e4b9b25ee8ffc7b4d9, type: 3}
-  brokenSprite: {fileID: 21300000, guid: e812e7599c612584c8a96f227f87972a, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 76c0162357301f848aa84e51b6765e53, type: 3}
   installBar: {fileID: 1039929597}
   cantInstallWin: {fileID: 958759610}
   barrierScript: {fileID: 0}

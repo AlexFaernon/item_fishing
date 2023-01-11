@@ -7,7 +7,7 @@ public class VolumeInit : MonoBehaviour
     [SerializeField] private string volumeParameter = "MasterVolume";
     [SerializeField] private AudioMixer audioMixer;
 
-    private void Awake()
+    private void Start()
     {
         var volume = PlayerPrefs.GetFloat(volumeParameter, 0f);
         audioMixer.SetFloat(volumeParameter, volume);
