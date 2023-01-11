@@ -157,11 +157,6 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Update()
     {
-        if (isPlayerInRange && IsBarrierInstalled && Input.GetMouseButtonDown(1))
-        {
-            barrierScript.Activate();
-        }
-        
         if (isRepairing)
         {
             hpBar.size += Vector2.right * Time.deltaTime / TimeToRepair;
@@ -282,7 +277,13 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isPlayerInRange || Health == TurretClass.MaxHealth || Resources.Metal.Count < MetalToRepair) return;
+        if (eventData.button == PointerEventData.InputButton.Right && isPlayerInRange && IsBarrierInstalled)
+        {
+            barrierScript.Activate();
+        }
+
+        if (!isPlayerInRange || Health == TurretClass.MaxHealth || Resources.Metal.Count < MetalToRepair ||
+            eventData.button != PointerEventData.InputButton.Left) return;
 
         if (!IsInstalled && !Research.TwoTurretsResearch &&
             Ship.Turrets.Any(turret => turret.side == Side && turret.IsInstalled))
