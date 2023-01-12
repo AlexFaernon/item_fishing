@@ -251,8 +251,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Player")) return;
-
+        if (!other.gameObject.CompareTag("Player") || other is not CircleCollider2D) return;
         Debug.Log($"{side} {positionOnWall} exit, {other.tag}");
         IsPlayerInRange = false;
         StopRepair();
