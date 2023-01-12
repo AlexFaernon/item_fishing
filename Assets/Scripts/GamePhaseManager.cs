@@ -41,6 +41,14 @@ public class GamePhaseManager : MonoBehaviour
         enemySpawner.enabled = true;
         timer.SetTimer(LoadedData.BattleTime);
         StartCoroutine(WaitForTimer(OnBattleEnd));
+        StartCoroutine(EnemyDied());
+    }
+
+    private IEnumerator EnemyDied()
+    {
+        yield return new WaitUntil((() => EnemyAI.EnemyCount > 0));
+        yield return new WaitUntil((() => EnemyAI.EnemyCount == 0));
+        win.SetActive(true);
     }
 
     private void OnBattleEnd()
