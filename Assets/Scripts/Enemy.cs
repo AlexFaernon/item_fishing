@@ -55,6 +55,7 @@ public class Enemy : MonoBehaviour
     
     private void Awake()
     {
+        transform.right = ship.transform.position - transform.position;
         EnemyAI.AddEnemy(this);
         audioSource = GetComponent<AudioSource>();
     }

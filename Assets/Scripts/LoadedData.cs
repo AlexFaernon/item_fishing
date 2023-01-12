@@ -4,7 +4,7 @@ public static class LoadedData
 {
     public static int LevelNumber;
     public static int MetalCount = 5;
-    public static int ElectronicsCount;
+    public static int ElectronicsCount = 2;
     public static int EnemyCounter = 5;
     public static int PreparationTime = 60;
     public static int BattleTime = 60;
