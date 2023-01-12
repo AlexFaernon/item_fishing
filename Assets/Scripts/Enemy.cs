@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     public GameObject ship;
 
-    public int Health { get; private set; } = 100;
+    public int Health { get; private set; } = 70;
     public bool IsReadyToAttack => !(isAttacking || isReturning || isStunned);
     public Side CurrentSide
     {
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
     {
         if (isAttacking || isReturning)
         {
-            transform.Translate(attackVector * (Time.deltaTime * 9f), Space.World);
+            transform.Translate(attackVector * (Time.deltaTime * 10.5f), Space.World);
         }
         
         if (isReturning)

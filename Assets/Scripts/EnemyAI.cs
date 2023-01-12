@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator WaitBeforeFirstAttack()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
 
         _canAttack = true;
     }
@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour
         
         if (enemy2 is not null)
         {
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(5);
             
             var target2 = Ship.GetTarget(enemy2.CurrentSide);
             target2.SendMessage(nameof(TurretBody.WarningLight), true, SendMessageOptions.DontRequireReceiver);
@@ -70,14 +70,14 @@ public class EnemyAI : MonoBehaviour
             target2.SendMessage(nameof(TurretBody.WarningLight), false, SendMessageOptions.DontRequireReceiver);
         }
         
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(7f);
         _canAttack = true;
     }
 
     private IEnumerator RandomAttack()
     {
-        yield return new WaitForSeconds(30);
-        if (Random.Next(10) >= 7)
+        yield return new WaitForSeconds(14);
+        if (Random.Next(10) >= 6)
         {
             var enemy = GetRandomEnemy();
             var target = Ship.GetTarget(enemy.CurrentSide);
