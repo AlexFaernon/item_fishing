@@ -80,5 +80,8 @@ public class UpgradeModule : MonoBehaviour
     private void OnDestroy()
     {
         EventAggregator.ChooseUpgradeType.Unsubscribe(SetUpgradeType);
+        EventAggregator.ChooseUpgradeBarrier.Unsubscribe(Deactivate);
+        EventAggregator.ChooseUpgradeTurret.Unsubscribe(Deactivate);
+        EventAggregator.ChooseUpgradeWall.Unsubscribe(Deactivate);
     }
 }
