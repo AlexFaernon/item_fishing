@@ -13,7 +13,7 @@
     
     public int DamageMaxRank => new[] { 10, 15, 20, 25 }.Length - 1;
     public int NextDamageUpgradeCost => new[] { 10, 20, 30, 0 }[DamageRank];
-    public int Damage => new[] { 10, 15, 20, 25 }[DamageRank];
+    public int Damage => new[] { 3, 5, 6, 8 }[DamageRank];
 
     public TurretClass()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using TMPro;
@@ -11,6 +12,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject upgrades;
     [SerializeField] private GameObject researches;
     [SerializeField] private StoryWindow story;
+    [SerializeField] private Transform barrierTutorial;
 
     public static bool TutorialEnabled = true;
 
@@ -30,6 +32,17 @@ public class TutorialManager : MonoBehaviour
                 StartCoroutine(Level3());
                 break;
         }
+
+        StartCoroutine(BarrierTutorial());
+    }
+
+    private void Update()
+    {
+        if (!GamePhaseManager.IsBattlePhase) return;
+        
+        level1Tutorial.gameObject.SetActive(false);
+        level2Tutorial.gameObject.SetActive(false);
+        story.gameObject.SetActive(false);
     }
 
     private IEnumerator Level1()
@@ -138,5 +151,19 @@ public class TutorialManager : MonoBehaviour
         story.SetStory(false, "Не думаю, что смогу перебить всех этих тварей, мне надо просто переждать эти нападения.");
         yield return new WaitUntil(() => story.IsStoryContinued);
         story.gameObject.SetActive(false);
+    }
+
+    private IEnumerator BarrierTutorial()
+    {
+        yield return new WaitUntil(() => Research.BarriersResearch);
+        
+        barrierTutorial.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(5f);
+        barrierTutorial.GetChild(0).gameObject.SetActive(false);
+
+        barrierTutorial.GetChild(1).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(10f);
+        barrierTutorial.GetChild(1).gameObject.SetActive(false);
+
     }
 }

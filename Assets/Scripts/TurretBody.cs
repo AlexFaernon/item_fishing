@@ -105,7 +105,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
     }
 
-    [HideInInspector] public bool isPlayerInRange;
+    public bool IsPlayerInRange { get; private set; }
     private SpriteRenderer spriteRenderer;
     private Turret turretControlScript;
 
@@ -187,7 +187,7 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             Health = TurretClass.MaxHealth;
         }
         IsBroken = false;
-        if (Health < TurretClass.MaxHealth)
+        if (Health < TurretClass.MaxHealth && Resources.Metal.Count >= MetalToRepair)
         {
             Invoke(nameof(RepairOrInstall), TimeToRepair);
         }
@@ -234,7 +234,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            isPlayerInRange = true;
+            Debug.Log($"{side} {positionOnWall} enter");
+            IsPlayerInRange = true;
             return;
         }
 
@@ -252,7 +253,8 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (!other.gameObject.CompareTag("Player")) return;
 
-        isPlayerInRange = false;
+        Debug.Log($"{side} {positionOnWall} exit, {other.tag}");
+        IsPlayerInRange = false;
         StopRepair();
     }
 
@@ -277,12 +279,12 @@ public class TurretBody : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right && isPlayerInRange && IsBarrierInstalled)
+        if (eventData.button == PointerEventData.InputButton.Right && IsPlayerInRange && IsBarrierInstalled)
         {
             barrierScript.Activate();
         }
 
-        if (!isPlayerInRange || Health == TurretClass.MaxHealth || Resources.Metal.Count < MetalToRepair ||
+        if (!IsPlayerInRange || Health == TurretClass.MaxHealth || Resources.Metal.Count < MetalToRepair ||
             eventData.button != PointerEventData.InputButton.Left) return;
 
         if (!IsInstalled && !Research.TwoTurretsResearch &&

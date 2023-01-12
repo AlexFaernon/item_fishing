@@ -3,7 +3,7 @@
     public static int Coins;
     public static class Metal
     {
-        public static int Count = 999;
+        public static int Count = 100;
 
         public const int MaxTimeToCatch = 7;
     }

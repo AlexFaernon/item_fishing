@@ -8,6 +8,7 @@ public class Turret : MonoBehaviour
     private Enemy currentTarget;
     private LineRenderer lineRenderer;
     private bool canShoot = true;
+    private const int FireRate = 1;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class Turret : MonoBehaviour
     
     private IEnumerator WaitToShoot()
     {
-        yield return new WaitForSeconds(PowerUps.TurretsBoost ? 1.5f : 3f);
+        yield return new WaitForSeconds(PowerUps.TurretsBoost ? FireRate / 2 : FireRate);
 
         canShoot = true;
         //Debug.Log("shoot now");

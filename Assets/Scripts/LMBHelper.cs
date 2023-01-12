@@ -13,56 +13,52 @@ public class LMBHelper : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         EventAggregator.MouseOverTurret.Subscribe(OnTurret);
         EventAggregator.MouseOverWall.Subscribe(OnWall);
-        gameObject.SetActive(false);
+        SetActive(false);
     }
 
     private void OnTurret(TurretBody turretBody)
     {
         turret = turretBody;
-        if (turret && turret.Health < turret.TurretClass.MaxHealth)
-        {
-            gameObject.SetActive(true);
-        }
     }
 
     private void OnWall(Wall wall)
     {
         this.wall = wall;
-        if (this.wall && this.wall.Health < this.wall.wallClass.MaxHealth)
-        {
-            gameObject.SetActive(true);
-        }
     }
 
     private void Update()
     {
         if (turret)
         {
+            SetActive(true);
+            
             if (turret.Health < turret.TurretClass.MaxHealth)
             {
-                SetValues(turret.MetalToRepair, turret.isPlayerInRange);
+                SetValues(turret.MetalToRepair, turret.IsPlayerInRange);
             }
             else
             {
-                gameObject.SetActive(false);
+                SetActive(false);
             }
             return;
         }
 
         if (wall)
         {
+            SetActive(true);
+            
             if (wall.Health < wall.wallClass.MaxHealth)
             {
                 SetValues(wall.metalToRepair, wall.isPlayerInRange);
             }
             else
             {
-                gameObject.SetActive(false);
+                SetActive(false);
             }
             return;
         }
         
-        gameObject.SetActive(false);
+        SetActive(false);
     }
 
     private void SetValues(int metalToRepair, bool isPlayerInRange)
@@ -70,6 +66,15 @@ public class LMBHelper : MonoBehaviour
         text.text = metalToRepair.ToString();
         text.color = metalToRepair <= Resources.Metal.Count ? Color.black : Color.red;
         spriteRenderer.color = isPlayerInRange ? Color.white : Color.gray;
+    }
+
+    private void SetActive(bool isActive)
+    {
+        spriteRenderer.color = isActive ? Color.white : Color.clear;
+        foreach (Transform obj in transform)
+        {
+            obj.gameObject.SetActive(isActive);
+        }
     }
 
     private void OnDestroy()

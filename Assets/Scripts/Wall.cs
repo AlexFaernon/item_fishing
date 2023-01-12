@@ -19,7 +19,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [HideInInspector] public int metalToRepair = 2;
     private const int TimeToRepair = 3;
     private bool isRepairing;
-    
+
     public int HealthRank
     {
         get => wallClass.HealthRank;
@@ -91,7 +91,7 @@ public class Wall : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         Health += 1;
         Resources.Metal.Count -= metalToRepair;
         Debug.Log("repaired");
-        if (Health < wallClass.MaxHealth)
+        if (Health < wallClass.MaxHealth && Resources.Metal.Count >= metalToRepair)
         {
             Invoke(nameof(Repair), TimeToRepair);
             Debug.Log("repairing continued");
