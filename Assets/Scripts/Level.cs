@@ -85,7 +85,7 @@ public class Level : MonoBehaviour
         {
             { ResourceType.Metal, 0 },
             { ResourceType.Electronics, 0 },
-            { ResourceType.Coins, 10 }
+            { ResourceType.Coins, 0 }
         };
     }
 
