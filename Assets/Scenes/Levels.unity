@@ -1366,10 +1366,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFirstLevel: 0
   levelNumber: 8
-  metalCount: 20
+  metalCount: 18
   electronicsCount: 1
   enemyCounter: 10
-  preparationTime: 200
+  preparationTime: 180
   battleTime: 180
 --- !u!1 &427912617
 GameObject:

@@ -6120,7 +6120,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.9573349, y: -0.3113408}
+  m_Offset: {x: -0.9098413, y: -0.48882908}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6131,7 +6131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.124347, y: 3.8344011}
+  m_Size: {x: 2.0293598, y: 3.069353}
   m_EdgeRadius: 0
 --- !u!120 &303707094
 LineRenderer:
@@ -10191,7 +10191,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.57487154, y: 0.7018345}
+  m_Offset: {x: -0.5500225, y: 0.7018345}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10202,7 +10202,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.6921854, y: 1.0888034}
+  m_Size: {x: 5.812043, y: 1.0888034}
   m_EdgeRadius: 0
 --- !u!120 &478773231
 LineRenderer:
@@ -20096,7 +20096,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.10285, y: 0.32443988}
+  m_Offset: {x: -1.0795767, y: 0.6345382}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -20107,7 +20107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.939282, y: 3.8697236}
+  m_Size: {x: 1.8927355, y: 3.025734}
   m_EdgeRadius: 0
 --- !u!114 &978420737
 MonoBehaviour:
@@ -26792,7 +26792,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1437173, y: 0.69101053}
+  m_Offset: {x: 0.8998858, y: 0.69101053}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -26803,7 +26803,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.518386, y: 1.0671552}
+  m_Size: {x: 5.808778, y: 1.0671552}
   m_EdgeRadius: 0
 --- !u!120 &1262664463
 LineRenderer:
@@ -31044,7 +31044,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.218229, y: 0.46538937}
+  m_Offset: {x: 1.200592, y: 0.6372651}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -31055,7 +31055,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0556574, y: 3.3938148}
+  m_Size: {x: 2.0203834, y: 3.1441262}
   m_EdgeRadius: 0
 --- !u!120 &1470754543
 LineRenderer:
@@ -32701,7 +32701,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2871474, y: -0.7021179}
+  m_Offset: {x: 1.210721, y: -0.575161}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -32712,7 +32712,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2040951, y: 3.6056309}
+  m_Size: {x: 2.0512424, y: 3.351717}
   m_EdgeRadius: 0
 --- !u!120 &1558962613
 LineRenderer:
@@ -33446,7 +33446,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.33585083, y: -0.73868823}
+  m_Offset: {x: -0.5063404, y: -0.73868823}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -33457,7 +33457,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.4137325, y: 1.2167397}
+  m_Size: {x: 5.072753, y: 1.2167397}
   m_EdgeRadius: 0
 --- !u!120 &1597305862
 LineRenderer:
@@ -39365,7 +39365,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.455248, y: -0.73623246}
+  m_Offset: {x: 0.77024055, y: -0.73623246}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -39376,7 +39376,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.067174, y: 1.2225708}
+  m_Size: {x: 5.153152, y: 1.2225708}
   m_EdgeRadius: 0
 --- !u!120 &1872236766
 LineRenderer:
